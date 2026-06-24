@@ -1,0 +1,91 @@
+{
+  "Nav": {
+    "home": "Start",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "ariaLabel": "Hauptnavigation",
+    "toggleMenu": "Menü umschalten"
+  },
+  "Hero": {
+    "eyebrow": "Webentwickler",
+    "title": "Ich baue schnelle, durchdachte Websites.",
+    "subtitle": "Freiberuflicher Webentwickler mit Fokus auf moderne Web-Apps, Performance und sauberen Code.",
+    "ctaPrimary": "Projekte ansehen",
+    "ctaSecondary": "Kontakt aufnehmen"
+  },
+  "About": {
+    "title": "Über mich",
+    "body": "Ich entwickle Websites und Web-Anwendungen vom Konzept bis zum Deployment. Mein Schwerpunkt liegt auf React, Next.js und TypeScript – mit Blick auf Performance, Barrierefreiheit und langlebigen Code."
+  },
+  "Services": {
+    "title": "Leistungen",
+    "subtitle": "Wobei ich dir helfen kann.",
+    "items": {
+      "webApps": {
+        "title": "Web-Anwendungen",
+        "description": "Moderne, performante Anwendungen mit Next.js und React."
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Marketing- und Unternehmensseiten, die schnell laden und gut aussehen."
+      },
+      "consulting": {
+        "title": "Beratung",
+        "description": "Technische Beratung zu Architektur, Performance und Tooling."
+      }
+    }
+  },
+  "Uses": {
+    "title": "Mein Werkzeugkasten",
+    "subtitle": "Womit ich am liebsten arbeite."
+  },
+  "FeaturedProjects": {
+    "title": "Ausgewählte Projekte",
+    "subtitle": "Ein paar aktuelle Arbeiten.",
+    "viewAll": "Alle Projekte ansehen",
+    "viewProject": "Projekt ansehen"
+  },
+  "ContactCTA": {
+    "title": "Lass uns zusammenarbeiten.",
+    "subtitle": "Hast du ein Projekt im Kopf? Ich freue mich auf deine Nachricht.",
+    "cta": "Kontakt aufnehmen"
+  },
+  "Projects": {
+    "title": "Projekte",
+    "subtitle": "Eine Auswahl meiner Arbeiten.",
+    "empty": "Noch keine Projekte veröffentlicht.",
+    "backToProjects": "Zurück zu den Projekten"
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "subtitle": "Schreib mir – ich melde mich zeitnah zurück.",
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "messageLabel": "Nachricht",
+    "submit": "Nachricht senden",
+    "directEmail": "Oder schreib direkt an"
+  },
+  "Imprint": {
+    "title": "Impressum",
+    "intro": "Angaben gemäß § 5 TMG."
+  },
+  "Privacy": {
+    "title": "Datenschutzerklärung",
+    "intro": "Informationen zum Umgang mit deinen Daten."
+  },
+  "Footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache wählen",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Die angeforderte Seite existiert nicht.",
+    "home": "Zur Startseite"
+  }
+}

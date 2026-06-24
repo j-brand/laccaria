@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "eslint": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@eslint/mcp@latest"]
+    },
+    "tailwindcss-docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/tailwindlabs/tailwindcss"
+    },
+    "react-docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/facebook/react"
+    },
+    "typescript-docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/microsoft/typescript"
+    }
+  }
+}

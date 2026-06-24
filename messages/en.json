@@ -1,0 +1,91 @@
+{
+  "Nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "contact": "Contact",
+    "ariaLabel": "Main navigation",
+    "toggleMenu": "Toggle menu"
+  },
+  "Hero": {
+    "eyebrow": "Web developer",
+    "title": "I build fast, thoughtful websites.",
+    "subtitle": "Freelance web developer focused on modern web apps, performance and clean code.",
+    "ctaPrimary": "View projects",
+    "ctaSecondary": "Get in touch"
+  },
+  "About": {
+    "title": "About me",
+    "body": "I build websites and web applications from concept to deployment. I focus on React, Next.js and TypeScript — with an eye on performance, accessibility and long-lived code."
+  },
+  "Services": {
+    "title": "Services",
+    "subtitle": "How I can help you.",
+    "items": {
+      "webApps": {
+        "title": "Web applications",
+        "description": "Modern, performant applications built with Next.js and React."
+      },
+      "websites": {
+        "title": "Websites",
+        "description": "Marketing and company sites that load fast and look great."
+      },
+      "consulting": {
+        "title": "Consulting",
+        "description": "Technical advice on architecture, performance and tooling."
+      }
+    }
+  },
+  "Uses": {
+    "title": "My toolbox",
+    "subtitle": "What I most enjoy working with."
+  },
+  "FeaturedProjects": {
+    "title": "Featured projects",
+    "subtitle": "A few recent pieces of work.",
+    "viewAll": "View all projects",
+    "viewProject": "View project"
+  },
+  "ContactCTA": {
+    "title": "Let's work together.",
+    "subtitle": "Got a project in mind? I'd love to hear from you.",
+    "cta": "Get in touch"
+  },
+  "Projects": {
+    "title": "Projects",
+    "subtitle": "A selection of my work.",
+    "empty": "No projects published yet.",
+    "backToProjects": "Back to projects"
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Drop me a line — I'll get back to you shortly.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submit": "Send message",
+    "directEmail": "Or email me directly at"
+  },
+  "Imprint": {
+    "title": "Legal notice",
+    "intro": "Information pursuant to § 5 TMG."
+  },
+  "Privacy": {
+    "title": "Privacy policy",
+    "intro": "Information on how your data is handled."
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "imprint": "Legal notice",
+    "privacy": "Privacy"
+  },
+  "LocaleSwitcher": {
+    "label": "Choose language",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The requested page does not exist.",
+    "home": "Back to home"
+  }
+}
