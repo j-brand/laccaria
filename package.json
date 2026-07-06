@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3099",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
@@ -19,17 +19,19 @@
     "next": "^16.1.6",
     "next-intl": "^4.13.0",
     "next-mdx-remote": "^6.0.0",
+    "nodemailer": "^9.0.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "swiper": "^12.2.0"
+    "swiper": "^14.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
-    "@types/node": "^25.3.3",
+    "@types/node": "^26.1.0",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.14",
-    "eslint": "^9.39.3",
+    "eslint": "^9.39.4",
     "eslint-config-next": "^16.1.6",
     "tailwindcss": "^4.3.1",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   }
 }

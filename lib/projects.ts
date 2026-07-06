@@ -3,6 +3,10 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import {routing} from '@/i18n/routing';
 
+export {DEFAULT_GRADIENT} from './gradients';
+
+export type ProjectResult = {metric: string; label: string};
+
 export type ProjectFrontmatter = {
   title: string;
   summary: string;
@@ -12,6 +16,17 @@ export type ProjectFrontmatter = {
   url?: string;
   repo?: string;
   featured?: boolean;
+  /** Short category shown as the mono eyebrow, e.g. "Booking platform". */
+  kind?: string;
+  /** One-line lead under the title on the detail page. */
+  tagline?: string;
+  /** CSS gradient used for the banner/card visual (images come later). */
+  gradient?: string;
+  role?: string;
+  timeline?: string;
+  client?: string;
+  /** Headline metrics for the detail-page sidebar. */
+  results?: ProjectResult[];
 };
 
 export type Project = ProjectFrontmatter & {slug: string};

@@ -1,32 +1,63 @@
 import {Link} from '@/i18n/navigation';
-import type {ComponentProps} from 'react';
+import type {ComponentProps, CSSProperties} from 'react';
+import {ArrowRight} from './icons';
 
-type Variant = 'primary' | 'secondary';
-
-const base =
-  'inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
-
-const variants: Record<Variant, string> = {
-  primary: 'bg-accent text-white hover:opacity-90',
-  secondary: 'border border-border text-foreground hover:bg-foreground/5'
-};
+type Variant = 'primary' | 'secondary' | 'accent';
 
 type Props = {
   href: ComponentProps<typeof Link>['href'];
   variant?: Variant;
+  arrow?: boolean;
   children: React.ReactNode;
   className?: string;
+};
+
+const chamfer = {'--c': '9px'} as CSSProperties;
+
+const solid: Record<'primary' | 'accent', string> = {
+  primary: 'bg-primary text-primary-fg hover:brightness-110',
+  accent: 'bg-accent text-[#232118] hover:brightness-105'
 };
 
 export default function Button({
   href,
   variant = 'primary',
+  arrow = false,
   children,
   className = ''
 }: Props) {
-  return (
-    <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+  const inner = (
+    <>
       {children}
+      {arrow && <ArrowRight size={17} />}
+    </>
+  );
+
+  if (variant === 'secondary') {
+    // Outline via the 1px cut-frame / cut-inner border pattern.
+    return (
+      <Link
+        href={href}
+        style={chamfer}
+        className={`cut-frame chamfer-quad inline-block text-base font-semibold transition-transform hover:-translate-y-0.5 ${className}`}
+      >
+        <span
+          style={chamfer}
+          className="cut-inner chamfer-quad inline-flex items-center gap-2 px-[1.1rem] py-[0.7rem] text-primary"
+        >
+          {inner}
+        </span>
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      style={chamfer}
+      className={`chamfer-quad inline-flex items-center gap-2 px-[1.2rem] py-3 text-base font-semibold transition hover:-translate-y-0.5 ${solid[variant]} ${className}`}
+    >
+      {inner}
     </Link>
   );
 }

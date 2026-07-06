@@ -1,20 +1,41 @@
 ---
 title: "Wetter-Dashboard"
-summary: "Echtzeit-Wetter-Dashboard mit interaktiven Karten."
+summary: "Ein Echtzeit-Wetter-Dashboard, das Live-Daten auf einer interaktiven Karte streamt."
 year: 2024
-stack: ["React", "TypeScript", "Tailwind CSS", "Mapbox"]
+stack: ["React", "TypeScript", "Tailwind CSS", "Mapbox", "WebSockets"]
 cover: "/projects/weather-dashboard/cover.svg"
 repo: "https://github.com/example/weather"
 featured: true
+kind: "Echtzeit-Dashboard"
+tagline: "Ein Live-Analytics-Dashboard, das Wetter-Feeds aggregiert und auf einer interaktiven Karte darstellt."
+gradient: "linear-gradient(135deg,#14271A,#2E5A3D)"
+role: "Full-Stack"
+timeline: "2 Monate"
+client: "Eigenes Projekt"
+results:
+  - metric: "<1s"
+    label: "Latenz von Daten bis Bildschirm"
+  - metric: "60fps"
+    label: "Durchgängige Karteninteraktion"
+  - metric: "5"
+    label: "Aggregierte Wetterquellen"
 ---
 
 ## Überblick
 
 Ein Dashboard, das Wetterdaten aus mehreren Quellen aggregiert und auf einer
-interaktiven Karte darstellt.
+interaktiven Karte darstellt — live aktualisiert, sobald neue Messwerte
+eintreffen.
 
-## Highlights
+## Die Herausforderung
 
-- Live-Updates über WebSockets
-- Interaktive Mapbox-Karte mit Wetter-Layern
-- Vollständig responsives Layout
+Messwerte treffen fortlaufend aus mehreren Feeds ein, und die Karte musste sie
+sofort abbilden, ohne zu ruckeln oder die Betrachter zu überfordern.
+
+## Der Ansatz
+
+Live-Daten fließen über WebSockets in einen Client-Store, der Updates auf ein
+Render pro Animation-Frame bündelt, sodass die Mapbox-Layer unabhängig vom
+Volumen flüssig bleiben. Das Layout ist vollständig responsiv.
+
+> Live-Wetter, überall auf der Karte — ganz ohne Reload.

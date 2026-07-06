@@ -31,11 +31,23 @@ A Nix flake (`flake.nix`) provides Node 22 — run `nix develop` for the dev she
 ## Commands
 
 ```bash
-npm run dev      # start dev server (http://localhost:3000 -> redirects to /de)
+npm run dev      # start dev server (http://localhost:3099 serves German at /)
 npm run build    # production build
 npm run start    # serve production build
 npm run lint     # ESLint flat config (eslint .) — `next lint` was removed in Next 16
 ```
+
+## Environment variables
+
+See `.env.example`. SEO metadata (canonical URLs, hreflang, sitemap, OG images)
+is built from a single origin:
+
+- `NEXT_PUBLIC_SITE_URL` — canonical origin, no trailing slash (default `https://laccaria.de`).
+- `GOOGLE_SITE_VERIFICATION` — Search Console token; renders the verification meta tag when set.
+
+The base URL, brand and social profiles live in `lib/site.ts`; metadata helpers in
+`lib/seo.ts`; JSON-LD builders in `lib/structured-data.ts`. `app/sitemap.ts`,
+`app/robots.ts`, `app/manifest.ts` and `app/opengraph-image.tsx` are Next file conventions.
 
 ## Folder structure
 
@@ -65,8 +77,12 @@ messages/
 proxy.ts                # next-intl locale routing (Next 16 renamed middleware -> proxy)
 ```
 
-> **Routes are English-only in both locales** (e.g. `/de/projects` and
-> `/en/projects`). Do not add localized pathnames unless explicitly asked.
+> **Locale prefixing is `as-needed`** (`i18n/routing.ts`): German (default) is
+> served **unprefixed** (`/`, `/projects`), English under `/en` (`/en/projects`);
+> `/de/*` 308-redirects to the unprefixed form. Route **pathnames are identical
+> across locales** — do not add localized pathnames unless explicitly asked.
+> Build SEO URLs via `pathFor`/`buildAlternates` in `lib/seo.ts` (they honour
+> `localePrefix`); never hardcode `/de` or `/${locale}`.
 
 ## Conventions
 

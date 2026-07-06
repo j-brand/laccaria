@@ -1,10 +1,20 @@
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Services from '@/components/sections/Services';
-import Uses from '@/components/sections/Uses';
+import Stack from '@/components/sections/Stack';
 import FeaturedProjects from '@/components/sections/FeaturedProjects';
 import ContactCTA from '@/components/sections/ContactCTA';
+import JsonLd from '@/components/seo/JsonLd';
+import {personLd, websiteLd} from '@/lib/structured-data';
+
+const SERVICE_KEYS = [
+  'frontend',
+  'backend',
+  'fullstack',
+  'wordpress',
+  'performance'
+] as const;
 
 export default async function HomePage({
   params
@@ -14,13 +24,17 @@ export default async function HomePage({
   const {locale} = await params;
   setRequestLocale(locale);
 
+  const ts = await getTranslations('Services');
+  const knowsAbout = SERVICE_KEYS.map((k) => ts(`items.${k}.title`));
+
   return (
     <>
+      <JsonLd data={[personLd(knowsAbout), websiteLd(locale)]} />
       <Hero />
       <About />
       <Services />
-      <Uses />
       <FeaturedProjects />
+      <Stack />
       <ContactCTA />
     </>
   );

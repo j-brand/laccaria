@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Beetle — Look Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @custom-variant dark (&:where(.dark, .dark *));
+
+  @theme {
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Semantic colour tokens live in a plain :root{} below, NOT here:
+       Tailwind v4 tree-shakes @theme vars that no generated utility
+       references, and this page reads them via inline style="var(--…)". */
+
+    --chamfer-sm: 5px;
+    --chamfer-md: 9px;
+    --chamfer-lg: 14px;
+    --chamfer-xl: 22px;
+  }
+
+  /* Chamfer corner language */
+  @utility chamfer-sm { clip-path: polygon(var(--chamfer-sm) 0, 100% 0, 100% calc(100% - var(--chamfer-sm)), calc(100% - var(--chamfer-sm)) 100%, 0 100%, 0 var(--chamfer-sm)); }
+  @utility chamfer-md { clip-path: polygon(var(--chamfer-md) 0, 100% 0, 100% calc(100% - var(--chamfer-md)), calc(100% - var(--chamfer-md)) 100%, 0 100%, 0 var(--chamfer-md)); }
+  @utility chamfer-lg { clip-path: polygon(var(--chamfer-lg) 0, 100% 0, 100% calc(100% - var(--chamfer-lg)), calc(100% - var(--chamfer-lg)) 100%, 0 100%, 0 var(--chamfer-lg)); }
+  @utility chamfer-xl { clip-path: polygon(var(--chamfer-xl) 0, 100% 0, 100% calc(100% - var(--chamfer-xl)), calc(100% - var(--chamfer-xl)) 100%, 0 100%, 0 var(--chamfer-xl)); }
+  @utility chamfer-tr { clip-path: polygon(0 0, calc(100% - var(--c, 8px)) 0, 100% var(--c, 8px), 100% 100%, 0 100%); }
+  @utility chamfer-quad { clip-path: polygon(var(--c, 9px) 0, calc(100% - var(--c, 9px)) 0, 100% var(--c, 9px), 100% calc(100% - var(--c, 9px)), calc(100% - var(--c, 9px)) 100%, var(--c, 9px) 100%, 0 calc(100% - var(--c, 9px)), 0 var(--c, 9px)); }
+  @utility lift { filter: drop-shadow(0 1px 2px rgba(35,33,24,.05)) drop-shadow(0 10px 22px rgba(35,33,24,.09)); }
+  .dark .lift { filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)) drop-shadow(0 12px 26px rgba(0,0,0,.55)); }
+
+  .cut-frame { padding: 1px; background: var(--bd, var(--color-line)); }
+  .cut-inner { background: var(--sf, var(--color-card)); }
+</style>
+<style>
+  /* Semantic tokens as plain CSS so they are ALWAYS emitted (light = :root,
+     dark = .dark, in this order so the cascade resolves correctly). */
+  :root {
+    --color-bg: #FAF8F2;
+    --color-sunken: #F2EEE6;
+    --color-card: #FFFFFF;
+    --color-fg: #232118;
+    --color-fg-muted: #57534A;
+    --color-fg-subtle: #938D80;
+    --color-primary: #234430;
+    --color-primary-fg: #FFFFFF;
+    --color-secondary: #A33347;
+    --color-accent: #D9A521;
+    --color-line: #E5E0D6;
+    --color-line-strong: #D2CCC0;
+  }
+  .dark {
+    --color-bg: #0B130E;
+    --color-sunken: #080D0A;
+    --color-card: #121C16;
+    --color-fg: #E8EDE7;
+    --color-fg-muted: #9EACA1;
+    --color-fg-subtle: #6C7B70;
+    --color-primary: #3A7150;
+    --color-primary-fg: #F2F8F4;
+    --color-secondary: #C25366;
+    --color-accent: #E8C24E;
+    --color-line: #24332A;
+    --color-line-strong: #324A3A;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  /* Theme a normal wrapper element — var() resolves reliably on a div under the
+     Tailwind runtime, unlike on <html>/<body> directly. */
+  .page { min-height: 100vh; background: var(--color-bg); color: var(--color-fg); }
+
+  /* Chamfered range slider */
+  .bb-range { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; cursor: pointer; }
+  .bb-range::-webkit-slider-runnable-track {
+    height: 8px;
+    background: linear-gradient(var(--color-primary), var(--color-primary)) 0/var(--fill,50%) 100% no-repeat, var(--color-line-strong);
+    clip-path: polygon(3px 0,100% 0,100% calc(100% - 3px),calc(100% - 3px) 100%,0 100%,0 3px);
+  }
+  .bb-range::-moz-range-track { height: 8px; background: var(--color-line-strong); }
+  .bb-range::-moz-range-progress { height: 8px; background: var(--color-primary); }
+  .bb-range::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: -5px;
+    background: var(--color-primary);
+    clip-path: polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 22%, transparent);
+  }
+  .bb-range::-moz-range-thumb { width: 18px; height: 18px; border: none; background: var(--color-primary);
+    clip-path: polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px); }
+
+  /* Modal */
+  #modalRoot { position: fixed; inset: 0; z-index: 60; display: none; }
+  #modalRoot.open { display: grid; place-items: center; }
+  #modalRoot .backdrop { position: absolute; inset: 0; background: color-mix(in oklab, #0B130E 55%, transparent); backdrop-filter: blur(2px); }
+
+  /* Gallery tiles */
+  .bb-tile { position: relative; display: block; overflow: hidden; cursor: pointer; transition: transform .25s ease, filter .25s ease; }
+  .bb-tile:hover { transform: translateY(-3px); filter: drop-shadow(0 10px 22px rgba(35,33,24,.18)); }
+  .dark .bb-tile:hover { filter: drop-shadow(0 12px 26px rgba(0,0,0,.5)); }
+  .bb-tile .cap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 14px; background: linear-gradient(transparent 45%, color-mix(in oklab,#0B130E 72%,transparent)); opacity: 0; transition: opacity .25s ease; }
+  .bb-tile:hover .cap { opacity: 1; }
+  .bb-tile .eb { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); }
+  .bb-tile .ti { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: #fff; }
+</style>
+</head>
+<body class="font-sans antialiased transition-colors duration-300">
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-30 backdrop-blur-md" style="background:color-mix(in oklab, var(--color-bg) 80%, transparent); border-bottom:1px solid var(--color-line);">
+    <div class="mx-auto max-w-[1080px] px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="chamfer-quad grid place-items-center size-8" style="--c:6px; background:var(--color-primary);">
+          <span class="font-mono text-[15px] font-semibold" style="color:var(--color-primary-fg)">B</span>
+        </div>
+        <div class="leading-tight">
+          <div class="font-display font-bold tracking-tight text-[15px]" style="color:var(--color-fg)">Black Beetle</div>
+          <div class="font-mono text-[10px] tracking-[0.16em] uppercase" style="color:var(--color-fg-subtle)">look book</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="hidden sm:inline font-mono text-[11px]" style="color:var(--color-fg-subtle)">light</span>
+        <button id="themeToggle" aria-label="Toggle dark mode" class="chamfer-quad relative h-8 w-[58px] transition-colors" style="--c:6px; background:var(--color-line-strong);">
+          <span id="themeKnob" class="chamfer-quad absolute top-1 left-1 size-6 grid place-items-center transition-transform duration-300" style="--c:5px; background:var(--color-card);">
+            <span id="themeIcon" class="font-mono text-[11px]" style="color:var(--color-fg)">☀</span>
+          </span>
+        </button>
+        <span class="hidden sm:inline font-mono text-[11px]" style="color:var(--color-fg-subtle)">dark</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-[1080px] px-6">
+
+    <!-- INTRO -->
+    <section class="pt-16 pb-12 border-b" style="border-color:var(--color-line)">
+      <p class="font-mono text-xs uppercase tracking-[0.18em] mb-4" style="color:var(--color-accent)">Visual language</p>
+      <h1 class="font-display font-bold tracking-tight text-[clamp(2.2rem,5.5vw,3.6rem)] leading-[1.05] max-w-[20ch]" style="color:var(--color-fg)">
+        Warm, technical, cut at the corners.
+      </h1>
+      <p class="mt-6 max-w-[60ch] text-lg leading-relaxed" style="color:var(--color-fg-muted)">
+        Black Beetle pairs warm paper-and-forest tones with a <strong style="color:var(--color-fg)">chamfer</strong> — an angled corner cut instead of a rounded arc — for a quietly engineered feel. One look, two modes. Use the toggle, top right, to see dark.
+      </p>
+    </section>
+
+    <!-- TYPE -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">01</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Type</h2>
+      </div>
+      <p class="mb-9 max-w-[60ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Three families, each with one job. Sentence case everywhere; uppercase reserved for mono eyebrows.</p>
+
+      <div class="grid md:grid-cols-3 gap-px" style="background:var(--color-line)">
+        <!-- Display -->
+        <div class="p-6" style="background:var(--color-card)">
+          <div class="font-display font-bold text-[44px] leading-none tracking-tight mb-3" style="color:var(--color-fg)">Aa</div>
+          <div class="font-display font-semibold text-base mb-1" style="color:var(--color-fg)">Space Grotesk</div>
+          <div class="font-mono text-[11px] tracking-wide mb-3" style="color:var(--color-accent)">DISPLAY · HEADINGS</div>
+          <p class="text-[13px] leading-relaxed" style="color:var(--color-fg-muted)">Geometric with a little character. Weight 700, tight <span class="font-mono">-0.02em</span> tracking at large sizes. Headlines only — never body.</p>
+        </div>
+        <!-- Body -->
+        <div class="p-6" style="background:var(--color-card)">
+          <div class="font-sans font-medium text-[44px] leading-none mb-3" style="color:var(--color-fg)">Aa</div>
+          <div class="font-display font-semibold text-base mb-1" style="color:var(--color-fg)">Hanken Grotesk</div>
+          <div class="font-mono text-[11px] tracking-wide mb-3" style="color:var(--color-accent)">BODY · UI</div>
+          <p class="text-[13px] leading-relaxed" style="color:var(--color-fg-muted)">Clean and neutral; comfortable at length. Weights 400 / 500 at <span class="font-mono">1.55</span> line-height. The default for paragraphs, labels and controls.</p>
+        </div>
+        <!-- Mono -->
+        <div class="p-6" style="background:var(--color-card)">
+          <div class="font-mono font-medium text-[40px] leading-none mb-3" style="color:var(--color-fg)">Aa</div>
+          <div class="font-display font-semibold text-base mb-1" style="color:var(--color-fg)">JetBrains Mono</div>
+          <div class="font-mono text-[11px] tracking-wide mb-3" style="color:var(--color-accent)">CODE · EYEBROWS</div>
+          <p class="text-[13px] leading-relaxed" style="color:var(--color-fg-muted)">Code voice and overlines. Uppercase with wide <span class="font-mono">0.12em</span> tracking for eyebrows; sentence case for inline commands.</p>
+        </div>
+      </div>
+
+      <!-- scale -->
+      <div class="mt-10 flex flex-col gap-3">
+        <div class="flex items-baseline gap-5"><span class="font-mono text-[11px] w-20 shrink-0" style="color:var(--color-fg-subtle)">display</span><span class="font-display font-bold tracking-tight text-[40px] leading-none" style="color:var(--color-fg)">Built with intent.</span></div>
+        <div class="flex items-baseline gap-5"><span class="font-mono text-[11px] w-20 shrink-0" style="color:var(--color-fg-subtle)">heading</span><span class="font-display font-semibold text-[24px]" style="color:var(--color-fg)">Design · Develop · Ship</span></div>
+        <div class="flex items-baseline gap-5"><span class="font-mono text-[11px] w-20 shrink-0" style="color:var(--color-fg-subtle)">body</span><span class="text-[16px]" style="color:var(--color-fg-muted)">A small studio of one. Fast, honest, no filler.</span></div>
+        <div class="flex items-baseline gap-5"><span class="font-mono text-[11px] w-20 shrink-0" style="color:var(--color-fg-subtle)">eyebrow</span><span class="font-mono text-[11px] uppercase tracking-[0.14em]" style="color:var(--color-accent)">Selected work</span></div>
+      </div>
+    </section>
+
+    <!-- TYPE SCALE -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">02</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Type scale</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Eleven steps on a tuned major-third ramp. Each size is a token (<code class="font-mono">--text-*</code>); the right column is the family it's usually set in.</p>
+
+      <div class="flex flex-col">
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">5xl</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">84 · 5.25rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-bold" style="font-size:84px; line-height:1; letter-spacing:-0.02em; color:var(--color-fg)">Beetle</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">hero</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">4xl</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">64 · 4rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-bold" style="font-size:64px; line-height:1; letter-spacing:-0.02em; color:var(--color-fg)">Built with intent</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">hero</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">3xl</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">48 · 3rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-bold" style="font-size:48px; line-height:1.05; letter-spacing:-0.02em; color:var(--color-fg)">Built with intent</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">display</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">2xl</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">36 · 2.25rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-semibold" style="font-size:36px; line-height:1.1; letter-spacing:-0.02em; color:var(--color-fg)">Selected work</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">h1</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">xl</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">28 · 1.75rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-semibold" style="font-size:28px; line-height:1.15; letter-spacing:-0.01em; color:var(--color-fg)">Design, develop, ship</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">h2</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">lg</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">22 · 1.375rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-display font-semibold" style="font-size:22px; line-height:1.25; color:var(--color-fg)">A small studio of one</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">h3</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">md</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">18 · 1.125rem</div></div>
+          <div class="flex-1 min-w-0 truncate" style="font-size:18px; line-height:1.55; color:var(--color-fg-muted)">Fast, honest, no filler — the lead paragraph size.</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">lead</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">base</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">16 · 1rem</div></div>
+          <div class="flex-1 min-w-0 truncate" style="font-size:16px; line-height:1.55; color:var(--color-fg-muted)">The default body size for paragraphs and controls.</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">body</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">sm</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">14 · 0.875rem</div></div>
+          <div class="flex-1 min-w-0 truncate" style="font-size:14px; line-height:1.5; color:var(--color-fg-muted)">Secondary text, labels and dense UI.</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">small</div>
+        </div>
+        <div class="flex items-center gap-5 py-3" style="border-bottom:1px solid var(--color-line)">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">xs</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">12 · 0.75rem</div></div>
+          <div class="flex-1 min-w-0 truncate" style="font-size:12px; line-height:1.4; color:var(--color-fg-muted)">Captions, meta and helper text.</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">caption</div>
+        </div>
+        <div class="flex items-center gap-5 py-3">
+          <div class="w-24 shrink-0"><div class="font-mono text-[11px]" style="color:var(--color-fg)">2xs</div><div class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">11 · 0.6875rem</div></div>
+          <div class="flex-1 min-w-0 truncate font-mono uppercase" style="font-size:11px; letter-spacing:0.12em; color:var(--color-accent)">Eyebrow / overline</div>
+          <div class="hidden md:block w-20 shrink-0 text-right font-mono text-[10px]" style="color:var(--color-fg-subtle)">eyebrow</div>
+        </div>
+      </div>
+
+      <!-- line-height + tracking -->
+      <div class="grid sm:grid-cols-2 gap-6 mt-10">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-3" style="color:var(--color-fg-subtle)">Line height</p>
+          <div class="flex flex-col gap-1.5 font-mono text-[12px]" style="color:var(--color-fg-muted)">
+            <div class="flex justify-between"><span style="color:var(--color-fg)">tight</span><span>1.08 · headlines</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">snug</span><span>1.25 · subheads</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">normal</span><span>1.55 · body</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">relaxed</span><span>1.70 · long-form</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-3" style="color:var(--color-fg-subtle)">Letter spacing</p>
+          <div class="flex flex-col gap-1.5 font-mono text-[12px]" style="color:var(--color-fg-muted)">
+            <div class="flex justify-between"><span style="color:var(--color-fg)">tight</span><span>-0.02em · display</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">snug</span><span>-0.01em · headings</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">normal</span><span>0 · body</span></div>
+            <div class="flex justify-between"><span style="color:var(--color-fg)">caps</span><span>0.12em · eyebrows</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">03</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Color</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Forest green leads; burgundy is the second voice and destructive actions; gold is the rare high-emphasis accent — one per view. Neutrals are warm paper, never cool grey.</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md overflow-hidden" style="--sf:var(--color-card)">
+          <div class="h-16" style="background:#234430"></div>
+          <div class="p-3"><div class="font-display font-semibold text-sm" style="color:var(--color-fg)">Forest green</div><div class="font-mono text-[10px] mt-0.5" style="color:var(--color-fg-subtle)">primary · #234430</div></div>
+        </div></div>
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md overflow-hidden" style="--sf:var(--color-card)">
+          <div class="h-16" style="background:#A33347"></div>
+          <div class="p-3"><div class="font-display font-semibold text-sm" style="color:var(--color-fg)">Burgundy</div><div class="font-mono text-[10px] mt-0.5" style="color:var(--color-fg-subtle)">secondary · #A33347</div></div>
+        </div></div>
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md overflow-hidden" style="--sf:var(--color-card)">
+          <div class="h-16" style="background:#D9A521"></div>
+          <div class="p-3"><div class="font-display font-semibold text-sm" style="color:var(--color-fg)">Gold</div><div class="font-mono text-[10px] mt-0.5" style="color:var(--color-fg-subtle)">accent · #D9A521</div></div>
+        </div></div>
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md overflow-hidden" style="--sf:var(--color-card)">
+          <div class="h-16" style="background:#FAF8F2; box-shadow:inset 0 0 0 1px var(--color-line)"></div>
+          <div class="p-3"><div class="font-display font-semibold text-sm" style="color:var(--color-fg)">Warm paper</div><div class="font-mono text-[10px] mt-0.5" style="color:var(--color-fg-subtle)">neutral · #FAF8F2</div></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- CORNERS -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">04</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Corners — the chamfer</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">An angled cut instead of a rounded arc. Three patterns, one cut-size scale (a token, the way radii used to be). Bordered shapes stack a 1px-inset surface over a cut border layer so the outline follows the cut.</p>
+
+      <div class="grid sm:grid-cols-3 gap-6 mb-12">
+        <div>
+          <div class="chamfer-lg grid place-items-center h-28 mb-3" style="background:var(--color-primary)"><span class="font-mono text-xs" style="color:var(--color-primary-fg)">diagonal</span></div>
+          <p class="font-display font-semibold text-sm" style="color:var(--color-fg)">Signature diagonal</p>
+          <p class="text-[13px] mt-1 leading-snug" style="color:var(--color-fg-muted)">Top-left + bottom-right. Cards, panels, mastheads.</p>
+        </div>
+        <div>
+          <div class="chamfer-quad grid place-items-center h-28 mb-3" style="--c:14px; background:var(--color-secondary)"><span class="font-mono text-xs" style="color:#fff">four-cut</span></div>
+          <p class="font-display font-semibold text-sm" style="color:var(--color-fg)">Four-cut</p>
+          <p class="text-[13px] mt-1 leading-snug" style="color:var(--color-fg-muted)">All corners. Buttons, inputs, chips, tags.</p>
+        </div>
+        <div>
+          <div class="chamfer-tr grid place-items-center h-28 mb-3" style="--c:18px; background:var(--color-accent)"><span class="font-mono text-xs" style="color:#232118">single</span></div>
+          <p class="font-display font-semibold text-sm" style="color:var(--color-fg)">Single-cut</p>
+          <p class="text-[13px] mt-1 leading-snug" style="color:var(--color-fg-muted)">One corner. Badges and "Featured" flags.</p>
+        </div>
+      </div>
+
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Cut-size scale</p>
+      <div class="flex flex-wrap items-end gap-6">
+        <div class="text-center"><div class="cut-frame chamfer-sm size-20" style="--bd:var(--color-line-strong)"><div class="cut-inner chamfer-sm w-full h-full" style="--sf:var(--color-sunken)"></div></div><div class="font-mono text-[11px] mt-2" style="color:var(--color-fg-muted)">sm · 5</div></div>
+        <div class="text-center"><div class="cut-frame chamfer-md size-20" style="--bd:var(--color-line-strong)"><div class="cut-inner chamfer-md w-full h-full" style="--sf:var(--color-sunken)"></div></div><div class="font-mono text-[11px] mt-2" style="color:var(--color-fg-muted)">md · 9</div></div>
+        <div class="text-center"><div class="cut-frame chamfer-lg size-20" style="--bd:var(--color-line-strong)"><div class="cut-inner chamfer-lg w-full h-full" style="--sf:var(--color-sunken)"></div></div><div class="font-mono text-[11px] mt-2" style="color:var(--color-fg-muted)">lg · 14</div></div>
+        <div class="text-center"><div class="cut-frame chamfer-xl size-20" style="--bd:var(--color-line-strong)"><div class="cut-inner chamfer-xl w-full h-full" style="--sf:var(--color-sunken)"></div></div><div class="font-mono text-[11px] mt-2" style="color:var(--color-fg-muted)">xl · 22</div></div>
+      </div>
+    </section>
+
+    <!-- LAYOUT & SPACING -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">05</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Layout &amp; spacing</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Everything sits on a 4px grid. Pick a content width by intent, keep a 24px page gutter, and let sections breathe on a fixed vertical rhythm.</p>
+
+      <!-- Content widths -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Content widths</p>
+      <div class="flex flex-col gap-2.5 mb-12">
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] w-14 shrink-0 text-right" style="color:var(--color-fg-subtle)">prose</span>
+          <div class="chamfer-sm h-10 flex items-center justify-between px-3.5" style="width:46%; min-width:150px; background:color-mix(in oklab,var(--color-primary) 14%, var(--color-card)); box-shadow:inset 0 0 0 1px var(--color-line)">
+            <span class="font-mono text-[11px]" style="color:var(--color-primary)">640 · 40rem</span>
+            <span class="text-[11px] hidden sm:inline" style="color:var(--color-fg-muted)">long-form reading</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] w-14 shrink-0 text-right" style="color:var(--color-fg-subtle)">article</span>
+          <div class="chamfer-sm h-10 flex items-center justify-between px-3.5" style="width:55%; min-width:150px; background:color-mix(in oklab,var(--color-primary) 14%, var(--color-card)); box-shadow:inset 0 0 0 1px var(--color-line)">
+            <span class="font-mono text-[11px]" style="color:var(--color-primary)">768 · 48rem</span>
+            <span class="text-[11px] hidden sm:inline" style="color:var(--color-fg-muted)">posts with media</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] w-14 shrink-0 text-right" style="color:var(--color-fg-subtle)">default</span>
+          <div class="chamfer-sm h-10 flex items-center justify-between px-3.5" style="width:73%; min-width:150px; background:color-mix(in oklab,var(--color-primary) 14%, var(--color-card)); box-shadow:inset 0 0 0 1px var(--color-line)">
+            <span class="font-mono text-[11px]" style="color:var(--color-primary)">1024 · 64rem</span>
+            <span class="text-[11px] hidden sm:inline" style="color:var(--color-fg-muted)">app &amp; dashboards</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] w-14 shrink-0 text-right" style="color:var(--color-fg-subtle)">site</span>
+          <div class="chamfer-sm h-10 flex items-center justify-between px-3.5" style="width:86%; min-width:150px; background:color-mix(in oklab,var(--color-primary) 20%, var(--color-card)); box-shadow:inset 0 0 0 1px var(--color-line)">
+            <span class="font-mono text-[11px] font-semibold" style="color:var(--color-primary)">1200 · 75rem</span>
+            <span class="text-[11px] hidden sm:inline" style="color:var(--color-fg-muted)">marketing pages</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] w-14 shrink-0 text-right" style="color:var(--color-fg-subtle)">wide</span>
+          <div class="chamfer-sm h-10 flex items-center justify-between px-3.5" style="width:100%; min-width:150px; background:var(--color-sunken); box-shadow:inset 0 0 0 1px var(--color-line)">
+            <span class="font-mono text-[11px]" style="color:var(--color-fg-muted)">1400 · 87.5rem</span>
+            <span class="text-[11px] hidden sm:inline" style="color:var(--color-fg-subtle)">full-bleed galleries</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacing scale -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Spacing scale · 4px grid</p>
+      <div class="flex flex-wrap items-end gap-x-4 gap-y-4 mb-12">
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:4px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">4</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:8px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">8</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:12px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">12</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:16px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">16</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:24px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">24</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:32px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">32</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:48px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">48</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:64px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">64</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:96px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">96</span></div>
+        <div class="flex flex-col items-center gap-2"><div class="chamfer-sm" style="width:128px;height:30px;background:var(--color-primary)"></div><span class="font-mono text-[10px]" style="color:var(--color-fg-subtle)">128</span></div>
+      </div>
+
+      <!-- Gutter + rhythm -->
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md p-5" style="--sf:var(--color-card)">
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-3" style="color:var(--color-fg-subtle)">Page gutter</p>
+          <div class="chamfer-sm h-24 flex overflow-hidden" style="background:var(--color-sunken)">
+            <div class="shrink-0 grid place-items-center" style="width:24px; background:color-mix(in oklab,var(--color-accent) 35%, var(--color-card))"></div>
+            <div class="flex-1 grid place-items-center font-mono text-[11px]" style="color:var(--color-fg-muted)">content</div>
+            <div class="shrink-0 grid place-items-center" style="width:24px; background:color-mix(in oklab,var(--color-accent) 35%, var(--color-card))"></div>
+          </div>
+          <p class="text-[12px] mt-3" style="color:var(--color-fg-muted)"><span class="font-mono" style="color:var(--color-fg)">24px</span> each side · <span class="font-mono" style="color:var(--color-fg)">48px</span> at large widths.</p>
+        </div></div>
+
+        <div class="cut-frame chamfer-md" style="--bd:var(--color-line)"><div class="cut-inner chamfer-md p-5" style="--sf:var(--color-card)">
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-3" style="color:var(--color-fg-subtle)">Section rhythm</p>
+          <div class="flex flex-col">
+            <div class="chamfer-sm h-9 grid place-items-center font-mono text-[11px]" style="background:color-mix(in oklab,var(--color-primary) 13%, var(--color-card)); color:var(--color-primary)">section</div>
+            <div class="relative grid place-items-center" style="height:40px">
+              <div class="absolute inset-y-2 left-1/2 -translate-x-1/2 w-px" style="background:var(--color-line-strong)"></div>
+              <span class="relative font-mono text-[10px] px-2" style="background:var(--color-card); color:var(--color-fg-subtle)">96px</span>
+            </div>
+            <div class="chamfer-sm h-9 grid place-items-center font-mono text-[11px]" style="background:color-mix(in oklab,var(--color-primary) 13%, var(--color-card)); color:var(--color-primary)">section</div>
+          </div>
+          <p class="text-[12px] mt-3" style="color:var(--color-fg-muted)">Fixed <span class="font-mono" style="color:var(--color-fg)">96px</span> vertical gap keeps the page scannable.</p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">06</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Navigation</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">A desktop bar with menu points and a mobile drawer. The active item carries a gold underline; the cut shows on the logo mark, the call-to-action and the mobile panel.</p>
+
+      <!-- Desktop -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Desktop</p>
+      <div class="cut-frame chamfer-lg mb-12" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg" style="--sf:var(--color-card)">
+        <nav class="flex items-center gap-5 px-5 h-16">
+          <div class="flex items-center gap-2.5">
+            <div class="chamfer-quad grid place-items-center size-8" style="--c:6px; background:var(--color-primary)"><span class="font-mono text-sm font-semibold" style="color:var(--color-primary-fg)">B</span></div>
+            <span class="font-display font-bold tracking-tight" style="color:var(--color-fg)">Black Beetle</span>
+          </div>
+          <div class="hidden md:flex items-center gap-1 ml-3">
+            <a class="relative px-3 py-2 text-sm font-semibold cursor-pointer" style="color:var(--color-fg)">Work<span class="absolute left-3 right-3 -bottom-px h-[2px]" style="background:var(--color-accent)"></span></a>
+            <a class="px-3 py-2 text-sm font-medium cursor-pointer hover:opacity-70" style="color:var(--color-fg-muted)">Writing</a>
+            <a class="px-3 py-2 text-sm font-medium cursor-pointer hover:opacity-70" style="color:var(--color-fg-muted)">About</a>
+            <a class="px-3 py-2 text-sm font-medium cursor-pointer hover:opacity-70" style="color:var(--color-fg-muted)">Uses</a>
+          </div>
+          <div class="ml-auto flex items-center gap-2">
+            <button class="chamfer-quad size-9 grid place-items-center" style="--c:7px; background:transparent; color:var(--color-fg-muted); box-shadow:inset 0 0 0 1px var(--color-line-strong)" aria-label="Search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <button class="chamfer-quad px-3.5 py-2 text-sm font-semibold" style="--c:7px; background:var(--color-primary); color:var(--color-primary-fg)">Hire me</button>
+          </div>
+        </nav>
+      </div></div>
+
+      <!-- Mobile -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Mobile — closed &amp; open</p>
+      <div class="flex flex-wrap gap-6">
+        <!-- closed -->
+        <div class="w-[270px]">
+          <div class="cut-frame chamfer-lg" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg overflow-hidden" style="--sf:var(--color-card)">
+            <div class="flex items-center justify-between px-4 h-14" style="border-bottom:1px solid var(--color-line)">
+              <div class="flex items-center gap-2"><div class="chamfer-quad grid place-items-center size-7" style="--c:5px; background:var(--color-primary)"><span class="font-mono text-xs font-semibold" style="color:var(--color-primary-fg)">B</span></div><span class="font-display font-bold text-sm" style="color:var(--color-fg)">Black Beetle</span></div>
+              <button class="chamfer-quad size-9 grid place-items-center" style="--c:6px; background:var(--color-sunken); color:var(--color-fg)" aria-label="Open menu">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+              </button>
+            </div>
+            <div class="px-4 grid place-items-center" style="height:118px"><span class="font-mono text-[11px]" style="color:var(--color-fg-subtle)">— page content —</span></div>
+          </div></div>
+          <p class="font-mono text-[10px] text-center mt-2" style="color:var(--color-fg-subtle)">closed</p>
+        </div>
+        <!-- open -->
+        <div class="w-[270px]">
+          <div class="cut-frame chamfer-lg" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg overflow-hidden" style="--sf:var(--color-card)">
+            <div class="flex items-center justify-between px-4 h-14" style="border-bottom:1px solid var(--color-line)">
+              <div class="flex items-center gap-2"><div class="chamfer-quad grid place-items-center size-7" style="--c:5px; background:var(--color-primary)"><span class="font-mono text-xs font-semibold" style="color:var(--color-primary-fg)">B</span></div><span class="font-display font-bold text-sm" style="color:var(--color-fg)">Black Beetle</span></div>
+              <button class="chamfer-quad size-9 grid place-items-center text-base" style="--c:6px; background:var(--color-primary); color:var(--color-primary-fg)" aria-label="Close menu">✕</button>
+            </div>
+            <div class="p-3 flex flex-col gap-1">
+              <a class="chamfer-quad px-3 py-2.5 text-sm font-semibold flex items-center justify-between" style="--c:6px; background:color-mix(in oklab, var(--color-primary) 13%, var(--color-card)); color:var(--color-primary)">Work <span class="size-1.5 rounded-full" style="background:var(--color-accent)"></span></a>
+              <a class="px-3 py-2.5 text-sm font-medium" style="color:var(--color-fg)">Writing</a>
+              <a class="px-3 py-2.5 text-sm font-medium" style="color:var(--color-fg)">About</a>
+              <a class="px-3 py-2.5 text-sm font-medium" style="color:var(--color-fg)">Uses</a>
+              <button class="chamfer-quad px-3.5 py-2.5 text-sm font-semibold mt-2" style="--c:7px; background:var(--color-primary); color:var(--color-primary-fg)">Hire me</button>
+            </div>
+          </div></div>
+          <p class="font-mono text-[10px] text-center mt-2" style="color:var(--color-fg-subtle)">open · drawer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS & ACTIONS -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">07</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Buttons &amp; actions</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Forest green is the default action; burgundy is destructive; gold is the rare high-emphasis call. Outline and ghost recede. All four corners cut.</p>
+
+      <!-- variants -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Variants</p>
+      <div class="flex flex-wrap items-center gap-3 mb-9">
+        <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">Primary</button>
+        <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:var(--color-secondary); color:#fff">Destructive</button>
+        <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:var(--color-accent); color:#232118">Accent</button>
+        <button class="cut-frame chamfer-quad text-base font-semibold" style="--c:8px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-[1.1rem] py-[0.6rem] block" style="--c:8px; --sf:var(--color-card); color:var(--color-primary)">Outline</span></button>
+        <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:transparent; color:var(--color-fg-muted)">Ghost</button>
+      </div>
+
+      <!-- sizes + states -->
+      <div class="grid sm:grid-cols-2 gap-9">
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">Sizes</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="chamfer-quad px-3 py-1.5 text-sm font-semibold" style="--c:7px; background:var(--color-primary); color:var(--color-primary-fg)">Small</button>
+            <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">Medium</button>
+            <button class="chamfer-quad px-6 py-[0.8rem] text-[1.125rem] font-semibold" style="--c:10px; background:var(--color-primary); color:var(--color-primary-fg)">Large</button>
+          </div>
+        </div>
+        <div>
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-4" style="color:var(--color-fg-subtle)">States &amp; icon</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold inline-flex items-center gap-2" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Deploy
+            </button>
+            <button class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold opacity-50 pointer-events-none" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">Disabled</button>
+            <button class="chamfer-quad size-10 grid place-items-center" style="--c:8px; background:transparent; color:var(--color-fg-muted); box-shadow:inset 0 0 0 1px var(--color-line-strong)" aria-label="Settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- badges + tags -->
+      <p class="font-mono text-[11px] uppercase tracking-[0.16em] mt-10 mb-4" style="color:var(--color-fg-subtle)">Badges &amp; tags</p>
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:color-mix(in oklab, var(--color-primary) 14%, var(--color-card)); color:var(--color-primary)">Brand</span>
+        <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:color-mix(in oklab, #2E5A3D 16%, var(--color-card)); color:#2E5A3D">Live</span>
+        <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:color-mix(in oklab, var(--color-accent) 20%, var(--color-card)); color:#8A6A12">Warning</span>
+        <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:color-mix(in oklab, var(--color-secondary) 14%, var(--color-card)); color:var(--color-secondary)">Error</span>
+        <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:var(--color-accent); color:#232118">★ Featured</span>
+        <span class="cut-frame chamfer-quad inline-block" style="--c:6px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-2.5 py-1 text-sm font-medium inline-block" style="--c:6px; --sf:var(--color-card); color:var(--color-fg-muted)">Svelte</span></span>
+        <span class="chamfer-quad px-2.5 py-1 text-sm font-medium" style="--c:6px; background:var(--color-primary); color:#fff">Edge ×</span>
+      </div>
+    </section>
+
+    <!-- FORM CONTROLS -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">08</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Form controls</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Inputs and selects carry a cut-tracing border; checkboxes and the slider thumb are four-cut; the radio stays round for recognition.</p>
+
+      <div class="grid md:grid-cols-2 gap-x-10 gap-y-7 max-w-[760px]">
+        <!-- input -->
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium" style="color:var(--color-fg)">Project name</span>
+          <span class="cut-frame chamfer-quad block" style="--c:8px; --bd:var(--color-line-strong)"><input value="forest-os" class="cut-inner chamfer-quad px-3.5 py-2.5 text-sm w-full outline-none block" style="--c:8px; --sf:var(--color-card); color:var(--color-fg)"></span>
+        </label>
+        <!-- select -->
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium" style="color:var(--color-fg)">Region</span>
+          <span class="cut-frame chamfer-quad block relative" style="--c:8px; --bd:var(--color-line-strong)">
+            <select class="cut-inner chamfer-quad px-3.5 py-2.5 pr-9 text-sm w-full outline-none appearance-none cursor-pointer block" style="--c:8px; --sf:var(--color-card); color:var(--color-fg)">
+              <option>Frankfurt · eu-central</option><option>Virginia · us-east</option><option>Singapore · ap-south</option>
+            </select>
+            <svg class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-fg-subtle)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </label>
+        <!-- error input -->
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium" style="color:var(--color-fg)">Custom domain</span>
+          <span class="cut-frame chamfer-quad block" style="--c:8px; --bd:var(--color-secondary)"><input value="not a domain" class="cut-inner chamfer-quad px-3.5 py-2.5 text-sm w-full outline-none block" style="--c:8px; --sf:var(--color-card); color:var(--color-fg)"></span>
+          <span class="text-xs" style="color:var(--color-secondary)">Enter a valid hostname.</span>
+        </label>
+        <!-- slider -->
+        <div class="flex flex-col gap-1.5">
+          <div class="flex items-center justify-between"><span class="text-sm font-medium" style="color:var(--color-fg)">Replicas</span><span class="font-mono text-xs" id="sliderVal" style="color:var(--color-accent)">3</span></div>
+          <input type="range" min="1" max="8" value="3" class="bb-range" oninput="this.style.setProperty('--fill', ((this.value-1)/7*100)+'%'); document.getElementById('sliderVal').textContent=this.value;" style="--fill:28.5%">
+          <span class="text-xs" style="color:var(--color-fg-muted)">Drag to scale horizontally.</span>
+        </div>
+        <!-- checks + radios + switch -->
+        <div class="flex flex-col gap-3">
+          <span class="font-mono text-[11px] uppercase tracking-[0.16em]" style="color:var(--color-fg-subtle)">Checkbox &amp; radio</span>
+          <label class="flex items-center gap-2.5 cursor-pointer">
+            <span class="cut-frame chamfer-quad grid" style="--c:4px; --bw:1.5px; --bd:var(--color-primary)"><span class="cut-inner chamfer-quad size-[18px] grid place-items-center" style="--c:4px; --sf:var(--color-primary)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></span>
+            <span class="text-sm" style="color:var(--color-fg)">Auto-deploy on push</span>
+          </label>
+          <label class="flex items-center gap-2.5 cursor-pointer">
+            <span class="cut-frame chamfer-quad grid" style="--c:4px; --bw:1.5px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad size-[18px]" style="--c:4px; --sf:var(--color-card)"></span></span>
+            <span class="text-sm" style="color:var(--color-fg-muted)">Require review</span>
+          </label>
+          <label class="flex items-center gap-2.5 cursor-pointer">
+            <span class="size-[18px] rounded-full grid place-items-center" style="box-shadow:inset 0 0 0 1.5px var(--color-primary)"><span class="size-[9px] rounded-full" style="background:var(--color-primary)"></span></span>
+            <span class="text-sm" style="color:var(--color-fg)">Production</span>
+          </label>
+        </div>
+        <!-- switch -->
+        <div class="flex flex-col gap-3">
+          <span class="font-mono text-[11px] uppercase tracking-[0.16em]" style="color:var(--color-fg-subtle)">Switch</span>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span class="text-sm" style="color:var(--color-fg)">Edge caching</span>
+            <span class="chamfer-quad relative h-6 w-[42px]" style="--c:6px; background:var(--color-primary)"><span class="chamfer-quad absolute top-0.5 size-5" style="--c:4px; left:18px; background:#fff"></span></span>
+          </label>
+          <label class="flex items-center justify-between cursor-pointer">
+            <span class="text-sm" style="color:var(--color-fg-muted)">Maintenance mode</span>
+            <span class="chamfer-quad relative h-6 w-[42px]" style="--c:6px; background:var(--color-line-strong)"><span class="chamfer-quad absolute top-0.5 size-5" style="--c:4px; left:2px; background:#fff"></span></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDS + MODAL -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">09</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Cards &amp; modal</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">The signature diagonal cut on containers; a gold top-edge marks a featured card. Elevation is a drop-shadow that follows the cut silhouette.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- plain card -->
+        <div class="cut-frame chamfer-lg lift" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg p-6" style="--sf:var(--color-card)">
+          <p class="font-mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style="color:var(--color-accent)">Project</p>
+          <h3 class="font-display font-semibold text-lg leading-tight mb-2" style="color:var(--color-fg)">Forest OS</h3>
+          <p class="text-[13px] leading-relaxed mb-4" style="color:var(--color-fg-muted)">A self-hosting control panel. Fast, honest, no filler.</p>
+          <div class="flex gap-2">
+            <span class="chamfer-quad px-2.5 py-1 text-xs font-medium" style="--c:6px; background:var(--color-sunken); color:var(--color-fg-muted)">Svelte</span>
+            <span class="chamfer-quad px-2.5 py-1 text-xs font-medium" style="--c:6px; background:var(--color-sunken); color:var(--color-fg-muted)">Edge</span>
+          </div>
+        </div></div>
+        <!-- featured / accent card -->
+        <div class="cut-frame chamfer-lg lift" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg overflow-hidden" style="--sf:var(--color-card)">
+          <div class="h-1" style="background:var(--color-accent)"></div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-1.5"><p class="font-mono text-[10px] uppercase tracking-[0.16em]" style="color:var(--color-accent)">Featured</p><span class="chamfer-tr px-2 py-0.5 font-mono text-[10px] font-semibold" style="--c:6px; background:var(--color-accent); color:#232118">PRO</span></div>
+            <h3 class="font-display font-semibold text-lg leading-tight mb-2" style="color:var(--color-fg)">Beetle Analytics</h3>
+            <p class="text-[13px] leading-relaxed" style="color:var(--color-fg-muted)">Privacy-first traffic insight. No cookies, no slop.</p>
+          </div>
+        </div></div>
+        <!-- inverse / primary card -->
+        <div class="chamfer-lg lift p-6" style="background:var(--color-primary)">
+          <p class="font-mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style="color:var(--color-accent)">Get started</p>
+          <h3 class="font-display font-semibold text-lg leading-tight mb-2" style="color:#fff">Ship this week</h3>
+          <p class="text-[13px] leading-relaxed mb-4" style="color:color-mix(in oklab, #fff 78%, transparent)">One command, a fresh edge deploy.</p>
+          <button class="chamfer-quad px-3.5 py-2 text-sm font-semibold" style="--c:7px; background:var(--color-accent); color:#232118">Read the guide</button>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <button onclick="document.getElementById('modalRoot').classList.add('open')" class="chamfer-quad px-[1.1rem] py-[0.6rem] text-base font-semibold" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">Open dialog</button>
+      </div>
+    </section>
+
+    <!-- IMAGE SLIDER -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">10</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Image slider</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">A single-image carousel: the frame takes the signature diagonal, cut arrows sit inside it, and the tick indicators stretch to mark the active slide. Use the arrows or dots.</p>
+
+      <div class="cut-frame chamfer-lg lift max-w-[760px]" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg overflow-hidden" style="--sf:var(--color-card)">
+        <div class="relative">
+          <div id="sliderTrack" class="relative aspect-[16/9]">
+            <div class="slide absolute inset-0 transition-opacity duration-500" style="background:linear-gradient(135deg,#1B3524,#3A7150)"></div>
+            <div class="slide absolute inset-0 transition-opacity duration-500 opacity-0" style="background:linear-gradient(135deg,#8A6A12,#E8C24E)"></div>
+            <div class="slide absolute inset-0 transition-opacity duration-500 opacity-0" style="background:linear-gradient(135deg,#6E1E2D,#C25366)"></div>
+            <div class="slide absolute inset-0 transition-opacity duration-500 opacity-0" style="background:linear-gradient(135deg,#0F1F14,#5A9670)"></div>
+
+            <button onclick="bbSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 chamfer-quad size-10 grid place-items-center transition-transform hover:scale-105" style="--c:8px; background:color-mix(in oklab,#0B130E 45%,transparent); color:#fff" aria-label="Previous">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button onclick="bbSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 chamfer-quad size-10 grid place-items-center transition-transform hover:scale-105" style="--c:8px; background:color-mix(in oklab,#0B130E 45%,transparent); color:#fff" aria-label="Next">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <div class="absolute right-4 top-4 chamfer-quad px-2.5 py-1 font-mono text-[11px]" style="--c:5px; background:color-mix(in oklab,#0B130E 55%,transparent); color:#fff"><span id="slideNum">01</span> / 04</div>
+
+            <div class="absolute left-0 right-0 bottom-0 p-6 pt-12" style="background:linear-gradient(transparent, color-mix(in oklab,#0B130E 78%,transparent))">
+              <p id="slideEyebrow" class="font-mono text-[10px] uppercase tracking-[0.16em] mb-1" style="color:var(--color-accent)">Case study</p>
+              <h3 id="slideTitle" class="font-display font-semibold text-xl tracking-tight" style="color:#fff">Forest OS</h3>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-2 py-4" id="sliderDots">
+            <button onclick="bbGo(0)" class="chamfer-quad h-[9px] transition-all duration-300" style="--c:2px; width:24px; background:var(--color-accent)" aria-label="Slide 1"></button>
+            <button onclick="bbGo(1)" class="chamfer-quad h-[9px] transition-all duration-300" style="--c:2px; width:9px; background:var(--color-line-strong)" aria-label="Slide 2"></button>
+            <button onclick="bbGo(2)" class="chamfer-quad h-[9px] transition-all duration-300" style="--c:2px; width:9px; background:var(--color-line-strong)" aria-label="Slide 3"></button>
+            <button onclick="bbGo(3)" class="chamfer-quad h-[9px] transition-all duration-300" style="--c:2px; width:9px; background:var(--color-line-strong)" aria-label="Slide 4"></button>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- IMAGE GALLERY -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">11</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Image gallery</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">A mixed-size grid of chamfered tiles. Hover (or tap) a tile to lift it and reveal a gold caption. Cuts and gaps keep the mosaic feeling engineered, not pinned to a uniform radius.</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" style="grid-auto-rows:148px">
+        <a class="bb-tile chamfer-lg col-span-2 row-span-2" style="background:linear-gradient(135deg,#0F1F14,#3A7150)"><span class="cap"><span class="eb">Field notes</span><span class="ti">Canopy, dawn</span></span></a>
+        <a class="bb-tile chamfer-md" style="background:linear-gradient(135deg,#8A6A12,#E8C24E)"><span class="cap"><span class="eb">Detail</span><span class="ti">Gold hour</span></span></a>
+        <a class="bb-tile chamfer-md" style="background:linear-gradient(135deg,#6E1E2D,#C25366)"><span class="cap"><span class="eb">Detail</span><span class="ti">Dusk red</span></span></a>
+        <a class="bb-tile chamfer-md col-span-2" style="background:linear-gradient(135deg,#234430,#5A9670)"><span class="cap"><span class="eb">Panorama</span><span class="ti">Ridgeline</span></span></a>
+        <a class="bb-tile chamfer-md col-span-2" style="background:linear-gradient(135deg,#57534A,#D2CCC0)"><span class="cap"><span class="eb">Texture</span><span class="ti">Paper &amp; grain</span></span></a>
+        <a class="bb-tile chamfer-md" style="background:linear-gradient(135deg,#14271A,#2E5A3D)"><span class="cap"><span class="eb">Detail</span><span class="ti">Pine dark</span></span></a>
+        <a class="bb-tile chamfer-md" style="background:linear-gradient(135deg,#A6831F,#EED582)"><span class="cap"><span class="eb">Detail</span><span class="ti">Brass</span></span></a>
+      </div>
+    </section>
+
+    <!-- BLOG POST -->
+    <section class="py-14 border-b" style="border-color:var(--color-line)">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">12</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Blog post</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">The system applied to long-form reading — masthead, meta row, body, pull quote and tags.</p>
+
+      <article class="cut-frame chamfer-lg lift mx-auto max-w-[680px]" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg overflow-hidden" style="--sf:var(--color-card)">
+        <div class="h-2" style="background:linear-gradient(90deg, var(--color-primary), var(--color-accent))"></div>
+        <div class="p-8 sm:p-10">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide" style="--c:6px; background:color-mix(in oklab, var(--color-primary) 14%, var(--color-card)); color:var(--color-primary)">Engineering</span>
+            <span class="font-mono text-[11px]" style="color:var(--color-fg-subtle)">6 min read</span>
+          </div>
+          <h1 class="font-display font-bold tracking-tight text-[clamp(1.8rem,4vw,2.6rem)] leading-[1.08] mb-5" style="color:var(--color-fg)">Why I cut every corner (on purpose)</h1>
+
+          <div class="flex items-center gap-3 pb-6 mb-6 border-b" style="border-color:var(--color-line)">
+            <span class="chamfer-quad size-10 grid place-items-center font-display font-semibold text-white" style="--c:6px; background:var(--color-secondary)">BB</span>
+            <div class="leading-tight">
+              <div class="font-display font-semibold text-sm" style="color:var(--color-fg)">Black Beetle</div>
+              <div class="font-mono text-[11px]" style="color:var(--color-fg-subtle)">Jun 26, 2026</div>
+            </div>
+          </div>
+
+          <p class="text-[17px] leading-[1.7] mb-5" style="color:var(--color-fg-muted)">Rounded corners became the default because they're safe. Every product, every card, the same soft arc. Safe is forgettable — so I went looking for a corner that says <em style="color:var(--color-fg)">engineered</em> instead of <em style="color:var(--color-fg)">friendly</em>.</p>
+
+          <blockquote class="my-7 pl-5 text-[19px] leading-relaxed font-display" style="border-left:3px solid var(--color-accent); color:var(--color-fg)">A chamfer is a decision. An arc is a default.</blockquote>
+
+          <p class="text-[17px] leading-[1.7] mb-5" style="color:var(--color-fg-muted)">The cut is a single angled edge — cheap to draw, instantly recognizable, and it scales without the muddy in-between sizes a radius gives you. Pair it with warm paper tones and a forest-green accent and the whole system reads as quietly technical.</p>
+
+          <div class="flex flex-wrap gap-2 pt-6 mt-2 border-t" style="border-color:var(--color-line)">
+            <span class="cut-frame chamfer-quad inline-block" style="--c:6px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-2.5 py-1 text-xs font-medium inline-block" style="--c:6px; --sf:var(--color-card); color:var(--color-fg-muted)">#design-systems</span></span>
+            <span class="cut-frame chamfer-quad inline-block" style="--c:6px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-2.5 py-1 text-xs font-medium inline-block" style="--c:6px; --sf:var(--color-card); color:var(--color-fg-muted)">#css</span></span>
+            <span class="cut-frame chamfer-quad inline-block" style="--c:6px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-2.5 py-1 text-xs font-medium inline-block" style="--c:6px; --sf:var(--color-card); color:var(--color-fg-muted)">#craft</span></span>
+          </div>
+        </div>
+      </div></article>
+    </section>
+
+    <!-- DARK -->
+    <section class="py-14">
+      <div class="flex items-baseline gap-4 mb-2">
+        <span class="font-mono text-sm" style="color:var(--color-accent)">13</span>
+        <h2 class="font-display font-semibold text-2xl tracking-tight" style="color:var(--color-fg)">Dark — forest-tinted</h2>
+      </div>
+      <p class="mb-9 max-w-[62ch] text-sm leading-relaxed" style="color:var(--color-fg-muted)">Not neutral charcoal: the dark base carries a faint green undertone so the brand stays warm. Only semantic tokens flip; the brand hues stay fixed. Same markup in use, below — light and dark.</p>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- light sample -->
+        <div class="cut-frame chamfer-lg" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg p-6" style="--sf:var(--color-sunken)">
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-5" style="color:var(--color-fg-subtle)">Light · paper</p>
+          <div id="sampleLight"></div>
+        </div></div>
+        <!-- dark sample -->
+        <div class="dark cut-frame chamfer-lg" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg p-6" style="--sf:var(--color-sunken)">
+          <p class="font-mono text-[11px] uppercase tracking-[0.16em] mb-5" style="color:var(--color-fg-subtle)">Dark · forest</p>
+          <div id="sampleDark"></div>
+        </div></div>
+      </div>
+    </section>
+
+    <footer class="py-10 border-t flex items-center justify-between flex-wrap gap-3" style="border-color:var(--color-line)">
+      <p class="font-mono text-[11px] tracking-wide" style="color:var(--color-fg-subtle)">Black Beetle · look book</p>
+      <p class="font-mono text-[11px] tracking-wide" style="color:var(--color-fg-subtle)">Built with intent.</p>
+    </footer>
+  </main>
+</div>
+
+  <!-- MODAL -->
+  <div id="modalRoot" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="backdrop" onclick="document.getElementById('modalRoot').classList.remove('open')"></div>
+    <div class="cut-frame chamfer-lg lift relative w-[min(440px,90vw)]" style="--bd:var(--color-line)">
+      <div class="cut-inner chamfer-lg p-7" style="--sf:var(--color-card)">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3 id="modalTitle" class="font-display font-semibold text-xl tracking-tight" style="color:var(--color-fg)">Delete deployment?</h3>
+          <button onclick="document.getElementById('modalRoot').classList.remove('open')" class="chamfer-quad size-7 grid place-items-center shrink-0" style="--c:6px; background:var(--color-sunken); color:var(--color-fg-muted)" aria-label="Close">✕</button>
+        </div>
+        <p class="text-[14px] leading-relaxed mb-6" style="color:var(--color-fg-muted)">This tears down <strong style="color:var(--color-fg)">forest-os</strong> and its edge cache. This action can't be undone.</p>
+        <div class="flex justify-end gap-2.5">
+          <button onclick="document.getElementById('modalRoot').classList.remove('open')" class="cut-frame chamfer-quad text-sm font-semibold" style="--c:8px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-4 py-2 block" style="--c:8px; --sf:var(--color-card); color:var(--color-fg)">Cancel</span></button>
+          <button onclick="document.getElementById('modalRoot').classList.remove('open')" class="chamfer-quad px-4 py-2 text-sm font-semibold" style="--c:8px; background:var(--color-secondary); color:#fff">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const root = document.documentElement, icon = document.getElementById('themeIcon'), knob = document.getElementById('themeKnob');
+    function applyTheme(d){ root.classList.toggle('dark', d); icon.textContent = d ? '☾' : '☀'; knob.style.transform = d ? 'translateX(26px)' : 'translateX(0)'; try{ localStorage.setItem('bb-look-theme', d?'dark':'light'); }catch(e){} }
+    document.getElementById('themeToggle').addEventListener('click', () => applyTheme(!root.classList.contains('dark')));
+    try { applyTheme(localStorage.getItem('bb-look-theme') === 'dark'); } catch(e){}
+
+    const sample = `
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button class="chamfer-quad px-4 py-2 text-sm font-semibold" style="--c:8px; background:var(--color-primary); color:var(--color-primary-fg)">Deploy</button>
+          <button class="cut-frame chamfer-quad text-sm font-semibold" style="--c:8px; --bd:var(--color-line-strong)"><span class="cut-inner chamfer-quad px-4 py-2 block" style="--c:8px; --sf:var(--color-sunken); color:var(--color-fg)">Cancel</span></button>
+          <span class="chamfer-tr px-2.5 py-1 font-mono text-[10px] font-semibold" style="--c:7px; background:var(--color-accent); color:#232118">★ FEATURED</span>
+        </div>
+        <div class="cut-frame chamfer-lg lift" style="--bd:var(--color-line)"><div class="cut-inner chamfer-lg p-5" style="--sf:var(--color-card)">
+          <p class="font-mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style="color:var(--color-accent)">Project</p>
+          <h3 class="font-display font-semibold text-lg leading-tight mb-2" style="color:var(--color-fg)">Forest OS</h3>
+          <p class="text-[13px] leading-relaxed" style="color:var(--color-fg-muted)">A self-hosting control panel. Fast, honest, no filler.</p>
+        </div></div>
+        <span class="cut-frame chamfer-quad block" style="--c:8px; --bd:var(--color-line-strong)"><input placeholder="bb deploy forest-os" class="cut-inner chamfer-quad px-3.5 py-2.5 text-sm w-full outline-none block" style="--c:8px; --sf:var(--color-card); color:var(--color-fg)"></span>
+      </div>`;
+    document.getElementById('sampleLight').innerHTML = sample;
+    document.getElementById('sampleDark').innerHTML = sample;
+
+    // ---- Image slider ----
+    const bbSlides = [
+      { eyebrow: 'Case study', title: 'Forest OS' },
+      { eyebrow: 'Product',    title: 'Beetle Analytics' },
+      { eyebrow: 'Open source',title: 'Pine Notes' },
+      { eyebrow: 'Tooling',    title: 'Edge Deploy' },
+    ];
+    let bbIdx = 0;
+    function bbRender() {
+      document.querySelectorAll('#sliderTrack > .slide').forEach((s, i) => { s.style.opacity = i === bbIdx ? '1' : '0'; });
+      document.getElementById('slideEyebrow').textContent = bbSlides[bbIdx].eyebrow;
+      document.getElementById('slideTitle').textContent = bbSlides[bbIdx].title;
+      document.getElementById('slideNum').textContent = String(bbIdx + 1).padStart(2, '0');
+      document.querySelectorAll('#sliderDots > button').forEach((d, i) => {
+        d.style.background = i === bbIdx ? 'var(--color-accent)' : 'var(--color-line-strong)';
+        d.style.width = i === bbIdx ? '24px' : '9px';
+      });
+    }
+    function bbSlide(dir) { bbIdx = (bbIdx + dir + bbSlides.length) % bbSlides.length; bbRender(); }
+    function bbGo(i) { bbIdx = i; bbRender(); }
+    bbRender();
+  </script>
+</body>
+</html>

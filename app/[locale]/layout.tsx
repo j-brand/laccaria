@@ -1,17 +1,35 @@
 import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
+import {Space_Grotesk, Hanken_Grotesk, JetBrains_Mono} from 'next/font/google';
 import {notFound} from 'next/navigation';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
+import {SITE_URL, SITE_NAME, AUTHOR} from '@/lib/site';
+import {buildAlternates, buildOpenGraph} from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import '../globals.css';
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-inter'
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-space-grotesk'
 });
+
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-hanken'
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-jetbrains'
+});
+
+// Runs before paint to set the theme class, avoiding a flash of the wrong theme.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -22,12 +40,38 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const {locale} = await props.params;
   const t = await getTranslations({locale, namespace: 'Hero'});
+  const title = `Johannes Brand — ${t('eyebrow')}`;
+  const description = t('sub');
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: `Laccaria — ${t('eyebrow')}`,
-      template: '%s — Laccaria'
+      default: title,
+      template: '%s — Johannes Brand'
     },
-    description: t('subtitle')
+    description,
+    applicationName: SITE_NAME,
+    authors: [{name: AUTHOR.name, url: SITE_URL}],
+    creator: AUTHOR.name,
+    publisher: AUTHOR.name,
+    alternates: buildAlternates(locale),
+    openGraph: buildOpenGraph({locale, title, description}),
+    // Only the card type here — Next derives twitter title/description/image
+    // from each page's openGraph, so child pages get their own values.
+    twitter: {card: 'summary_large_image'},
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1
+      }
+    },
+    verification: process.env.GOOGLE_SITE_VERIFICATION
+      ? {google: process.env.GOOGLE_SITE_VERIFICATION}
+      : undefined
   };
 }
 
@@ -47,7 +91,14 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{__html: themeScript}} />
+      </head>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
           <Header />

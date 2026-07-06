@@ -13,12 +13,13 @@ export default async function FeaturedProjects() {
 
   return (
     <Section
-      id="projects"
+      id="work"
+      number="03"
+      eyebrow={t('eyebrow')}
       title={t('title')}
       subtitle={t('subtitle')}
-      className="border-t border-border"
     >
-      <ProjectSlider projects={projects} />
+      <ProjectSlider projects={projects} viewProjectLabel={t('viewProject')} />
       <div className="mt-4">
         <Button href="/projects" variant="secondary">
           {t('viewAll')}

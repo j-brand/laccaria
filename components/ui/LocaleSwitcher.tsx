@@ -2,8 +2,10 @@
 
 import {useTransition} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
+import type {CSSProperties} from 'react';
 import {usePathname, useRouter} from '@/i18n/navigation';
-import {routing} from '@/i18n/routing';
+
+const chamfer = {'--c': '6px'} as CSSProperties;
 
 export default function LocaleSwitcher() {
   const t = useTranslations('LocaleSwitcher');
@@ -12,34 +14,25 @@ export default function LocaleSwitcher() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  function onSelect(nextLocale: string) {
+  const next = locale === 'en' ? 'de' : 'en';
+
+  function onSelect() {
     startTransition(() => {
       // `pathname` is locale-agnostic; the router re-applies the new locale.
-      router.replace(pathname, {locale: nextLocale});
+      router.replace(pathname, {locale: next});
     });
   }
 
   return (
-    <div
-      className="inline-flex items-center gap-1 text-sm"
+    <button
+      type="button"
+      onClick={onSelect}
+      disabled={isPending}
       aria-label={t('label')}
+      style={chamfer}
+      className="chamfer-quad grid h-[34px] w-10 place-items-center font-mono text-xs font-semibold text-fg-muted shadow-[inset_0_0_0_1px_var(--line-strong)] transition-colors hover:text-fg"
     >
-      {routing.locales.map((loc) => (
-        <button
-          key={loc}
-          type="button"
-          onClick={() => onSelect(loc)}
-          disabled={isPending || loc === locale}
-          aria-current={loc === locale}
-          className={`rounded px-2 py-1 uppercase transition-colors ${
-            loc === locale
-              ? 'font-semibold text-foreground'
-              : 'text-muted hover:text-foreground'
-          }`}
-        >
-          {loc}
-        </button>
-      ))}
-    </div>
+      {next.toUpperCase()}
+    </button>
   );
 }

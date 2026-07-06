@@ -1,26 +1,42 @@
 ---
 title: "Acme Online Shop"
-summary: "Headless e-commerce platform built with Next.js and Stripe."
+summary: "A blazing-fast headless storefront on Next.js with a Stripe checkout."
 year: 2025
-stack: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"]
+stack: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "Vercel"]
 cover: "/projects/acme-shop/cover.svg"
 url: "https://acme.example"
 repo: "https://github.com/example/acme"
 featured: true
+kind: "Headless commerce"
+tagline: "A fast, headless storefront for an outgrowing retail brand, built on Next.js and a composable backend."
+gradient: "linear-gradient(135deg,#8A6A12,#E8C24E)"
+role: "Frontend lead"
+timeline: "3 months"
+client: "Acme Inc."
+results:
+  - metric: "0.7s"
+    label: "Largest Contentful Paint (was 2.4s)"
+  - metric: "+18%"
+    label: "Conversion rate after launch"
+  - metric: "99"
+    label: "Lighthouse performance on mobile"
 ---
 
 ## Overview
 
-A fast, headless e-commerce platform with server-side rendering, incremental
-static regeneration and a Stripe checkout integration.
+Acme was outgrowing a themed store — slow page loads and a checkout that fought
+them. I rebuilt the storefront as a headless Next.js app while keeping their
+existing commerce backend for orders and inventory.
 
-## Highlights
+## The challenge
 
-- Product catalogue with filtering and full-text search
-- Cart and checkout via Stripe
-- Lighthouse score of 99 on mobile
+The catalogue is large and changes daily, so pages had to be fast without ever
+serving a stale price or an out-of-stock product.
 
-## Outcome
+## The approach
 
-Page load time was halved compared to the legacy platform and the conversion
-rate rose by 18%.
+I used incremental static regeneration for product pages with on-demand
+revalidation from backend webhooks, so prices update within seconds while the
+page stays static-fast. Checkout runs on Stripe.
+
+> Page load time was halved and conversions followed within the first month.

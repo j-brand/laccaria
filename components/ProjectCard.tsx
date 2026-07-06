@@ -1,40 +1,64 @@
-import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
+import type {CSSProperties} from 'react';
+import Mark from '@/components/ui/Mark';
+import {ArrowRight} from '@/components/ui/icons';
+import {DEFAULT_GRADIENT} from '@/lib/gradients';
 import type {Project} from '@/lib/projects';
 
 type Props = {
   project: Project;
+  viewProjectLabel: string;
 };
 
-export default function ProjectCard({project}: Props) {
+const badgeChamfer = {'--c': '7px'} as CSSProperties;
+
+export default function ProjectCard({project, viewProjectLabel}: Props) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-background transition-colors hover:border-accent"
+      className="jb-proj cut-frame chamfer-lg lift block h-full transition-transform hover:-translate-y-1"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-foreground/5">
-        <Image
-          src={project.cover}
-          alt={project.title}
-          fill
-          unoptimized
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-semibold">{project.title}</h3>
-        <p className="mt-2 flex-1 text-sm text-muted">{project.summary}</p>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {project.stack.slice(0, 4).map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
+      <div className="cut-inner chamfer-lg flex h-full flex-col overflow-hidden">
+        {/* gradient banner */}
+        <div
+          className="relative h-[150px]"
+          style={{background: project.gradient ?? DEFAULT_GRADIENT}}
+        >
+          <span
+            className="cut-frame absolute left-3 top-3 inline-block"
+            style={{...badgeChamfer, '--bd': 'color-mix(in oklab, var(--line) 55%, transparent)'} as CSSProperties}
+          >
+            <span className="cut-inner grid size-[38px] place-items-center" style={badgeChamfer}>
+              <Mark width={24} aria-hidden />
+            </span>
+          </span>
+          <span
+            className="chamfer-tr absolute right-3.5 top-3.5 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white"
+            style={{'--c': '6px', background: 'color-mix(in oklab, #0B130E 42%, transparent)'} as CSSProperties}
+          >
+            {project.year}
+          </span>
+        </div>
+
+        <div className="flex flex-1 flex-col p-6">
+          {project.kind && (
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+              {project.kind}
+            </p>
+          )}
+          <h3 className="mb-2 font-display text-xl font-semibold text-fg">
+            {project.title}
+          </h3>
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-fg-muted">
+            {project.summary}
+          </p>
+          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
+            {viewProjectLabel}
+            <span className="arrow transition-transform">
+              <ArrowRight size={15} />
+            </span>
+          </span>
+        </div>
       </div>
     </Link>
   );

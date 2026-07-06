@@ -1,35 +1,113 @@
 @import "tailwindcss";
 
+/* Dark mode is driven by a `.dark` class on <html> (set by the no-flash
+   script in layout.tsx), not by prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Semantic tokens ──────────────────────────────────────────────────────
+   Plain CSS vars so they are always emitted; light on :root, dark on .dark.
+   Neutral names here; @theme inline below maps them to Tailwind utilities. */
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --accent: #4f46e5;
+  --bg: #FAF8F2;
+  --sunken: #F2EEE6;
+  --card: #FFFFFF;
+  --fg: #232118;
+  --fg-muted: #57534A;
+  --fg-subtle: #938D80;
+  --primary: #234430;
+  --primary-fg: #FFFFFF;
+  --secondary: #A33347;
+  --accent: #D9A521;
+  --line: #E5E0D6;
+  --line-strong: #D2CCC0;
+}
+
+.dark {
+  --bg: #0B130E;
+  --sunken: #080D0A;
+  --card: #121C16;
+  --fg: #E8EDE7;
+  --fg-muted: #9EACA1;
+  --fg-subtle: #6C7B70;
+  --primary: #3A7150;
+  --primary-fg: #F2F8F4;
+  --secondary: #C25366;
+  --accent: #E8C24E;
+  --line: #24332A;
+  --line-strong: #324A3A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --color-bg: var(--bg);
+  --color-sunken: var(--sunken);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --chamfer-sm: 5px;
+  --chamfer-md: 9px;
+  --chamfer-lg: 14px;
+  --chamfer-xl: 22px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #9ca3af;
-    --border: #1f2937;
-    --accent: #818cf8;
-  }
-}
+/* ── Chamfer corner language ─────────────────────────────────────────────── */
+@utility chamfer-sm { clip-path: polygon(var(--chamfer-sm) 0, 100% 0, 100% calc(100% - var(--chamfer-sm)), calc(100% - var(--chamfer-sm)) 100%, 0 100%, 0 var(--chamfer-sm)); }
+@utility chamfer-md { clip-path: polygon(var(--chamfer-md) 0, 100% 0, 100% calc(100% - var(--chamfer-md)), calc(100% - var(--chamfer-md)) 100%, 0 100%, 0 var(--chamfer-md)); }
+@utility chamfer-lg { clip-path: polygon(var(--chamfer-lg) 0, 100% 0, 100% calc(100% - var(--chamfer-lg)), calc(100% - var(--chamfer-lg)) 100%, 0 100%, 0 var(--chamfer-lg)); }
+@utility chamfer-xl { clip-path: polygon(var(--chamfer-xl) 0, 100% 0, 100% calc(100% - var(--chamfer-xl)), calc(100% - var(--chamfer-xl)) 100%, 0 100%, 0 var(--chamfer-xl)); }
+@utility chamfer-tr { clip-path: polygon(0 0, calc(100% - var(--c, 8px)) 0, 100% var(--c, 8px), 100% 100%, 0 100%); }
+@utility chamfer-quad { clip-path: polygon(var(--c, 9px) 0, calc(100% - var(--c, 9px)) 0, 100% var(--c, 9px), 100% calc(100% - var(--c, 9px)), calc(100% - var(--c, 9px)) 100%, var(--c, 9px) 100%, 0 calc(100% - var(--c, 9px)), 0 var(--c, 9px)); }
+
+/* Soft engineered drop-shadow */
+@utility lift { filter: drop-shadow(0 1px 2px rgba(35,33,24,.05)) drop-shadow(0 10px 22px rgba(35,33,24,.09)); }
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background .3s ease, color .3s ease;
 }
+
+/* 1px-border "cut" card: outer frame provides the border, inner the surface.
+   Apply a chamfer-* utility to BOTH the .cut-frame and .cut-inner elements. */
+.cut-frame { padding: 1px; background: var(--bd, var(--line)); }
+.cut-inner { background: var(--sf, var(--card)); }
+
+/* ── Brand mark (swaps per theme via CSS, like the mockups) ──────────────── */
+.jb-mark {
+  background-image: url(/mark-forest.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.dark .jb-mark { background-image: url(/mark-forest-dark.svg); }
+
+/* Project card: nudge the "view project" arrow on hover. */
+.jb-proj:hover .arrow { transform: translateX(4px); }
+
+/* Project detail: pull the back arrow left on hover. */
+.jb-back { transition: gap .2s ease; }
+.jb-back:hover { gap: 12px; }
+.jb-back:hover .ic { transform: translateX(-3px); }
+
+/* ── Swiper — brand the nav arrows + pagination bullets ──────────────────── */
+.swiper { --swiper-theme-color: var(--primary); }
+.swiper-button-prev, .swiper-button-next { color: var(--primary); }
+.swiper-button-prev::after, .swiper-button-next::after { font-size: 22px; font-weight: 700; }
+.swiper-pagination-bullet { background: var(--fg-subtle); opacity: .5; }
+.swiper-pagination-bullet-active { background: var(--primary); opacity: 1; }

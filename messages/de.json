@@ -1,54 +1,85 @@
 {
   "Nav": {
-    "home": "Start",
-    "projects": "Projekte",
-    "contact": "Kontakt",
     "ariaLabel": "Hauptnavigation",
-    "toggleMenu": "Menü umschalten"
+    "role": "Webentwickler",
+    "work": "Arbeiten",
+    "about": "Über mich",
+    "services": "Leistungen",
+    "stack": "Stack",
+    "hire": "Anfragen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
   },
   "Hero": {
-    "eyebrow": "Webentwickler",
-    "title": "Ich baue schnelle, durchdachte Websites.",
-    "subtitle": "Freiberuflicher Webentwickler mit Fokus auf moderne Web-Apps, Performance und sauberen Code.",
-    "ctaPrimary": "Projekte ansehen",
-    "ctaSecondary": "Kontakt aufnehmen"
+    "status": "Verfügbar für neue Projekte",
+    "eyebrow": "Full-Stack Webentwickler",
+    "title": "Websites und Web-Apps, mit Sorgfalt gebaut.",
+    "sub": "Ich bin Johannes Brand — ich gestalte, entwickle und liefere schnelle, zuverlässige Web-Produkte, von der Datenbank bis zum letzten Pixel.",
+    "cta1": "Arbeiten ansehen",
+    "cta2": "Kontakt aufnehmen",
+    "stat1n": "8+",
+    "stat1l": "Jahre Web-Erfahrung",
+    "stat2n": "40+",
+    "stat2l": "Projekte umgesetzt",
+    "stat3n": "99",
+    "stat3l": "Üblicher Lighthouse-Score"
   },
   "About": {
-    "title": "Über mich",
-    "body": "Ich entwickle Websites und Web-Anwendungen vom Konzept bis zum Deployment. Mein Schwerpunkt liegt auf React, Next.js und TypeScript – mit Blick auf Performance, Barrierefreiheit und langlebigen Code."
+    "eyebrow": "Über mich",
+    "portraitAlt": "Porträt von Johannes",
+    "title": "Ein Ein-Personen-Studio — ehrlich, schnell, ohne Ballast.",
+    "p1": "Seit fast einem Jahrzehnt helfe ich Start-ups, Agenturen und kleinen Unternehmen, Ideen in Web-Produkte zu verwandeln, die man wirklich gerne nutzt. Mir liegen die Details am Herzen, die andere überspringen: Barrierefreiheit, Performance-Budgets und Code, den die nächste Entwicklerin lesen kann.",
+    "p2": "Sie arbeiten direkt mit mir, nicht über mehrere Account-Manager. Das bedeutet klare Kommunikation, ehrliche Zeitpläne und eine Codebasis, die Ihnen nach dem Launch vollständig gehört.",
+    "factLocationKey": "Standort",
+    "factLocationValue": "Berlin, Deutschland",
+    "factFocusKey": "Fokus",
+    "factFocusValue": "Frontend & Full-Stack",
+    "factAvailabilityKey": "Verfügbarkeit",
+    "factAvailabilityValue": "Freelance / Vertrag",
+    "factLanguagesKey": "Sprachen",
+    "factLanguagesValue": "Deutsch & Englisch"
   },
   "Services": {
+    "eyebrow": "Was ich kann",
     "title": "Leistungen",
-    "subtitle": "Wobei ich dir helfen kann.",
+    "subtitle": "Fünf Dinge, die ich gut kann. Wählen Sie eines — oder übergeben Sie mir den ganzen Stack.",
     "items": {
-      "webApps": {
-        "title": "Web-Anwendungen",
-        "description": "Moderne, performante Anwendungen mit Next.js und React."
+      "frontend": {
+        "title": "Frontend-Entwicklung",
+        "description": "Pixelgenaue, barrierefreie Interfaces in React, Vue und modernem TypeScript — schnell auf jedem Gerät."
       },
-      "websites": {
-        "title": "Websites",
-        "description": "Marketing- und Unternehmensseiten, die schnell laden und gut aussehen."
+      "backend": {
+        "title": "Backend & APIs",
+        "description": "Solide REST- und GraphQL-APIs, Auth, Datenbanken und Integrationen auf Basis von Node.js und PostgreSQL."
       },
-      "consulting": {
-        "title": "Beratung",
-        "description": "Technische Beratung zu Architektur, Performance und Tooling."
+      "fullstack": {
+        "title": "Full-Stack Web-Apps",
+        "description": "Produkte von A bis Z — vom Datenmodell bis zum Deployment — mit Next.js und einem soliden Stack."
+      },
+      "wordpress": {
+        "title": "WordPress & CMS",
+        "description": "Individuelle Themes, Blöcke und Headless-Setups, die Redaktionen lieben und unter Last schnell bleiben."
+      },
+      "performance": {
+        "title": "Performance & SEO",
+        "description": "Core Web Vitals, sauberes Markup und technisches SEO — damit man Sie findet und die Seite flott bleibt."
       }
     }
   },
-  "Uses": {
-    "title": "Mein Werkzeugkasten",
-    "subtitle": "Womit ich am liebsten arbeite."
+  "Stack": {
+    "eyebrow": "Werkzeugkasten",
+    "title": "Tech-Stack",
+    "subtitle": "Die Werkzeuge, zu denen ich greife. Pragmatisch, gut unterstützt und auf Langlebigkeit gewählt.",
+    "group1": "Frontend",
+    "group2": "Backend & Daten",
+    "group3": "Tooling & Infra"
   },
   "FeaturedProjects": {
-    "title": "Ausgewählte Projekte",
-    "subtitle": "Ein paar aktuelle Arbeiten.",
+    "eyebrow": "Ausgewählte Arbeiten",
+    "title": "Referenzprojekte",
+    "subtitle": "Einige aktuelle Projekte. Für die ganze Geschichte auf ein Projekt klicken.",
     "viewAll": "Alle Projekte ansehen",
     "viewProject": "Projekt ansehen"
-  },
-  "ContactCTA": {
-    "title": "Lass uns zusammenarbeiten.",
-    "subtitle": "Hast du ein Projekt im Kopf? Ich freue mich auf deine Nachricht.",
-    "cta": "Kontakt aufnehmen"
   },
   "Projects": {
     "title": "Projekte",
@@ -56,32 +87,69 @@
     "empty": "Noch keine Projekte veröffentlicht.",
     "backToProjects": "Zurück zu den Projekten"
   },
+  "Project": {
+    "back": "Zurück zum Portfolio",
+    "backHome": "Zur Startseite",
+    "roleKey": "Rolle",
+    "timelineKey": "Zeitraum",
+    "clientKey": "Kunde",
+    "overviewHeading": "Überblick",
+    "challengeHeading": "Die Herausforderung",
+    "approachHeading": "Der Ansatz",
+    "builtWithHeading": "Gebaut mit",
+    "resultsHeading": "Ergebnisse",
+    "ctaEyebrow": "Gefällt Ihnen das?",
+    "ctaTitle": "Bauen wir als Nächstes Ihres.",
+    "ctaButton": "Projekt starten",
+    "moreHeading": "Weitere Projekte"
+  },
   "Contact": {
-    "title": "Kontakt",
-    "subtitle": "Schreib mir – ich melde mich zeitnah zurück.",
-    "nameLabel": "Name",
-    "emailLabel": "E-Mail",
-    "messageLabel": "Nachricht",
-    "submit": "Nachricht senden",
-    "directEmail": "Oder schreib direkt an"
+    "eyebrow": "Sprechen wir",
+    "title": "Projekt starten",
+    "subtitle": "Etwas im Kopf? Schreiben Sie mir ein paar Zeilen dazu — ich antworte innerhalb eines Tages.",
+    "form": {
+      "name": "Ihr Name",
+      "namePlaceholder": "Erika Mustermann",
+      "email": "E-Mail",
+      "emailPlaceholder": "erika@firma.de",
+      "message": "Projektdetails",
+      "messagePlaceholder": "Ein, zwei Sätze dazu, was Sie brauchen…",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet…",
+      "error": "Etwas ist schiefgelaufen — bitte versuchen Sie es erneut oder schreiben Sie mir direkt.",
+      "errorRate": "Zu viele Versuche. Bitte warten Sie ein paar Minuten und versuchen Sie es erneut."
+    },
+    "sent": {
+      "title": "Nachricht gesendet — danke!",
+      "body": "Danke — Ihre Nachricht ist unterwegs. Ich melde mich innerhalb eines Werktags.",
+      "again": "Weitere senden"
+    },
+    "orReach": "Oder direkt erreichen"
   },
   "Imprint": {
     "title": "Impressum",
+    "description": "Impressum und Anbieterkennzeichnung der Website von Johannes Brand, freiberuflicher Webentwickler.",
     "intro": "Angaben gemäß § 5 TMG."
   },
   "Privacy": {
     "title": "Datenschutzerklärung",
+    "description": "Wie personenbezogene Daten auf der Website von Johannes Brand, freiberuflicher Webentwickler, verarbeitet werden.",
     "intro": "Informationen zum Umgang mit deinen Daten."
   },
   "Footer": {
-    "rights": "Alle Rechte vorbehalten.",
+    "rights": "© 2026 Johannes Brand",
+    "tagline": "Mit Sorgfalt gebaut.",
     "imprint": "Impressum",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "navLabel": "Rechtliches"
   },
   "LocaleSwitcher": {
-    "label": "Sprache wählen",
+    "label": "Sprache wechseln",
     "de": "Deutsch",
     "en": "English"
+  },
+  "ThemeToggle": {
+    "label": "Design wechseln"
   },
   "NotFound": {
     "title": "Seite nicht gefunden",

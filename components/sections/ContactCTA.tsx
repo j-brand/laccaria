@@ -1,21 +1,24 @@
 import {getTranslations} from 'next-intl/server';
-import Container from '@/components/ui/Container';
-import Button from '@/components/ui/Button';
+import Section from '@/components/ui/Section';
+import ContactForm from '@/components/ContactForm';
+import ContactLinks from '@/components/ContactLinks';
 
 export default async function ContactCTA() {
-  const t = await getTranslations('ContactCTA');
+  const t = await getTranslations('Contact');
 
   return (
-    <section className="border-t border-border py-20">
-      <Container className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <div className="max-w-xl">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            {t('title')}
-          </h2>
-          <p className="mt-3 text-muted">{t('subtitle')}</p>
-        </div>
-        <Button href="/contact">{t('cta')}</Button>
-      </Container>
-    </section>
+    <Section
+      id="contact"
+      number="05"
+      eyebrow={t('eyebrow')}
+      title={t('title')}
+      subtitle={t('subtitle')}
+      className="pb-20"
+    >
+      <div className="grid items-start gap-6 md:grid-cols-2">
+        <ContactForm />
+        <ContactLinks />
+      </div>
+    </Section>
   );
 }

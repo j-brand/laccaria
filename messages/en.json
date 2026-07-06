@@ -1,54 +1,85 @@
 {
   "Nav": {
-    "home": "Home",
-    "projects": "Projects",
-    "contact": "Contact",
     "ariaLabel": "Main navigation",
-    "toggleMenu": "Toggle menu"
+    "role": "web developer",
+    "work": "Work",
+    "about": "About",
+    "services": "Services",
+    "stack": "Stack",
+    "hire": "Hire me",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "Hero": {
-    "eyebrow": "Web developer",
-    "title": "I build fast, thoughtful websites.",
-    "subtitle": "Freelance web developer focused on modern web apps, performance and clean code.",
-    "ctaPrimary": "View projects",
-    "ctaSecondary": "Get in touch"
+    "status": "Available for new projects",
+    "eyebrow": "Full-stack web developer",
+    "title": "Websites and web apps, built with intent.",
+    "sub": "I'm Johannes Brand — I design, build and ship fast, reliable web products, from the database to the last pixel.",
+    "cta1": "See my work",
+    "cta2": "Get in touch",
+    "stat1n": "8+",
+    "stat1l": "Years building for the web",
+    "stat2n": "40+",
+    "stat2l": "Projects shipped",
+    "stat3n": "99",
+    "stat3l": "Typical Lighthouse score"
   },
   "About": {
-    "title": "About me",
-    "body": "I build websites and web applications from concept to deployment. I focus on React, Next.js and TypeScript — with an eye on performance, accessibility and long-lived code."
+    "eyebrow": "About",
+    "portraitAlt": "Portrait of Johannes",
+    "title": "A one-person studio — honest, fast, no filler.",
+    "p1": "For the better part of a decade I have helped startups, agencies and small businesses turn ideas into web products that people actually enjoy using. I care about the details others skip: accessibility, performance budgets, and code the next developer can read.",
+    "p2": "You work directly with me, not through layers of account managers. That means clear communication, honest timelines, and a codebase you own outright when the project ships.",
+    "factLocationKey": "Based in",
+    "factLocationValue": "Berlin, Germany",
+    "factFocusKey": "Focus",
+    "factFocusValue": "Frontend & full-stack",
+    "factAvailabilityKey": "Availability",
+    "factAvailabilityValue": "Freelance / contract",
+    "factLanguagesKey": "Languages",
+    "factLanguagesValue": "English & German"
   },
   "Services": {
+    "eyebrow": "What I can do",
     "title": "Services",
-    "subtitle": "How I can help you.",
+    "subtitle": "Five things I do well. Pick one, or hand me the whole stack.",
     "items": {
-      "webApps": {
-        "title": "Web applications",
-        "description": "Modern, performant applications built with Next.js and React."
+      "frontend": {
+        "title": "Frontend development",
+        "description": "Pixel-accurate, accessible interfaces in React, Vue and modern TypeScript — fast on every device."
       },
-      "websites": {
-        "title": "Websites",
-        "description": "Marketing and company sites that load fast and look great."
+      "backend": {
+        "title": "Backend & APIs",
+        "description": "Solid REST and GraphQL APIs, auth, databases and integrations built on Node.js and PostgreSQL."
       },
-      "consulting": {
-        "title": "Consulting",
-        "description": "Technical advice on architecture, performance and tooling."
+      "fullstack": {
+        "title": "Full-stack web apps",
+        "description": "End-to-end products — from data model to deployment — with Next.js and a sensible, boring stack."
+      },
+      "wordpress": {
+        "title": "WordPress & CMS",
+        "description": "Custom themes, blocks and headless setups that editors love and that stay fast under load."
+      },
+      "performance": {
+        "title": "Performance & SEO",
+        "description": "Core Web Vitals, clean markup and technical SEO that gets you found and keeps you quick."
       }
     }
   },
-  "Uses": {
-    "title": "My toolbox",
-    "subtitle": "What I most enjoy working with."
+  "Stack": {
+    "eyebrow": "Toolbox",
+    "title": "Tech stack",
+    "subtitle": "The tools I reach for. Pragmatic, well-supported, and chosen to last.",
+    "group1": "Frontend",
+    "group2": "Backend & data",
+    "group3": "Tooling & infra"
   },
   "FeaturedProjects": {
+    "eyebrow": "Selected work",
     "title": "Featured projects",
-    "subtitle": "A few recent pieces of work.",
+    "subtitle": "A few recent builds. Click any project for the full story.",
     "viewAll": "View all projects",
     "viewProject": "View project"
-  },
-  "ContactCTA": {
-    "title": "Let's work together.",
-    "subtitle": "Got a project in mind? I'd love to hear from you.",
-    "cta": "Get in touch"
   },
   "Projects": {
     "title": "Projects",
@@ -56,32 +87,69 @@
     "empty": "No projects published yet.",
     "backToProjects": "Back to projects"
   },
+  "Project": {
+    "back": "Back to projects",
+    "backHome": "Back to home",
+    "roleKey": "Role",
+    "timelineKey": "Timeline",
+    "clientKey": "Client",
+    "overviewHeading": "Overview",
+    "challengeHeading": "The challenge",
+    "approachHeading": "The approach",
+    "builtWithHeading": "Built with",
+    "resultsHeading": "Results",
+    "ctaEyebrow": "Like what you see?",
+    "ctaTitle": "Let's build yours next.",
+    "ctaButton": "Start a project",
+    "moreHeading": "More projects"
+  },
   "Contact": {
-    "title": "Contact",
-    "subtitle": "Drop me a line — I'll get back to you shortly.",
-    "nameLabel": "Name",
-    "emailLabel": "Email",
-    "messageLabel": "Message",
-    "submit": "Send message",
-    "directEmail": "Or email me directly at"
+    "eyebrow": "Let's talk",
+    "title": "Start a project",
+    "subtitle": "Have something in mind? Send a few lines about it and I'll reply within a day.",
+    "form": {
+      "name": "Your name",
+      "namePlaceholder": "Jane Doe",
+      "email": "Email",
+      "emailPlaceholder": "jane@company.com",
+      "message": "Project details",
+      "messagePlaceholder": "A sentence or two about what you need…",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "error": "Something went wrong — please try again, or email me directly.",
+      "errorRate": "Too many attempts. Please wait a few minutes and try again."
+    },
+    "sent": {
+      "title": "Message sent — thank you!",
+      "body": "Thanks — your message is on its way. I'll get back to you within one business day.",
+      "again": "Send another"
+    },
+    "orReach": "Or reach me directly"
   },
   "Imprint": {
     "title": "Legal notice",
+    "description": "Legal notice and provider identification for the website of Johannes Brand, freelance web developer.",
     "intro": "Information pursuant to § 5 TMG."
   },
   "Privacy": {
     "title": "Privacy policy",
+    "description": "How personal data is handled on the website of Johannes Brand, freelance web developer.",
     "intro": "Information on how your data is handled."
   },
   "Footer": {
-    "rights": "All rights reserved.",
+    "rights": "© 2026 Johannes Brand",
+    "tagline": "Built with intent.",
     "imprint": "Legal notice",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "navLabel": "Legal"
   },
   "LocaleSwitcher": {
-    "label": "Choose language",
+    "label": "Switch language",
     "de": "Deutsch",
     "en": "English"
+  },
+  "ThemeToggle": {
+    "label": "Toggle theme"
   },
   "NotFound": {
     "title": "Page not found",
