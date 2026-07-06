@@ -57,6 +57,7 @@ export default async function ContactLinks() {
                 {value}
               </span>
             </span>
+            {external && <span className="sr-only">{t('newTab')}</span>}
           </div>
         </a>
       ))}

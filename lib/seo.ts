@@ -18,12 +18,12 @@ export function absoluteUrl(path = ''): string {
 }
 
 /**
- * The site-wide social card, as an absolute URL. Served by `app/og/route.tsx`.
+ * The site-wide social card, as an absolute URL. Static asset in `public/`.
  * Absolute (not relative) so it never resolves against the request/build origin
  * — important for self-hosting behind a fixed domain.
  */
 export const OG_IMAGE = {
-  url: absoluteUrl('/og'),
+  url: absoluteUrl('/laccaria-og.png'),
   width: 1200,
   height: 630,
   alt: 'Johannes Brand — Web Developer'

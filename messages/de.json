@@ -8,7 +8,9 @@
     "stack": "Stack",
     "hire": "Anfragen",
     "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schließen"
+    "closeMenu": "Menü schließen",
+    "mobileNavLabel": "Mobile Navigation",
+    "skipToContent": "Zum Inhalt springen"
   },
   "Hero": {
     "status": "Verfügbar für neue Projekte",
@@ -79,7 +81,14 @@
     "title": "Referenzprojekte",
     "subtitle": "Einige aktuelle Projekte. Für die ganze Geschichte auf ein Projekt klicken.",
     "viewAll": "Alle Projekte ansehen",
-    "viewProject": "Projekt ansehen"
+    "viewProject": "Projekt ansehen",
+    "a11y": {
+      "carousel": "Karussell mit Referenzprojekten",
+      "prev": "Vorheriges Projekt",
+      "next": "Nächstes Projekt",
+      "goToSlide": "Zu Projekt '{{index}}'",
+      "slideLabel": "Projekt '{{index}}' von '{{slidesLength}}'"
+    }
   },
   "Projects": {
     "title": "Projekte",
@@ -124,7 +133,8 @@
       "body": "Danke — Ihre Nachricht ist unterwegs. Ich melde mich innerhalb eines Werktags.",
       "again": "Weitere senden"
     },
-    "orReach": "Oder direkt erreichen"
+    "orReach": "Oder direkt erreichen",
+    "newTab": "(öffnet in neuem Tab)"
   },
   "Imprint": {
     "title": "Impressum",

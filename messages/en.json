@@ -8,7 +8,9 @@
     "stack": "Stack",
     "hire": "Hire me",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "mobileNavLabel": "Mobile navigation",
+    "skipToContent": "Skip to content"
   },
   "Hero": {
     "status": "Available for new projects",
@@ -79,7 +81,14 @@
     "title": "Featured projects",
     "subtitle": "A few recent builds. Click any project for the full story.",
     "viewAll": "View all projects",
-    "viewProject": "View project"
+    "viewProject": "View project",
+    "a11y": {
+      "carousel": "Featured projects carousel",
+      "prev": "Previous project",
+      "next": "Next project",
+      "goToSlide": "Go to project '{{index}}'",
+      "slideLabel": "Project '{{index}}' of '{{slidesLength}}'"
+    }
   },
   "Projects": {
     "title": "Projects",
@@ -124,7 +133,8 @@
       "body": "Thanks — your message is on its way. I'll get back to you within one business day.",
       "again": "Send another"
     },
-    "orReach": "Or reach me directly"
+    "orReach": "Or reach me directly",
+    "newTab": "(opens in a new tab)"
   },
   "Imprint": {
     "title": "Legal notice",

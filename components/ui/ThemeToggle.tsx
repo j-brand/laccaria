@@ -40,7 +40,7 @@ export default function ThemeToggle() {
       aria-label={t('label')}
       aria-pressed={dark}
       style={{...track, background: 'var(--line-strong)'}}
-      className="chamfer-quad relative h-8 w-14.5 transition-colors"
+      className="focus-ring chamfer-quad relative h-8 w-14.5 transition-colors"
     >
       <span
         suppressHydrationWarning

@@ -19,7 +19,7 @@ export default function GlobalNotFound() {
           404 — Seite nicht gefunden
         </h1>
         <p className="text-fg-muted">Page not found.</p>
-        <Link href="/" className="font-semibold text-primary hover:text-accent">
+        <Link href="/" className="font-semibold text-primary hover:text-accent-text">
           Start / Home
         </Link>
       </body>

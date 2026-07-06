@@ -40,7 +40,7 @@ export default async function ProjectsPage({
   ]);
 
   return (
-    <Section title={t('title')} subtitle={t('subtitle')} divider={false} className="pt-10">
+    <Section title={t('title')} titleAs="h1" subtitle={t('subtitle')} divider={false} className="pt-10">
       <JsonLd data={breadcrumb} />
       {projects.length === 0 ? (
         <p className="text-fg-muted">{t('empty')}</p>

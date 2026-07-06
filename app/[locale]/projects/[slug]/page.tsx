@@ -97,7 +97,7 @@ export default async function ProjectDetailPage({
       {/* title block */}
       <div className="mb-3.5 mt-6 flex flex-wrap items-baseline gap-3 font-mono text-[11px]">
         {meta.kind && (
-          <span className="uppercase tracking-[0.14em] text-accent">
+          <span className="uppercase tracking-[0.14em] text-accent-text">
             {meta.kind}
           </span>
         )}
@@ -172,7 +172,7 @@ export default async function ProjectDetailPage({
                 <div className="flex flex-col gap-3.5">
                   {meta.results.map((r) => (
                     <div key={r.label} className="flex items-baseline gap-3">
-                      <span className="min-w-14 shrink-0 font-display text-xl font-bold text-accent">
+                      <span className="min-w-14 shrink-0 font-display text-xl font-bold text-accent-text">
                         {r.metric}
                       </span>
                       <span className="text-[13.5px] leading-snug text-fg-muted">
@@ -195,9 +195,9 @@ export default async function ProjectDetailPage({
           <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
             {t('ctaEyebrow')}
           </p>
-          <h3 className="font-display text-2xl font-semibold tracking-[-0.01em] text-white">
+          <p className="font-display text-2xl font-semibold tracking-[-0.01em] text-white">
             {t('ctaTitle')}
-          </h3>
+          </p>
         </div>
         <Link
           href="/#contact"
@@ -229,7 +229,7 @@ export default async function ProjectDetailPage({
                   />
                   <div className="px-4 py-3.5">
                     {o.kind && (
-                      <p className="mb-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-accent">
+                      <p className="mb-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-accent-text">
                         {o.kind}
                       </p>
                     )}

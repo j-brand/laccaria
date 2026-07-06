@@ -55,7 +55,7 @@ export default async function Header() {
           <Link
             href="/contact"
             style={{'--c': '7px'} as React.CSSProperties}
-            className="chamfer-quad bg-primary px-[15px] py-[9px] text-sm font-semibold text-primary-fg transition hover:brightness-110"
+            className="focus-ring chamfer-quad bg-primary px-[15px] py-[9px] text-sm font-semibold text-primary-fg transition hover:brightness-110"
           >
             {t('hire')}
           </Link>
@@ -67,6 +67,7 @@ export default async function Header() {
           hireLabel={t('hire')}
           openLabel={t('openMenu')}
           closeLabel={t('closeMenu')}
+          navLabel={t('mobileNavLabel')}
         />
       </Container>
     </header>

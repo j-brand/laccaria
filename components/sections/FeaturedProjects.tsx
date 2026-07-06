@@ -19,7 +19,17 @@ export default async function FeaturedProjects() {
       title={t('title')}
       subtitle={t('subtitle')}
     >
-      <ProjectSlider projects={projects} viewProjectLabel={t('viewProject')} />
+      <ProjectSlider
+        projects={projects}
+        viewProjectLabel={t('viewProject')}
+        a11y={{
+          containerRoleDescriptionMessage: t('a11y.carousel'),
+          prevSlideMessage: t('a11y.prev'),
+          nextSlideMessage: t('a11y.next'),
+          paginationBulletMessage: t('a11y.goToSlide'),
+          slideLabelMessage: t('a11y.slideLabel')
+        }}
+      />
       <div className="mt-4">
         <Button href="/projects" variant="secondary">
           {t('viewAll')}

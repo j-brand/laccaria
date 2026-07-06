@@ -5,7 +5,9 @@ import {useLocale, useTranslations} from 'next-intl';
 import type {CSSProperties} from 'react';
 import {usePathname, useRouter} from '@/i18n/navigation';
 
-const chamfer = {'--c': '6px'} as CSSProperties;
+// Chamfered 1px border via the cut-frame / cut-inner pattern; a plain inset
+// box-shadow would be clipped away at the bevelled corners by `chamfer-quad`.
+const chamfer = {'--c': '6px', '--bd': 'var(--line-strong)'} as CSSProperties;
 
 export default function LocaleSwitcher() {
   const t = useTranslations('LocaleSwitcher');
@@ -30,9 +32,11 @@ export default function LocaleSwitcher() {
       disabled={isPending}
       aria-label={t('label')}
       style={chamfer}
-      className="chamfer-quad grid h-[34px] w-10 place-items-center font-mono text-xs font-semibold text-fg-muted shadow-[inset_0_0_0_1px_var(--line-strong)] transition-colors hover:text-fg"
+      className="focus-ring cut-frame chamfer-quad block"
     >
-      {next.toUpperCase()}
+      <span className="cut-inner chamfer-quad grid h-8.5 w-10 place-items-center font-mono text-xs font-semibold text-fg-muted transition-colors hover:text-fg">
+        {next.toUpperCase()}
+      </span>
     </button>
   );
 }

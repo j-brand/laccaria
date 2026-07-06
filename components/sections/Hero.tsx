@@ -37,7 +37,7 @@ export default async function Hero() {
             </span>
           </div>
 
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-accent">
+          <p className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-accent-text">
             {t('eyebrow')}
           </p>
           <h1 className="max-w-[16ch] font-display text-[clamp(2.4rem,5.4vw,3.9rem)] font-bold leading-[1.04] tracking-[-0.025em] text-fg">
@@ -101,10 +101,10 @@ function HeroCodeWindow() {
             <span className="text-primary">&apos;ts&apos;</span>
             {'],\n'}
             {'  ships: '}
-            <span className="text-accent">true</span>
+            <span className="text-accent-text">true</span>
             {',\n'}
             {'  filler: '}
-            <span className="text-accent">false</span>
+            <span className="text-accent-text">false</span>
             {',\n'}
             {'};\n\n'}
             <span className="text-secondary">export default</span> dev;

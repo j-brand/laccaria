@@ -39,7 +39,7 @@ export default function Button({
       <Link
         href={href}
         style={chamfer}
-        className={`cut-frame chamfer-quad inline-block text-base font-semibold transition-transform hover:-translate-y-0.5 ${className}`}
+        className={`focus-ring cut-frame chamfer-quad inline-block text-base font-semibold transition-transform hover:-translate-y-0.5 ${className}`}
       >
         <span
           style={chamfer}
@@ -55,7 +55,7 @@ export default function Button({
     <Link
       href={href}
       style={chamfer}
-      className={`chamfer-quad inline-flex items-center gap-2 px-[1.2rem] py-3 text-base font-semibold transition hover:-translate-y-0.5 ${solid[variant]} ${className}`}
+      className={`focus-ring chamfer-quad inline-flex items-center gap-2 px-[1.2rem] py-3 text-base font-semibold transition hover:-translate-y-0.5 ${solid[variant]} ${className}`}
     >
       {inner}
     </Link>

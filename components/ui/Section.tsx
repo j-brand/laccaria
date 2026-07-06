@@ -10,6 +10,8 @@ type Props = {
   children: React.ReactNode;
   /** First section on a page omits the top divider. */
   divider?: boolean;
+  /** Heading level for the title. Defaults to h2; use h1 for a page's main title. */
+  titleAs?: 'h1' | 'h2';
   className?: string;
 };
 
@@ -21,6 +23,7 @@ export default function Section({
   subtitle,
   children,
   divider = true,
+  titleAs: TitleTag = 'h2',
   className = ''
 }: Props) {
   return (
@@ -34,7 +37,7 @@ export default function Section({
             {eyebrow && (
               <div className="mb-2 flex items-baseline gap-4">
                 {number && (
-                  <span className="font-mono text-sm text-accent">{number}</span>
+                  <span className="font-mono text-sm text-accent-text">{number}</span>
                 )}
                 <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-subtle">
                   {eyebrow}
@@ -42,9 +45,9 @@ export default function Section({
               </div>
             )}
             {title && (
-              <h2 className="font-display text-[clamp(1.7rem,3.4vw,2.35rem)] font-semibold tracking-[-0.02em] text-fg">
+              <TitleTag className="font-display text-[clamp(1.7rem,3.4vw,2.35rem)] font-semibold tracking-[-0.02em] text-fg">
                 {title}
-              </h2>
+              </TitleTag>
             )}
             {subtitle && (
               <p className="mt-2 max-w-[56ch] leading-relaxed text-fg-muted">

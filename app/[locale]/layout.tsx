@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {Space_Grotesk, Hanken_Grotesk, JetBrains_Mono} from 'next/font/google';
+import {headers} from 'next/headers';
 import {notFound} from 'next/navigation';
 import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
@@ -90,6 +91,11 @@ export default async function LocaleLayout({
   // Enable static rendering
   setRequestLocale(locale);
 
+  // Per-request CSP nonce (set in proxy.ts) for our inline theme script.
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
+
+  const t = await getTranslations('Nav');
+
   return (
     <html
       lang={locale}
@@ -97,12 +103,24 @@ export default async function LocaleLayout({
       className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{__html: themeScript}} />
+        {/* The browser clears the `nonce` attribute off inline scripts after
+            they run, so React sees an empty value at hydration and would warn
+            about a mismatch. The script has already executed — suppress it. */}
+        <script
+          nonce={nonce}
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{__html: themeScript}}
+        />
       </head>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
+          <a href="#main" className="skip-link">
+            {t('skipToContent')}
+          </a>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" tabIndex={-1} className="flex-1">
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

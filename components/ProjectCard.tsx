@@ -34,7 +34,7 @@ export default function ProjectCard({project, viewProjectLabel}: Props) {
           </span>
           <span
             className="chamfer-tr absolute right-3.5 top-3.5 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-white"
-            style={{'--c': '6px', background: 'color-mix(in oklab, #0B130E 42%, transparent)'} as CSSProperties}
+            style={{'--c': '6px', background: 'color-mix(in oklab, #0B130E 66%, transparent)'} as CSSProperties}
           >
             {project.year}
           </span>
@@ -42,7 +42,7 @@ export default function ProjectCard({project, viewProjectLabel}: Props) {
 
         <div className="flex flex-1 flex-col p-6">
           {project.kind && (
-            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-accent-text">
               {project.kind}
             </p>
           )}
