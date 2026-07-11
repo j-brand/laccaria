@@ -194,9 +194,17 @@ body {
 
 /* ── Swiper — look-book chamfered arrows + tick bullets ───────────────────
    Arrows: four-cut 40px buttons on a dark translucent scrim with a white
-   chevron (masked ::after replaces Swiper's icon-font glyph).
+   chevron (masked ::after replaces Swiper's injected icon).
    Bullets: 9px four-cut ticks; the active one stretches to 24px in gold. */
 .swiper { --swiper-navigation-sides-offset: 12px; }
+
+/* On mobile (single-card view) swiping is the gesture — no arrows. */
+@media (width < 40rem) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
 
 .swiper-button-prev,
 .swiper-button-next {
@@ -211,6 +219,12 @@ body {
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   transform: scale(1.05);
+}
+/* Swiper 14 injects its own <svg> chevron into the buttons; hide it in favour
+   of the look-book chevron drawn by the masked ::after below. */
+.swiper-button-prev > svg,
+.swiper-button-next > svg {
+  display: none;
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
