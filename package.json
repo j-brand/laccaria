@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "eslint .",
     "og": "node scripts/generate-og.mjs",
-    "webp": "node scripts/to-webp.mjs"
+    "webp": "node scripts/to-webp.mjs",
+    "smtp-test": "node scripts/smtp-test.mjs"
   },
   "author": "Johannes Brand",
   "license": "UNLICENSED",
