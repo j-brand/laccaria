@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="GreenTech Festival">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B3D2E"/>
+      <stop offset="1" stop-color="#3BAA5F"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <text x="400" y="245" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle">GreenTech Festival</text>
+  <text x="400" y="300" font-family="system-ui, sans-serif" font-size="22" font-weight="400" fill="#d7f5e3" text-anchor="middle">Berlin · Los Angeles · Singapore · London</text>
+</svg>

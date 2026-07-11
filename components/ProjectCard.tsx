@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import type {CSSProperties} from 'react';
 import Mark from '@/components/ui/Mark';
@@ -19,11 +20,21 @@ export default function ProjectCard({project, viewProjectLabel}: Props) {
       className="jb-proj cut-frame chamfer-lg lift block h-full transition-transform hover:-translate-y-1"
     >
       <div className="cut-inner chamfer-lg flex h-full flex-col overflow-hidden">
-        {/* gradient banner */}
+        {/* banner — hero image when present, otherwise the gradient */}
         <div
-          className="relative h-[150px]"
+          className="relative h-[180px] overflow-hidden"
           style={{background: project.gradient ?? DEFAULT_GRADIENT}}
         >
+          {project.hero && (
+            <Image
+              src={project.hero}
+              alt=""
+              fill
+              quality={90}
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              className="object-cover object-top"
+            />
+          )}
           <span
             className="cut-frame absolute left-3 top-3 inline-block"
             style={{...badgeChamfer, '--bd': 'color-mix(in oklab, var(--line) 55%, transparent)'} as CSSProperties}

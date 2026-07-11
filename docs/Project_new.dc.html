@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  .page {
+    --color-bg:#FAF8F2; --color-sunken:#F2EEE6; --color-card:#FFFFFF;
+    --color-fg:#232118; --color-fg-muted:#57534A; --color-fg-subtle:#938D80;
+    --color-primary:#234430; --color-primary-fg:#FFFFFF; --color-secondary:#A33347;
+    --color-accent:#D9A521; --color-line:#E5E0D6; --color-line-strong:#D2CCC0;
+    min-height:100vh; background:var(--color-bg); color:var(--color-fg);
+    font-family:'Hanken Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+  }
+  .page.dark {
+    --color-bg:#0B130E; --color-sunken:#080D0A; --color-card:#121C16;
+    --color-fg:#E8EDE7; --color-fg-muted:#9EACA1; --color-fg-subtle:#6C7B70;
+    --color-primary:#3A7150; --color-primary-fg:#F2F8F4; --color-secondary:#C25366;
+    --color-accent:#E8C24E; --color-line:#24332A; --color-line-strong:#324A3A;
+  }
+  .jb-back:hover { gap:12px; }
+  .jb-back .ic { transition:transform .2s ease; }
+  .jb-back:hover .ic { transform:translateX(-3px); }
+  .jb-mark { background-image:url(mark-forest.svg); background-size:contain; background-repeat:no-repeat; background-position:center; }
+  .page.dark .jb-mark { background-image:url(mark-forest-dark.svg); }
+</style>
+</helmet>
+<div class="page {{ themeClass }}">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:30; backdrop-filter:blur(10px); background:color-mix(in oklab, var(--color-bg) 82%, transparent); border-bottom:1px solid var(--color-line);">
+    <div style="max-width:920px; margin:0 auto; padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <a href="Portfolio.dc.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+        <div class="jb-mark" role="img" aria-label="Laccaria" style="width:36px; height:30px;"></div>
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; letter-spacing:-0.01em; color:var(--color-fg);">Johannes Brand</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button onClick="{{ toggleLang }}" aria-label="Switch language" style="width:40px; height:34px; display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:var(--color-fg-muted); background:transparent; border:none; cursor:pointer; box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px),0 6px);">{{ otherLang }}</button>
+        <button onClick="{{ toggleTheme }}" aria-label="Toggle theme" style="width:40px; height:34px; display:grid; place-items:center; font-size:14px; color:var(--color-fg-muted); background:transparent; border:none; cursor:pointer; box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px),0 6px);">{{ themeIcon }}</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:920px; margin:0 auto; padding:0 24px;">
+
+    <!-- back -->
+    <a class="jb-back" href="Portfolio.dc.html" style="display:inline-flex; align-items:center; gap:8px; margin:32px 0 24px; font-size:14px; font-weight:600; color:var(--color-fg-muted); text-decoration:none; transition:gap .2s ease;">
+      <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      {{ t.back }}
+    </a>
+
+    <!-- title block -->
+    <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent);">{{ p.kind }}</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--color-fg-subtle);">·</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--color-fg-subtle);">{{ p.year }}</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.025em; line-height:1.05; font-size:clamp(2.2rem,5.2vw,3.4rem); margin:0; color:var(--color-fg);">{{ p.title }}</h1>
+    <p style="margin:18px 0 0; font-size:19px; line-height:1.55; color:var(--color-fg-muted); max-width:56ch;">{{ p.tagline }}</p>
+
+    <!-- ============ PATTERN 1 · HERO DESKTOP SHOT (in browser chrome) ============ -->
+    <div style="margin:36px 0 0; filter:drop-shadow(0 1px 2px rgba(35,33,24,.06)) drop-shadow(0 18px 40px rgba(35,33,24,.14));">
+      <div style="background:var(--color-card); box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px); overflow:hidden;">
+        <!-- browser bar -->
+        <div style="display:flex; align-items:center; gap:14px; padding:11px 16px; background:var(--color-sunken); border-bottom:1px solid var(--color-line);">
+          <div style="display:flex; gap:7px;">
+            <span style="width:11px; height:11px; background:var(--color-secondary); border-radius:50%;"></span>
+            <span style="width:11px; height:11px; background:var(--color-accent); border-radius:50%;"></span>
+            <span style="width:11px; height:11px; background:var(--color-primary); border-radius:50%;"></span>
+          </div>
+          <div style="flex:1; height:24px; display:flex; align-items:center; padding:0 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--color-fg-subtle); background:var(--color-bg); box-shadow:inset 0 0 0 1px var(--color-line);">forsthaus-booking.de</div>
+        </div>
+        <!-- image space -->
+        <div style="aspect-ratio:16/9; display:grid; place-items:center; background:var(--color-sunken); background-image:repeating-linear-gradient(45deg, transparent, transparent 11px, color-mix(in oklab, var(--color-line) 60%, transparent) 11px, color-mix(in oklab, var(--color-line) 60%, transparent) 12px);">
+          <div style="text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-fg-subtle);">Desktop screenshot</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--color-fg-subtle); opacity:.7; margin-top:6px;">≈ 1600 × 900</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- meta row -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--color-line); margin:36px 0 0; box-shadow:0 0 0 1px var(--color-line);">
+      <div style="background:var(--color-card); padding:18px 20px;">
+        <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 6px;">{{ t.role_k }}</p>
+        <p style="font-size:14px; font-weight:600; color:var(--color-fg); margin:0;">{{ p.role }}</p>
+      </div>
+      <div style="background:var(--color-card); padding:18px 20px;">
+        <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 6px;">{{ t.timeline_k }}</p>
+        <p style="font-size:14px; font-weight:600; color:var(--color-fg); margin:0;">{{ p.timeline }}</p>
+      </div>
+      <div style="background:var(--color-card); padding:18px 20px;">
+        <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 6px;">{{ t.client_k }}</p>
+        <p style="font-size:14px; font-weight:600; color:var(--color-fg); margin:0;">{{ p.client }}</p>
+      </div>
+    </div>
+
+    <!-- body -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:48px; margin:56px 0 0; align-items:start;">
+      <div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; letter-spacing:-0.01em; margin:0 0 14px; color:var(--color-fg);">{{ t.overview_h }}</h2>
+        <p style="font-size:16.5px; line-height:1.7; color:var(--color-fg-muted); margin:0 0 32px;">{{ p.overview }}</p>
+
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; letter-spacing:-0.01em; margin:0 0 14px; color:var(--color-fg);">{{ t.challenge_h }}</h2>
+        <p style="font-size:16.5px; line-height:1.7; color:var(--color-fg-muted); margin:0 0 32px;">{{ p.challenge }}</p>
+
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; letter-spacing:-0.01em; margin:0 0 14px; color:var(--color-fg);">{{ t.approach_h }}</h2>
+        <p style="font-size:16.5px; line-height:1.7; color:var(--color-fg-muted); margin:0 0 8px;">{{ p.approach }}</p>
+
+        <blockquote style="margin:32px 0; padding-left:20px; border-left:3px solid var(--color-accent); font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; line-height:1.5; color:var(--color-fg);">{{ p.quote }}</blockquote>
+      </div>
+
+      <!-- sidebar: stack + results -->
+      <div style="display:flex; flex-direction:column; gap:28px;">
+        <div style="padding:1px; background:var(--color-line); clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);"><div style="background:var(--color-sunken); clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px); padding:22px;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 14px;">{{ t.stack_h }}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ p.stack }}" as="tech" hint-placeholder-count="5">
+              <span style="padding:6px 11px; font-size:13px; font-weight:500; color:var(--color-fg-muted); background:var(--color-card); box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px),0 6px);">{{ tech }}</span>
+            </sc-for>
+          </div>
+        </div></div>
+
+        <div style="padding:1px; background:var(--color-line); clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);"><div style="background:var(--color-card); clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px); padding:22px;">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 14px;">{{ t.results_h }}</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ p.results }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:baseline;">
+                <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--color-accent); flex:none; min-width:56px;">{{ r.metric }}</span>
+                <span style="font-size:13.5px; line-height:1.45; color:var(--color-fg-muted);">{{ r.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ============ PATTERN 2 · RESPONSIVE PAIR (desktop + mobile) ============ -->
+    <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-fg-subtle); margin:64px 0 18px;">Responsive</p>
+    <div style="position:relative; padding-bottom:44px;">
+      <!-- desktop -->
+      <div style="width:82%; filter:drop-shadow(0 1px 2px rgba(35,33,24,.06)) drop-shadow(0 18px 40px rgba(35,33,24,.14));">
+        <div style="aspect-ratio:16/10; display:grid; place-items:center; background:var(--color-sunken); box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px); background-image:repeating-linear-gradient(45deg, transparent, transparent 11px, color-mix(in oklab, var(--color-line) 60%, transparent) 11px, color-mix(in oklab, var(--color-line) 60%, transparent) 12px);">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-fg-subtle);">Desktop screenshot</div>
+        </div>
+      </div>
+      <!-- mobile, overlapping bottom-right -->
+      <div style="position:absolute; right:0; bottom:0; width:26%; max-width:190px; filter:drop-shadow(0 1px 2px rgba(35,33,24,.08)) drop-shadow(0 22px 44px rgba(35,33,24,.2));">
+        <div style="aspect-ratio:9/19; display:grid; place-items:center; background:var(--color-card); box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px); background-image:repeating-linear-gradient(45deg, transparent, transparent 9px, color-mix(in oklab, var(--color-line) 60%, transparent) 9px, color-mix(in oklab, var(--color-line) 60%, transparent) 10px);">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-fg-subtle); text-align:center; line-height:1.5;">Mobile<br>screenshot</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ PATTERN 3 · DETAIL GALLERY ============ -->
+    <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-fg-subtle); margin:56px 0 18px;">Detail gallery</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;">
+      <sc-for list="{{ galleryShots }}" as="g" hint-placeholder-count="3">
+        <div style="filter:drop-shadow(0 1px 2px rgba(35,33,24,.05)) drop-shadow(0 10px 22px rgba(35,33,24,.1));">
+          <div style="aspect-ratio:4/3; display:grid; place-items:center; background:var(--color-sunken); box-shadow:inset 0 0 0 1px var(--color-line-strong); clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px); background-image:repeating-linear-gradient(45deg, transparent, transparent 10px, color-mix(in oklab, var(--color-line) 60%, transparent) 10px, color-mix(in oklab, var(--color-line) 60%, transparent) 11px);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-fg-subtle); text-align:center;">{{ g }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- next / CTA -->
+    <div style="margin:64px 0 0; padding:40px; background:var(--color-primary); clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>
+        <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent); margin:0 0 8px;">{{ t.cta_eyebrow }}</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:24px; letter-spacing:-0.01em; margin:0; color:#fff;">{{ t.cta_title }}</h3>
+      </div>
+      <a href="Portfolio.dc.html#contact" style="padding:13px 22px; font-size:15px; font-weight:600; color:#232118; background:var(--color-accent); text-decoration:none; display:inline-flex; align-items:center; gap:9px; clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px);">
+        {{ t.cta_btn }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- other projects -->
+    <div style="margin:56px 0 0;">
+      <p style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-fg-subtle); margin:0 0 18px;">{{ t.more_h }}</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;">
+        <sc-for list="{{ others }}" as="o" hint-placeholder-count="3">
+          <a href="Project.dc.html?p={{ o.slug }}" style="text-decoration:none; display:block; padding:1px; background:var(--color-line); clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);">
+            <div style="background:var(--color-card); clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px); overflow:hidden;">
+              <div style="height:76px; background:{{ o.gradient }};"></div>
+              <div style="padding:14px 16px;">
+                <p style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-accent); margin:0 0 4px;">{{ o.kind }}</p>
+                <p style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:var(--color-fg); margin:0;">{{ o.title }}</p>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+
+  <footer style="border-top:1px solid var(--color-line); margin-top:64px;">
+    <div style="max-width:920px; margin:0 auto; padding:28px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; color:var(--color-fg-subtle);">© 2026 Johannes Brand</span>
+      <a href="Portfolio.dc.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; color:var(--color-fg-subtle); text-decoration:none;">{{ t.back_home }}</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'en', dark: false, slug: 'forsthaus' };
+
+  componentDidMount() {
+    let slug = 'forsthaus';
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const p = params.get('p');
+      if (p && this.data()[p]) slug = p;
+    } catch (e) {}
+    try {
+      const storedTheme = localStorage.getItem('jb-theme');
+      const dark = storedTheme
+        ? storedTheme === 'dark'
+        : !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const lang = localStorage.getItem('jb-lang') || 'en';
+      this.setState({ dark, lang, slug });
+    } catch (e) { this.setState({ slug }); }
+  }
+
+  toggleTheme = () => this.setState(s => {
+    const d = !s.dark;
+    try { localStorage.setItem('jb-theme', d ? 'dark' : 'light'); } catch (e) {}
+    return { dark: d };
+  });
+
+  toggleLang = () => this.setState(s => {
+    const l = s.lang === 'en' ? 'de' : 'en';
+    try { localStorage.setItem('jb-lang', l); } catch (e) {}
+    return { lang: l };
+  });
+
+  data() {
+    return {
+      forsthaus: {
+        gradient: 'linear-gradient(135deg,#1B3524,#3A7150)', year: '2025',
+        stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'Docker'],
+        en: {
+          kind: 'Booking platform', title: 'Forsthaus Booking',
+          tagline: 'A booking and channel-management system for a group of eight holiday cabins in the Black Forest.',
+          role: 'Solo full-stack', timeline: '4 months', client: 'Forsthaus GmbH',
+          overview: 'Forsthaus rented its cabins through three separate portals and a paper calendar. Double-bookings were common and the owners spent hours each week copying dates between systems. I built a single platform that owns availability and pushes it out to every channel automatically.',
+          challenge: 'The hard part was keeping availability consistent across channels that each have their own API quirks and update at different speeds. A guest booking on one portal had to lock the date everywhere within seconds, without ever showing a room that was already gone.',
+          approach: 'I modelled availability as an event log with a single source of truth, wrapped the external portals behind a normalised sync layer, and used optimistic locking so overlapping requests resolve cleanly. The owner dashboard is a fast React app; the sync workers run as small Node services.',
+          quote: 'Zero double-bookings since launch — and the owners got their weekends back.',
+          results: [
+            { metric: '0', label: 'Double-bookings since launch' },
+            { metric: '−90%', label: 'Time spent on manual calendar admin' },
+            { metric: '+22%', label: 'Direct bookings vs. portal bookings' }
+          ]
+        },
+        de: {
+          kind: 'Buchungsplattform', title: 'Forsthaus Booking',
+          tagline: 'Ein Buchungs- und Channel-Management-System für eine Gruppe von acht Ferienhütten im Schwarzwald.',
+          role: 'Solo Full-Stack', timeline: '4 Monate', client: 'Forsthaus GmbH',
+          overview: 'Forsthaus vermietete seine Hütten über drei getrennte Portale und einen Papierkalender. Doppelbuchungen waren an der Tagesordnung, und die Eigentümer verbrachten jede Woche Stunden damit, Termine zwischen Systemen zu kopieren. Ich habe eine einzige Plattform gebaut, die die Verfügbarkeit verwaltet und automatisch an jeden Kanal ausspielt.',
+          challenge: 'Das Schwierige war, die Verfügbarkeit über Kanäle hinweg konsistent zu halten, die alle ihre eigenen API-Eigenheiten haben und unterschiedlich schnell aktualisieren. Eine Buchung auf einem Portal musste den Termin innerhalb von Sekunden überall sperren — ohne je ein bereits vergebenes Zimmer anzuzeigen.',
+          approach: 'Ich habe die Verfügbarkeit als Event-Log mit einer einzigen Wahrheitsquelle modelliert, die externen Portale hinter einer normalisierten Sync-Schicht gekapselt und optimistisches Locking eingesetzt, damit überlappende Anfragen sauber aufgelöst werden. Das Eigentümer-Dashboard ist eine schnelle React-App; die Sync-Worker laufen als kleine Node-Services.',
+          quote: 'Keine einzige Doppelbuchung seit dem Launch — und die Eigentümer haben ihre Wochenenden zurück.',
+          results: [
+            { metric: '0', label: 'Doppelbuchungen seit dem Launch' },
+            { metric: '−90%', label: 'Zeit für manuelle Kalenderpflege' },
+            { metric: '+22%', label: 'Direktbuchungen ggü. Portalbuchungen' }
+          ]
+        }
+      },
+      atlas: {
+        gradient: 'linear-gradient(135deg,#8A6A12,#E8C24E)', year: '2025',
+        stack: ['Next.js', 'TypeScript', 'GraphQL', 'Tailwind CSS', 'Vercel', 'Shopify'],
+        en: {
+          kind: 'Headless commerce', title: 'Atlas Commerce',
+          tagline: 'A blazing-fast headless storefront for an outdoor-gear brand, built on Next.js and a composable backend.',
+          role: 'Frontend lead', timeline: '3 months', client: 'Atlas Outfitters',
+          overview: 'Atlas was outgrowing a themed store — slow page loads, a checkout that fought them, and no room to build the editorial content that sells gear. I rebuilt the storefront as a headless Next.js app while keeping their existing commerce backend for orders and inventory.',
+          challenge: 'The catalogue is large and changes daily, so pages had to be fast without serving stale prices or stock. Marketing also needed to publish rich landing pages without a developer in the loop.',
+          approach: 'I used incremental static regeneration for product pages with on-demand revalidation from backend webhooks, so prices update within seconds while the page stays static-fast. Content blocks are driven from a headless CMS, giving marketing a library of components they can arrange freely.',
+          quote: 'The site went from a 2.9s to a 0.7s largest-contentful-paint — and conversions followed.',
+          results: [
+            { metric: '0.7s', label: 'Largest Contentful Paint (was 2.9s)' },
+            { metric: '+31%', label: 'Mobile conversion rate' },
+            { metric: '100', label: 'Lighthouse performance on key pages' }
+          ]
+        },
+        de: {
+          kind: 'Headless Commerce', title: 'Atlas Commerce',
+          tagline: 'Ein blitzschneller Headless-Shop für eine Outdoor-Marke, gebaut auf Next.js mit komponierbarem Backend.',
+          role: 'Frontend-Lead', timeline: '3 Monate', client: 'Atlas Outfitters',
+          overview: 'Atlas war einem Theme-Shop entwachsen — langsame Ladezeiten, ein hakeliger Checkout und kein Raum für die redaktionellen Inhalte, die Ausrüstung verkaufen. Ich habe den Shop als Headless-Next.js-App neu gebaut und das bestehende Commerce-Backend für Bestellungen und Lager behalten.',
+          challenge: 'Der Katalog ist groß und ändert sich täglich, die Seiten mussten also schnell sein, ohne veraltete Preise oder Bestände auszuliefern. Zudem sollte das Marketing reichhaltige Landingpages ohne Entwickler veröffentlichen können.',
+          approach: 'Ich habe Incremental Static Regeneration für Produktseiten mit On-Demand-Revalidierung über Backend-Webhooks genutzt, sodass Preise binnen Sekunden aktualisieren, während die Seite statisch-schnell bleibt. Content-Blöcke kommen aus einem Headless-CMS und geben dem Marketing eine frei kombinierbare Komponenten-Bibliothek.',
+          quote: 'Der Largest Contentful Paint fiel von 2,9s auf 0,7s — die Conversions folgten.',
+          results: [
+            { metric: '0,7s', label: 'Largest Contentful Paint (vorher 2,9s)' },
+            { metric: '+31%', label: 'Mobile Conversion-Rate' },
+            { metric: '100', label: 'Lighthouse-Performance auf Kernseiten' }
+          ]
+        }
+      },
+      redwood: {
+        gradient: 'linear-gradient(135deg,#6E1E2D,#C25366)', year: '2024',
+        stack: ['WordPress', 'PHP', 'React', 'Tailwind CSS', 'MySQL', 'Redis'],
+        en: {
+          kind: 'Publishing CMS', title: 'Redwood Journal',
+          tagline: 'A custom editorial CMS and reading experience for an independent online magazine.',
+          role: 'Full-stack', timeline: '5 months', client: 'Redwood Journal',
+          overview: 'Redwood publishes long-form essays and wanted an editor as pleasant to write in as the articles are to read. I built custom WordPress blocks for their layouts and a fast, React-driven reading front end that stays out of the way of the words.',
+          challenge: 'Editors are writers, not engineers — the tools had to feel invisible. And with long articles full of media, the reading pages had to stay fast on any connection.',
+          approach: 'I wrote a small set of purpose-built Gutenberg blocks that mirror the magazine\'s layouts, so composing a feature is drag-and-drop. The front end reads from WordPress over its REST API and renders as a static-first React app with images lazy-loaded and cached at the edge.',
+          quote: 'Editors publish complex features on their own now — no developer hand-holding.',
+          results: [
+            { metric: '3×', label: 'Faster article publishing' },
+            { metric: '−60%', label: 'Page weight on article pages' },
+            { metric: '4.8', label: 'Editor satisfaction (out of 5)' }
+          ]
+        },
+        de: {
+          kind: 'Publishing-CMS', title: 'Redwood Journal',
+          tagline: 'Ein individuelles Redaktions-CMS und Leseerlebnis für ein unabhängiges Online-Magazin.',
+          role: 'Full-Stack', timeline: '5 Monate', client: 'Redwood Journal',
+          overview: 'Redwood veröffentlicht lange Essays und wollte einen Editor, in dem das Schreiben so angenehm ist wie das Lesen der Artikel. Ich habe individuelle WordPress-Blöcke für ihre Layouts gebaut und ein schnelles, React-basiertes Lese-Frontend, das sich nicht vor die Worte drängt.',
+          challenge: 'Redakteure sind Schreibende, keine Entwickler — die Werkzeuge mussten sich unsichtbar anfühlen. Und bei langen, medienreichen Artikeln mussten die Leseseiten auf jeder Verbindung schnell bleiben.',
+          approach: 'Ich habe eine kleine Reihe maßgeschneiderter Gutenberg-Blöcke geschrieben, die die Layouts des Magazins abbilden, sodass eine Reportage per Drag-and-drop entsteht. Das Frontend liest über die REST-API aus WordPress und rendert als static-first React-App mit Lazy-Loading und Edge-Caching für Bilder.',
+          quote: 'Redakteure veröffentlichen komplexe Reportagen jetzt selbst — ganz ohne Entwickler.',
+          results: [
+            { metric: '3×', label: 'Schnelleres Veröffentlichen' },
+            { metric: '−60%', label: 'Seitengewicht auf Artikelseiten' },
+            { metric: '4,8', label: 'Redaktions-Zufriedenheit (von 5)' }
+          ]
+        }
+      },
+      pulse: {
+        gradient: 'linear-gradient(135deg,#14271A,#2E5A3D)', year: '2024',
+        stack: ['Vue', 'TypeScript', 'Node.js', 'WebSockets', 'Redis', 'ClickHouse'],
+        en: {
+          kind: 'Realtime dashboard', title: 'Pulse Dashboard',
+          tagline: 'A live analytics dashboard streaming thousands of events per second for a logistics operator.',
+          role: 'Full-stack', timeline: '4 months', client: 'Pulse Logistics',
+          overview: 'Dispatchers needed to see their fleet in real time — every pickup, delay and route change as it happened, not on a five-minute refresh. I built a dashboard that streams live events and stays smooth even under heavy load.',
+          challenge: 'Thousands of events arrive every second, and the UI has to reflect them instantly without ever janking or drowning the dispatcher in noise. The browser also had to survive being left open for a full shift.',
+          approach: 'Events flow over WebSockets into a client store that batches updates to one render per animation frame, so the UI stays at 60fps regardless of volume. Heavy aggregates are pre-computed in ClickHouse; the Vue front end subscribes only to the slices each panel needs.',
+          quote: 'Dispatchers react to problems as they happen, not five minutes later.',
+          results: [
+            { metric: '<1s', label: 'Event-to-screen latency' },
+            { metric: '60fps', label: 'Sustained under peak load' },
+            { metric: '8h+', label: 'Stable with no reload per shift' }
+          ]
+        },
+        de: {
+          kind: 'Echtzeit-Dashboard', title: 'Pulse Dashboard',
+          tagline: 'Ein Live-Analytics-Dashboard, das für einen Logistiker tausende Events pro Sekunde streamt.',
+          role: 'Full-Stack', timeline: '4 Monate', client: 'Pulse Logistics',
+          overview: 'Die Disposition musste ihre Flotte in Echtzeit sehen — jede Abholung, Verzögerung und Routenänderung, sobald sie passiert, nicht im Fünf-Minuten-Takt. Ich habe ein Dashboard gebaut, das Live-Events streamt und selbst unter hoher Last flüssig bleibt.',
+          challenge: 'Tausende Events treffen pro Sekunde ein, und die UI muss sie sofort abbilden — ohne zu ruckeln oder die Disponenten in Rauschen zu ertränken. Der Browser musste außerdem eine ganze Schicht lang geöffnet überstehen.',
+          approach: 'Events fließen über WebSockets in einen Client-Store, der Updates auf ein Render pro Animation-Frame bündelt, sodass die UI unabhängig vom Volumen bei 60fps bleibt. Schwere Aggregate werden in ClickHouse vorberechnet; das Vue-Frontend abonniert nur die Ausschnitte, die jedes Panel braucht.',
+          quote: 'Disponenten reagieren auf Probleme, während sie passieren — nicht fünf Minuten später.',
+          results: [
+            { metric: '<1s', label: 'Latenz vom Event bis zum Bildschirm' },
+            { metric: '60fps', label: 'Stabil unter Spitzenlast' },
+            { metric: '8h+', label: 'Stabil ohne Reload pro Schicht' }
+          ]
+        }
+      }
+    };
+  }
+
+  labels() {
+    return {
+      en: {
+        back: 'Back to portfolio', back_home: 'Back to home',
+        role_k: 'Role', timeline_k: 'Timeline', client_k: 'Client',
+        overview_h: 'Overview', challenge_h: 'The challenge', approach_h: 'The approach',
+        stack_h: 'Built with', results_h: 'Results',
+        cta_eyebrow: 'Like what you see?', cta_title: "Let's build yours next.", cta_btn: 'Start a project',
+        more_h: 'More projects'
+      },
+      de: {
+        back: 'Zurück zum Portfolio', back_home: 'Zur Startseite',
+        role_k: 'Rolle', timeline_k: 'Zeitraum', client_k: 'Kunde',
+        overview_h: 'Überblick', challenge_h: 'Die Herausforderung', approach_h: 'Der Ansatz',
+        stack_h: 'Gebaut mit', results_h: 'Ergebnisse',
+        cta_eyebrow: 'Gefällt Ihnen das?', cta_title: 'Bauen wir als Nächstes Ihres.', cta_btn: 'Projekt starten',
+        more_h: 'Weitere Projekte'
+      }
+    };
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const slug = this.state.slug;
+    const all = this.data();
+    const base = all[slug] || all.forsthaus;
+    const loc = base[lang];
+    const p = Object.assign({ gradient: base.gradient, year: base.year, stack: base.stack }, loc);
+    const others = Object.keys(all)
+      .filter(k => k !== slug)
+      .map(k => ({ slug: k, gradient: all[k].gradient, kind: all[k][lang].kind, title: all[k][lang].title }));
+    return {
+      t: this.labels()[lang],
+      p,
+      others,
+      galleryShots: ['Key screen', 'A flow step', 'Empty state'],
+      themeClass: this.state.dark ? 'dark' : '',
+      markSrc: this.state.dark ? 'mark-forest-dark.svg' : 'mark-forest.svg',
+      themeIcon: this.state.dark ? '☾' : '☀',
+      otherLang: lang === 'en' ? 'DE' : 'EN',
+      toggleTheme: this.toggleTheme,
+      toggleLang: this.toggleLang
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -8,7 +8,8 @@
     "dev": "next dev --port 3099",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "webp": "node scripts/to-webp.mjs"
   },
   "keywords": [],
   "author": "",

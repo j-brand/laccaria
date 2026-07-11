@@ -80,6 +80,14 @@
 /* ── Base ─────────────────────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
 
+/* Tailwind v4's Preflight no longer sets `cursor: pointer` on buttons, so
+   native <button>s show the default arrow. Restore the pointer for enabled
+   controls (disabled ones keep `disabled:cursor-not-allowed`). */
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
 body {
   background: var(--bg);
   color: var(--fg);
@@ -130,6 +138,18 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Mobile menu — slide/fade the drawer in from under the header ─────────── */
+@keyframes menu-drawer-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes menu-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.menu-drawer { animation: menu-drawer-in .22s cubic-bezier(0.16, 1, 0.3, 1); }
+.menu-backdrop { animation: menu-backdrop-in .22s ease; }
 
 /* 1px-border "cut" card: outer frame provides the border, inner the surface.
    Apply a chamfer-* utility to BOTH the .cut-frame and .cut-inner elements. */

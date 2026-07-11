@@ -8,15 +8,15 @@ const LINKS = [
   {label: 'Email', value: EMAIL, href: `mailto:${EMAIL}`, Icon: Mail, external: false},
   {
     label: 'GitHub',
-    value: 'github.com/johannesbrand',
-    href: 'https://github.com/johannesbrand',
+    value: 'github.com/j-brand',
+    href: 'https://github.com/j-brand',
     Icon: GitHub,
     external: true
   },
   {
     label: 'LinkedIn',
-    value: 'in/johannesbrand',
-    href: 'https://linkedin.com/in/johannesbrand',
+    value: 'in/joh-brand',
+    href: 'https://linkedin.com/in/joh-brand',
     Icon: LinkedIn,
     external: true
   }

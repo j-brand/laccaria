@@ -53,6 +53,13 @@ const nextConfig: NextConfig = {
   // reverse proxy on a custom host, allow that origin so assets/HMR load and the
   // app hydrates. Dev-only setting — it has no effect on production builds.
   allowedDevOrigins: ['laccaria.blacknectar.de'],
+  images: {
+    // Project screenshots carry fine UI text that softens at the next/image
+    // default re-encode quality (75). Whitelist a higher quality so the hero
+    // and card banners stay crisp on high-DPR / 4K displays (opt-in per Image
+    // via `quality={90}`; 75 stays available for everything else).
+    qualities: [75, 90]
+  },
   async headers() {
     return [{source: '/:path*', headers: securityHeaders}];
   }

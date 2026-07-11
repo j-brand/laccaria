@@ -1,0 +1,84 @@
+---
+title: "CLICK:report"
+summary: "SaaS platform that automates sustainability reporting for SMEs — AI-assisted text generation, multilingual PDF reports and a modular standards toolkit."
+year: 2026
+stack: ["Laravel", "Livewire", "Filament", "Tailwind CSS", "PHP", "MySQL", "Laravel AI SDK", "Gotenberg"]
+cover: "/projects/clickreport/hero.webp"
+featured: true
+kind: "Laravel SaaS application"
+tagline: "A web application that generates sustainability reports against configurable standards (currently VSME for SMEs) — from answering the questions to the finished PDF."
+gradient: "linear-gradient(135deg,#0B3D2E,#3BAA5F)"
+role: "Concept & full-stack development"
+timeline: "2025–2026"
+client: "Click Report"
+url: "https://clickreport.de"
+results:
+  - metric: "99"
+    label: "Lighthouse performance"
+  - metric: "100"
+    label: "Lighthouse SEO & best practices"
+  - metric: "0.6 s"
+    label: "Largest Contentful Paint"
+hero: "/projects/clickreport/hero.webp"
+shots:
+  desktop: "/projects/clickreport/desktop_thumb.webp"
+  desktopFull: "/projects/clickreport/desktop.webp"
+  mobile: "/projects/clickreport/mobile_thumb.webp"
+  mobileFull: "/projects/clickreport/mobile.webp"
+gallery:
+  - src: "/projects/clickreport/questionnaire.webp"
+    thumb: "/projects/clickreport/questionnaire_thumb.webp"
+    width: 1793
+    height: 2057
+    eyebrow: "Questionnaire"
+    alt: "Guided questionnaire for answering the report questions"
+  - src: "/projects/clickreport/dashboard.webp"
+    thumb: "/projects/clickreport/dashboard_thumb.webp"
+    width: 1685
+    height: 2495
+    eyebrow: "Dashboard"
+    alt: "Dashboard with report progress and open tasks"
+  - src: "/projects/clickreport/backend.webp"
+    thumb: "/projects/clickreport/backend_thumb.webp"
+    width: 1685
+    height: 1982
+    eyebrow: "Admin backend"
+    alt: "Filament admin area with usage and monitoring metrics"
+  - src: "/projects/clickreport/team.webp"
+    thumb: "/projects/clickreport/team_thumb.webp"
+    width: 1685
+    height: 1756
+    eyebrow: "Team"
+    alt: "User and role management within the company"
+---
+
+## Overview
+
+Click Report is a web application that lets small and medium-sized enterprises
+produce sustainability reports automatically — with no prior knowledge and no
+external consultants. The platform walks users through a guided questionnaire, uses
+AI to turn their answers into the finished report copy, and delivers a professionally
+typeset PDF that follows a recognised standard (currently VSME for SMEs).
+
+## The challenge
+
+Sustainability reporting is time-consuming, expensive and technically demanding for
+SMEs. Requirements differ from standard to standard, the copy has to exist in several
+languages, and the result still needs to look consistent and compliant. What was
+needed was a solution that covered the entire process — from data collection to a
+print-ready document — while staying flexible enough to add further standards without
+much effort.
+
+## The approach
+
+I built the application as a Laravel SaaS with a Livewire frontend and a Filament
+admin backend. At its core is a modular standards architecture: each sustainability
+standard is a self-contained module, so new standards can be added without touching
+existing code. The actual text generation runs through the Laravel AI SDK: users'
+answers are passed to a language model in anonymised form, which turns them into
+multilingual report copy. HTML is rendered from Blade templates and converted into a
+finished PDF via Gotenberg. A particular focus was data protection — personal data is
+automatically pseudonymised before every AI request.
+
+> From the first question to the finished PDF — AI-assisted, multilingual and
+> standards-compliant, without a single consultant's fee.

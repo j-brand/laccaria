@@ -41,7 +41,7 @@ export function pathFor(locale: string, path = ''): string {
 
 /**
  * Canonical + hreflang alternates for a page. `path` is the locale-agnostic
- * route (`''` for home, `'/contact'`, `'/projects/acme-shop'`, …).
+ * route (`''` for home, `'/contact'`, `'/projects/clickreport'`, …).
  * `x-default` points at the default locale.
  */
 export function buildAlternates(

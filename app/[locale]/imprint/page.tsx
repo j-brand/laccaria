@@ -28,18 +28,47 @@ export default async function ImprintPage({
   const {locale} = await params;
   setRequestLocale(locale);
   const t = await getTranslations('Imprint');
+  const addressLines = t.raw('addressLines') as string[];
 
   return (
     <Section title={t('title')} divider={false} className="pt-10">
-      <div className="max-w-[62ch] space-y-4 leading-relaxed text-fg-muted">
-        <p>{t('intro')}</p>
-        {/* TODO: Add your legal details (name, address, contact, VAT id). */}
-        <address className="not-italic">
-          <p>Johannes Mustermann</p>
-          <p>Musterstraße 1</p>
-          <p>12345 Musterstadt</p>
-          <p>johannes@blackbeetle.de</p>
-        </address>
+      <div className="max-w-[62ch] space-y-8 leading-relaxed text-fg-muted">
+        <div className="space-y-2">
+          <h2 className="font-medium text-fg">{t('providerHeading')}</h2>
+          <p className="text-sm text-fg-subtle">{t('providerNote')}</p>
+          <address className="not-italic">
+            <p>{t('name')}</p>
+            {addressLines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </address>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="font-medium text-fg">{t('contactHeading')}</h2>
+          <p>
+            {t('emailLabel')}:{' '}
+            <a href={`mailto:${t('email')}`} className="text-accent-text hover:underline">
+              {t('email')}
+            </a>
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="font-medium text-fg">{t('responsibleHeading')}</h2>
+          <p className="text-sm text-fg-subtle">{t('responsibleNote')}</p>
+          <address className="not-italic">
+            <p>{t('name')}</p>
+            {addressLines.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </address>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="font-medium text-fg">{t('disputeHeading')}</h2>
+          <p>{t('dispute')}</p>
+        </div>
       </div>
     </Section>
   );

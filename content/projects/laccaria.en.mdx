@@ -1,0 +1,59 @@
+---
+title: "Laccaria"
+summary: "The site you're reading right now — my bilingual portfolio and studio site, built on Next.js 16 and React 19 with a hand-rolled design system, MDX case studies and near-perfect Core Web Vitals."
+year: 2026
+stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "next-intl", "MDX", "Swiper"]
+cover: "/projects/laccaria/hero.webp"
+featured: false
+kind: "Personal portfolio site"
+tagline: "The site you're on right now — a bilingual (DE/EN) portfolio on Next.js 16 and React 19, with a bespoke design system and MDX-driven case studies."
+gradient: "linear-gradient(135deg,#2E1A47,#7C3AED)"
+role: "Design & full-stack development"
+timeline: "2026"
+client: "Self-initiated"
+url: "https://laccaria.de"
+results:
+  - metric: "99"
+    label: "Lighthouse performance"
+  - metric: "100"
+    label: "Accessibility & SEO"
+  - metric: "2"
+    label: "Languages, one codebase"
+hero: "/projects/laccaria/hero.webp"
+shots:
+  desktop: "/projects/laccaria/desktop_thumb.webp"
+  desktopFull: "/projects/laccaria/desktop.webp"
+  mobile: "/projects/laccaria/mobile_thumb.webp"
+  mobileFull: "/projects/laccaria/mobile.webp"
+---
+
+## Overview
+
+laccaria.de is my own home on the web — a small, content-light marketing and
+portfolio site that doubles as a proving ground for the stack I recommend to
+clients. One rich landing page introduces who I am and what I do; the projects
+section tells the story behind selected builds; and everything ships in both
+German and English from a single codebase.
+
+## The challenge
+
+A developer's own site has to practise what it preaches. It needed to be genuinely
+fast, fully accessible and bilingual without turning into a maintenance burden — no
+CMS to babysit, no database to run, and no duplicated content trees drifting out of
+sync between languages. At the same time it had to look distinct: a personal brand,
+not another template.
+
+## The approach
+
+I built it on Next.js 16 (App Router) and React 19 with strict TypeScript. Content
+lives as MDX with typed frontmatter — one file per locale per project — so case
+studies read like documents, not database rows. Internationalisation runs through
+next-intl with locale-segment routing; German is served unprefixed and English
+under /en, with a shared message tree that keeps both languages honest. The visual
+layer is a bespoke Tailwind CSS v4 design system — chamfered frames, a mono
+eyebrow rhythm and a light/dark theme — with Swiper powering the featured-projects
+slider. SEO metadata, hreflang alternates, the sitemap and JSON-LD are all derived
+from a single origin, so there is nothing to hand-maintain.
+
+> A site that practises what it preaches: fast, accessible and bilingual, with the
+> content as plain files and nothing to babysit.

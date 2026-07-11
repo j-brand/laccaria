@@ -108,6 +108,9 @@ proxy.ts                # next-intl locale routing (Next 16 renamed middleware -
 - ❌ Don't introduce a CMS or database — content is MDX + message JSON.
 - ❌ Don't import from `next/link`/`next/navigation` directly for internal links.
 - ❌ Don't leave one locale's translations behind.
+- ❌ Don't try to verify visual appearance via a browser plugin/MCP — none is
+  installed and none is needed. **Johannes checks the visual appearance himself.**
+  Make the change, describe what to look at, and leave the visual review to him.
 
 ## Skills
 

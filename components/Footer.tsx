@@ -2,6 +2,8 @@ import {getTranslations} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 import Container from '@/components/ui/Container';
 import Mark from '@/components/ui/Mark';
+import LocaleSwitcher from '@/components/ui/LocaleSwitcher';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export default async function Footer() {
   const t = await getTranslations('Footer');
@@ -32,6 +34,10 @@ export default async function Footer() {
             {t('tagline')}
           </span>
         </nav>
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher />
+          <ThemeToggle />
+        </div>
       </Container>
     </footer>
   );

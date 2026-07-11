@@ -4,8 +4,6 @@ import {useEffect, useRef, useState} from 'react';
 import type {CSSProperties} from 'react';
 import {Link} from '@/i18n/navigation';
 import {Menu, Close} from '@/components/ui/icons';
-import LocaleSwitcher from '@/components/ui/LocaleSwitcher';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 
 type NavItem = {href: string; label: string};
 
@@ -108,13 +106,13 @@ export default function MobileMenu({
             aria-hidden="true"
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="fixed inset-x-0 bottom-0 top-16 z-20 cursor-default bg-black/40"
+            className="menu-backdrop fixed inset-x-0 bottom-0 top-16 z-20 cursor-default bg-black/40"
           />
 
           <div
             ref={drawerRef}
             id={DRAWER_ID}
-            className="absolute inset-x-0 top-16 z-30 border-b border-line bg-bg backdrop-blur-md"
+            className="menu-drawer absolute inset-x-0 top-16 z-30 border-b border-line bg-bg backdrop-blur-md"
           >
             <nav
               aria-label={navLabel}
@@ -139,11 +137,6 @@ export default function MobileMenu({
               >
                 {hireLabel}
               </Link>
-
-              <div className="mt-3 flex items-center gap-2 border-t border-line pt-3">
-                <LocaleSwitcher />
-                <ThemeToggle />
-              </div>
             </nav>
           </div>
         </>

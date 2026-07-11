@@ -1,8 +1,6 @@
 import {getTranslations} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 import Container from '@/components/ui/Container';
-import LocaleSwitcher from '@/components/ui/LocaleSwitcher';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import Mark from '@/components/ui/Mark';
 import MobileMenu from '@/components/MobileMenu';
 
@@ -50,8 +48,6 @@ export default async function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <LocaleSwitcher />
-          <ThemeToggle />
           <Link
             href="/contact"
             style={{'--c': '7px'} as React.CSSProperties}

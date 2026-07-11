@@ -7,6 +7,21 @@ export {DEFAULT_GRADIENT} from './gradients';
 
 export type ProjectResult = {metric: string; label: string};
 
+export type ProjectImage = {
+  /** Full-resolution (often tall) screenshot shown scrollable in the lightbox. */
+  src: string;
+  alt: string;
+  /** Small mono eyebrow shown above the caption title in the slider (optional). */
+  eyebrow?: string;
+  /** Cropped preview for the slider tile; falls back to `src` when omitted. */
+  thumb?: string;
+  /** Intrinsic px of the full image — enables next/image in the lightbox (no CLS). */
+  width?: number;
+  height?: number;
+  /** Tall phone screenshot — shown at half width in the lightbox to stay readable. */
+  portrait?: boolean;
+};
+
 export type ProjectFrontmatter = {
   title: string;
   summary: string;
@@ -20,13 +35,29 @@ export type ProjectFrontmatter = {
   kind?: string;
   /** One-line lead under the title on the detail page. */
   tagline?: string;
-  /** CSS gradient used for the banner/card visual (images come later). */
+  /** CSS gradient used for the banner/card visual (fallback when no hero image). */
   gradient?: string;
   role?: string;
   timeline?: string;
   client?: string;
   /** Headline metrics for the detail-page sidebar. */
   results?: ProjectResult[];
+  /** 16:9 desktop screenshot shown in the browser-chrome hero. */
+  hero?: string;
+  /**
+   * Responsive pair: a desktop shot with an overlapping phone shot. `desktop`/
+   * `mobile` are the cropped previews shown in the tiles; `desktopFull`/
+   * `mobileFull` are the full-page screenshots loaded in the lightbox on click
+   * (each falls back to its preview when omitted).
+   */
+  shots?: {
+    desktop?: string;
+    desktopFull?: string;
+    mobile?: string;
+    mobileFull?: string;
+  };
+  /** Detail gallery grid (click a thumb to enlarge). */
+  gallery?: ProjectImage[];
 };
 
 export type Project = ProjectFrontmatter & {slug: string};

@@ -24,8 +24,8 @@ export const AUTHOR = {
 
 /** Public profiles — used for the Person `sameAs` in structured data. */
 export const SOCIAL = [
-  'https://github.com/johannesbrand',
-  'https://linkedin.com/in/johannesbrand'
+  'https://github.com/j-brand',
+  'https://linkedin.com/in/joh-brand'
 ] as const;
 
 /** Maps our locale codes to OpenGraph `og:locale` values. */

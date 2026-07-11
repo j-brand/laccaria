@@ -15,25 +15,25 @@
   "Hero": {
     "status": "Available for new projects",
     "eyebrow": "Full-stack web developer",
-    "title": "Websites and web apps, built with intent.",
-    "sub": "I'm Johannes Brand — I design, build and ship fast, reliable web products, from the database to the last pixel.",
+    "title": "Your web project deserves someone who cares.",
+    "sub": "I'm Johannes — I design, build and ship fast, reliable web products, from the database to the last pixel.",
     "cta1": "See my work",
     "cta2": "Get in touch",
-    "stat1n": "8+",
-    "stat1l": "Years building for the web",
-    "stat2n": "40+",
-    "stat2l": "Projects shipped",
-    "stat3n": "99",
-    "stat3l": "Typical Lighthouse score"
+    "stat1n": "10+",
+    "stat1l": "Years building for the web — agency & freelance",
+    "stat2n": "1",
+    "stat2l": "Point of contact — from first enquiry to launch",
+    "stat3n": "∞",
+    "stat3l": "Support — I take on and maintain existing sites too"
   },
   "About": {
     "eyebrow": "About",
     "portraitAlt": "Portrait of Johannes",
-    "title": "A one-person studio — honest, fast, no filler.",
-    "p1": "For the better part of a decade I have helped startups, agencies and small businesses turn ideas into web products that people actually enjoy using. I care about the details others skip: accessibility, performance budgets, and code the next developer can read.",
-    "p2": "You work directly with me, not through layers of account managers. That means clear communication, honest timelines, and a codebase you own outright when the project ships.",
+    "title": "Web development is my craft.",
+    "p1": "I've been working on the web for over a decade — after several years at an agency, today I work independently for start-ups, agencies and small businesses. What drives me is the invisible things: that a site loads fast, is usable for everyone and stays maintainable five years from now.",
+    "p2": "And because good software doesn't end at launch, I like to stay involved — with my own projects just as much as with existing ones that someone else built before me.",
     "factLocationKey": "Based in",
-    "factLocationValue": "Berlin, Germany",
+    "factLocationValue": "Leipzig, Germany",
     "factFocusKey": "Focus",
     "factFocusValue": "Frontend & full-stack",
     "factAvailabilityKey": "Availability",
@@ -48,15 +48,15 @@
     "items": {
       "frontend": {
         "title": "Frontend development",
-        "description": "Pixel-accurate, accessible interfaces in React, Vue and modern TypeScript — fast on every device."
+        "description": "Pixel-accurate, accessible interfaces in Vue, modern JavaScript and Tailwind CSS — fast on every device."
       },
       "backend": {
         "title": "Backend & APIs",
-        "description": "Solid REST and GraphQL APIs, auth, databases and integrations built on Node.js and PostgreSQL."
+        "description": "Solid REST APIs, auth, databases and integrations built on Laravel, PHP and MySQL."
       },
       "fullstack": {
         "title": "Full-stack web apps",
-        "description": "End-to-end products — from data model to deployment — with Next.js and a sensible, boring stack."
+        "description": "End-to-end products — from data model to deployment — with Laravel, Livewire and a sensible, boring stack."
       },
       "wordpress": {
         "title": "WordPress & CMS",
@@ -71,10 +71,10 @@
   "Stack": {
     "eyebrow": "Toolbox",
     "title": "Tech stack",
-    "subtitle": "The tools I reach for. Pragmatic, well-supported, and chosen to last.",
+    "subtitle": "The tools I reach for. Pragmatic, well-supported, and chosen to last. I pick existing projects up right where they are — whatever the stack.",
     "group1": "Frontend",
-    "group2": "Backend & data",
-    "group3": "Tooling & infra"
+    "group2": "Backend & CMS",
+    "group3": "Platforms & operations"
   },
   "FeaturedProjects": {
     "eyebrow": "Selected work",
@@ -107,6 +107,9 @@
     "approachHeading": "The approach",
     "builtWithHeading": "Built with",
     "resultsHeading": "Results",
+    "responsiveHeading": "Responsive",
+    "galleryHeading": "Detail gallery",
+    "galleryClose": "Close image",
     "ctaEyebrow": "Like what you see?",
     "ctaTitle": "Let's build yours next.",
     "ctaButton": "Start a project",
@@ -139,12 +142,333 @@
   "Imprint": {
     "title": "Legal notice",
     "description": "Legal notice and provider identification for the website of Johannes Brand, freelance web developer.",
-    "intro": "Information pursuant to § 5 TMG."
+    "providerHeading": "Service provider",
+    "providerNote": "Information pursuant to § 5 DDG",
+    "name": "Johannes Brand",
+    "addressLines": [
+      "c/o POSTFLEX PFX-091-834",
+      "Emsdettener Straße 10",
+      "48268 Greven"
+    ],
+    "contactHeading": "Contact",
+    "emailLabel": "Email",
+    "email": "info@laccaria.de",
+    "responsibleHeading": "Responsible for content",
+    "responsibleNote": "Responsible pursuant to § 18 (2) MStV",
+    "disputeHeading": "Consumer dispute resolution",
+    "dispute": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
   },
   "Privacy": {
     "title": "Privacy policy",
     "description": "How personal data is handled on the website of Johannes Brand, freelance web developer.",
-    "intro": "Information on how your data is handled."
+    "sections": [
+      {
+        "heading": "1. Data protection at a glance",
+        "blocks": [
+          {
+            "type": "h3",
+            "text": "General information"
+          },
+          {
+            "type": "p",
+            "text": "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data by which you can be personally identified. For detailed information on the subject of data protection, please refer to our privacy policy set out below this text."
+          },
+          {
+            "type": "h3",
+            "text": "Data collection on this website"
+          },
+          {
+            "type": "h4",
+            "text": "Who is responsible for the data collection on this website?"
+          },
+          {
+            "type": "p",
+            "text": "Data processing on this website is carried out by the website operator. You can find their contact details in the section “Information on the controller” in this privacy policy."
+          },
+          {
+            "type": "h4",
+            "text": "How do we collect your data?"
+          },
+          {
+            "type": "p",
+            "text": "On the one hand, your data is collected when you provide it to us. This may, for example, be data you enter into a contact form."
+          },
+          {
+            "type": "p",
+            "text": "Other data is collected automatically or with your consent by our IT systems when you visit the website. This is primarily technical data (e.g. internet browser, operating system, or the time the page was accessed). This data is collected automatically as soon as you enter this website."
+          },
+          {
+            "type": "h4",
+            "text": "What do we use your data for?"
+          },
+          {
+            "type": "p",
+            "text": "Part of the data is collected to ensure the website is provided without errors. Other data may be used to analyse your user behaviour. Where contracts can be concluded or initiated via the website, the transmitted data is also processed for contract offers, orders, or other enquiries."
+          },
+          {
+            "type": "h4",
+            "text": "What rights do you have regarding your data?"
+          },
+          {
+            "type": "p",
+            "text": "You have the right at any time to receive information free of charge about the origin, recipients, and purpose of your stored personal data. You also have the right to request that this data be corrected or deleted. If you have given consent to data processing, you can revoke this consent at any time for the future. In addition, under certain circumstances you have the right to request that the processing of your personal data be restricted. You also have a right to lodge a complaint with the competent supervisory authority."
+          },
+          {
+            "type": "p",
+            "text": "You can contact us at any time regarding this and other questions on the subject of data protection."
+          }
+        ]
+      },
+      {
+        "heading": "2. Hosting",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "We host the content of our website with the following provider:"
+          },
+          {
+            "type": "h3",
+            "text": "External hosting"
+          },
+          {
+            "type": "p",
+            "text": "This website is hosted externally. The personal data collected on this website is stored on the servers of the host(s). This may primarily include IP addresses, contact requests, meta and communication data, contract data, contact details, names, website access, and other data generated via a website."
+          },
+          {
+            "type": "p",
+            "text": "External hosting is carried out for the purpose of fulfilling the contract with our potential and existing customers (Art. 6(1)(b) GDPR) and in the interest of a secure, fast, and efficient provision of our online offering by a professional provider (Art. 6(1)(f) GDPR). Where corresponding consent has been requested, processing is carried out exclusively on the basis of Art. 6(1)(a) GDPR and § 25(1) TDDDG, insofar as the consent covers the storage of cookies or access to information on the user’s device (e.g. device fingerprinting) within the meaning of the TDDDG. Consent can be revoked at any time."
+          },
+          {
+            "type": "p",
+            "text": "Our host(s) will process your data only to the extent necessary to fulfil their performance obligations and will follow our instructions with regard to this data."
+          },
+          {
+            "type": "p",
+            "text": "We use the following host(s):"
+          },
+          {
+            "type": "p",
+            "text": "Netcup"
+          },
+          {
+            "type": "h4",
+            "text": "Data processing agreement"
+          },
+          {
+            "type": "p",
+            "text": "We have concluded a data processing agreement (DPA) for the use of the above-mentioned service. This is a contract required under data protection law, ensuring that the provider processes the personal data of our website visitors only in accordance with our instructions and in compliance with the GDPR."
+          }
+        ]
+      },
+      {
+        "heading": "3. General information and mandatory information",
+        "blocks": [
+          {
+            "type": "h3",
+            "text": "Data protection"
+          },
+          {
+            "type": "p",
+            "text": "The operators of these pages take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy."
+          },
+          {
+            "type": "p",
+            "text": "When you use this website, various personal data is collected. Personal data is data by which you can be personally identified. This privacy policy explains what data we collect and what we use it for. It also explains how and for what purpose this is done."
+          },
+          {
+            "type": "p",
+            "text": "We point out that data transmission over the internet (e.g. when communicating by email) can have security gaps. Complete protection of data against access by third parties is not possible."
+          },
+          {
+            "type": "h3",
+            "text": "Information on the controller"
+          },
+          {
+            "type": "p",
+            "text": "The controller responsible for data processing on this website is:"
+          },
+          {
+            "type": "address",
+            "lines": [
+              "Johannes Brand",
+              "c/o POSTFLEX PFX-091-834",
+              "Emsdettener Straße 10",
+              "48268 Greven",
+              "Email: info@laccaria.de"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "The controller is the natural or legal person who alone or jointly with others determines the purposes and means of the processing of personal data (e.g. names, email addresses, etc.)."
+          },
+          {
+            "type": "h3",
+            "text": "Storage period"
+          },
+          {
+            "type": "p",
+            "text": "Unless a more specific storage period is stated within this privacy policy, your personal data will remain with us until the purpose for the data processing no longer applies. If you assert a legitimate request for deletion or revoke consent to data processing, your data will be deleted, unless we have other legally permissible reasons for storing your personal data (e.g. tax or commercial retention periods); in the latter case, deletion takes place once these reasons no longer apply."
+          },
+          {
+            "type": "h3",
+            "text": "General information on the legal bases for data processing on this website"
+          },
+          {
+            "type": "p",
+            "text": "If you have consented to data processing, we process your personal data on the basis of Art. 6(1)(a) GDPR or Art. 9(2)(a) GDPR, insofar as special categories of data pursuant to Art. 9(1) GDPR are processed. In the case of explicit consent to the transfer of personal data to third countries, data processing is also carried out on the basis of Art. 49(1)(a) GDPR. If you have consented to the storage of cookies or to access to information on your device (e.g. via device fingerprinting), data processing is additionally carried out on the basis of § 25(1) TDDDG. Consent can be revoked at any time. If your data is required for the performance of a contract or for pre-contractual measures, we process your data on the basis of Art. 6(1)(b) GDPR. Furthermore, we process your data where it is necessary for compliance with a legal obligation, on the basis of Art. 6(1)(c) GDPR. Data processing may also be carried out on the basis of our legitimate interest pursuant to Art. 6(1)(f) GDPR. Information on the relevant legal bases in each individual case is provided in the following paragraphs of this privacy policy."
+          },
+          {
+            "type": "h3",
+            "text": "Recipients of personal data"
+          },
+          {
+            "type": "p",
+            "text": "As part of our business activities, we work with various external parties. In some cases, this also requires the transfer of personal data to these external parties. We only pass on personal data to external parties where this is necessary within the scope of contract performance, where we are legally obliged to do so (e.g. transfer of data to tax authorities), where we have a legitimate interest pursuant to Art. 6(1)(f) GDPR in the transfer, or where another legal basis permits the data transfer. When using processors, we only pass on the personal data of our customers on the basis of a valid data processing agreement. In the case of joint processing, a joint processing agreement is concluded."
+          },
+          {
+            "type": "h3",
+            "text": "Revocation of your consent to data processing"
+          },
+          {
+            "type": "p",
+            "text": "Many data processing operations are only possible with your express consent. You can revoke consent you have already given at any time. The lawfulness of the data processing carried out up to the revocation remains unaffected by the revocation."
+          },
+          {
+            "type": "h3",
+            "text": "Right to object to data collection in special cases and to direct marketing (Art. 21 GDPR)"
+          },
+          {
+            "type": "p",
+            "text": "IF DATA PROCESSING IS CARRIED OUT ON THE BASIS OF ART. 6(1)(E) OR (F) GDPR, YOU HAVE THE RIGHT AT ANY TIME TO OBJECT TO THE PROCESSING OF YOUR PERSONAL DATA FOR REASONS ARISING FROM YOUR PARTICULAR SITUATION; THIS ALSO APPLIES TO PROFILING BASED ON THESE PROVISIONS. THE RESPECTIVE LEGAL BASIS ON WHICH PROCESSING IS BASED CAN BE FOUND IN THIS PRIVACY POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR AFFECTED PERSONAL DATA UNLESS WE CAN DEMONSTRATE COMPELLING LEGITIMATE GROUNDS FOR THE PROCESSING WHICH OVERRIDE YOUR INTERESTS, RIGHTS, AND FREEDOMS, OR THE PROCESSING SERVES THE ASSERTION, EXERCISE, OR DEFENCE OF LEGAL CLAIMS (OBJECTION PURSUANT TO ART. 21(1) GDPR)."
+          },
+          {
+            "type": "p",
+            "text": "IF YOUR PERSONAL DATA IS PROCESSED FOR THE PURPOSE OF DIRECT MARKETING, YOU HAVE THE RIGHT TO OBJECT AT ANY TIME TO THE PROCESSING OF PERSONAL DATA CONCERNING YOU FOR THE PURPOSE OF SUCH MARKETING; THIS ALSO APPLIES TO PROFILING INSOFAR AS IT IS RELATED TO SUCH DIRECT MARKETING. IF YOU OBJECT, YOUR PERSONAL DATA WILL SUBSEQUENTLY NO LONGER BE USED FOR THE PURPOSE OF DIRECT MARKETING (OBJECTION PURSUANT TO ART. 21(2) GDPR)."
+          },
+          {
+            "type": "h3",
+            "text": "Right to lodge a complaint with the competent supervisory authority"
+          },
+          {
+            "type": "p",
+            "text": "In the event of breaches of the GDPR, data subjects have the right to lodge a complaint with a supervisory authority, in particular in the Member State of their habitual residence, place of work, or place of the alleged infringement. This right to complain exists without prejudice to any other administrative or judicial remedies."
+          },
+          {
+            "type": "h3",
+            "text": "Right to data portability"
+          },
+          {
+            "type": "p",
+            "text": "You have the right to have data that we process automatically on the basis of your consent or in performance of a contract handed over to you or to a third party in a common, machine-readable format. If you request the direct transfer of the data to another controller, this will only be done insofar as it is technically feasible."
+          },
+          {
+            "type": "h3",
+            "text": "Information, correction, and deletion"
+          },
+          {
+            "type": "p",
+            "text": "Within the scope of the applicable statutory provisions, you have the right at any time to free information about your stored personal data, its origin and recipients, and the purpose of the data processing and, if applicable, a right to correction or deletion of this data. You can contact us at any time regarding this and other questions on the subject of personal data."
+          },
+          {
+            "type": "h3",
+            "text": "Right to restriction of processing"
+          },
+          {
+            "type": "p",
+            "text": "You have the right to request the restriction of the processing of your personal data. You can contact us at any time regarding this. The right to restriction of processing exists in the following cases:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "If you dispute the accuracy of your personal data stored by us, we usually need time to verify this. For the duration of the review, you have the right to request the restriction of the processing of your personal data.",
+              "If the processing of your personal data was/is unlawful, you can request the restriction of data processing instead of deletion.",
+              "If we no longer need your personal data but you require it for the exercise, defence, or assertion of legal claims, you have the right to request the restriction of the processing of your personal data instead of deletion.",
+              "If you have lodged an objection pursuant to Art. 21(1) GDPR, a balancing of your and our interests must be carried out. As long as it has not yet been determined whose interests prevail, you have the right to request the restriction of the processing of your personal data."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "If you have restricted the processing of your personal data, this data – apart from being stored – may only be processed with your consent or for the assertion, exercise, or defence of legal claims, or for the protection of the rights of another natural or legal person, or for reasons of important public interest of the European Union or a Member State."
+          },
+          {
+            "type": "h3",
+            "text": "SSL/TLS encryption"
+          },
+          {
+            "type": "p",
+            "text": "For security reasons and to protect the transmission of confidential content, such as orders or enquiries you send to us as the site operator, this site uses SSL/TLS encryption. You can recognise an encrypted connection by the fact that the browser’s address bar changes from “http://” to “https://” and by the lock symbol in your browser bar."
+          },
+          {
+            "type": "p",
+            "text": "When SSL/TLS encryption is activated, the data you transmit to us cannot be read by third parties."
+          }
+        ]
+      },
+      {
+        "heading": "4. Data collection on this website",
+        "blocks": [
+          {
+            "type": "h3",
+            "text": "Server log files"
+          },
+          {
+            "type": "p",
+            "text": "The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "browser type and browser version",
+              "operating system used",
+              "referrer URL",
+              "hostname of the accessing computer",
+              "time of the server request",
+              "IP address"
+            ]
+          },
+          {
+            "type": "p",
+            "text": "This data is not merged with other data sources."
+          },
+          {
+            "type": "p",
+            "text": "This data is collected on the basis of Art. 6(1)(f) GDPR. The website operator has a legitimate interest in the technically error-free presentation and optimisation of its website – for this, the server log files must be collected."
+          },
+          {
+            "type": "h3",
+            "text": "Contact form"
+          },
+          {
+            "type": "p",
+            "text": "If you send us enquiries via the contact form, your details from the enquiry form, including the contact data you provide there, will be stored by us for the purpose of processing the enquiry and in case of follow-up questions. We do not pass on this data without your consent."
+          },
+          {
+            "type": "p",
+            "text": "This data is processed on the basis of Art. 6(1)(b) GDPR, insofar as your enquiry is related to the performance of a contract or is necessary for the implementation of pre-contractual measures. In all other cases, processing is based on our legitimate interest in the effective handling of enquiries addressed to us (Art. 6(1)(f) GDPR) or on your consent (Art. 6(1)(a) GDPR) if this was requested; consent can be revoked at any time."
+          },
+          {
+            "type": "p",
+            "text": "The data you enter in the contact form remains with us until you request its deletion, revoke your consent to its storage, or the purpose for storing the data no longer applies (e.g. after your enquiry has been processed). Mandatory statutory provisions – in particular retention periods – remain unaffected."
+          },
+          {
+            "type": "h3",
+            "text": "Enquiry by email, telephone, or fax"
+          },
+          {
+            "type": "p",
+            "text": "If you contact us by email, telephone, or fax, your enquiry, including all personal data resulting from it (name, enquiry), will be stored and processed by us for the purpose of handling your request. We do not pass on this data without your consent."
+          },
+          {
+            "type": "p",
+            "text": "This data is processed on the basis of Art. 6(1)(b) GDPR, insofar as your enquiry is related to the performance of a contract or is necessary for the implementation of pre-contractual measures. In all other cases, processing is based on our legitimate interest in the effective handling of enquiries addressed to us (Art. 6(1)(f) GDPR) or on your consent (Art. 6(1)(a) GDPR) if this was requested; consent can be revoked at any time."
+          },
+          {
+            "type": "p",
+            "text": "The data you send to us via contact requests remains with us until you request its deletion, revoke your consent to its storage, or the purpose for storing the data no longer applies (e.g. after your request has been processed). Mandatory statutory provisions – in particular statutory retention periods – remain unaffected."
+          }
+        ]
+      }
+    ]
   },
   "Footer": {
     "rights": "© 2026 Johannes Brand",

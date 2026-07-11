@@ -1,0 +1,85 @@
+---
+title: "CLICK:report"
+summary: "SaaS-Plattform zur automatisierten Erstellung von Nachhaltigkeitsberichten für KMU — KI-gestützte Textgenerierung, mehrsprachige PDF-Reports und ein modularer Standard-Baukasten."
+year: 2026
+stack: ["Laravel", "Livewire", "Filament", "Tailwind CSS", "PHP", "MySQL", "Laravel AI SDK", "Gotenberg"]
+cover: "/projects/clickreport/hero.webp"
+featured: true
+kind: "Laravel-SaaS-Anwendung"
+tagline: "Eine Web-Anwendung, die Nachhaltigkeitsberichte nach konfigurierbaren Standards (aktuell VSME für KMU) automatisiert erzeugt — von der Fragebeantwortung bis zum fertigen PDF."
+gradient: "linear-gradient(135deg,#0B3D2E,#3BAA5F)"
+role: "Konzeption & Full-Stack-Entwicklung"
+timeline: "2025–2026"
+client: "Click Report"
+url: "https://clickreport.de"
+results:
+  - metric: "99"
+    label: "Lighthouse-Performance"
+  - metric: "100"
+    label: "Lighthouse SEO & Best Practices"
+  - metric: "0,6 s"
+    label: "Largest Contentful Paint"
+hero: "/projects/clickreport/hero.webp"
+shots:
+  desktop: "/projects/clickreport/desktop_thumb.webp"
+  desktopFull: "/projects/clickreport/desktop.webp"
+  mobile: "/projects/clickreport/mobile_thumb.webp"
+  mobileFull: "/projects/clickreport/mobile.webp"
+gallery:
+  - src: "/projects/clickreport/questionnaire.webp"
+    thumb: "/projects/clickreport/questionnaire_thumb.webp"
+    width: 1793
+    height: 2057
+    eyebrow: "Fragebogen"
+    alt: "Geführter Fragebogen zur Beantwortung der Berichtsfragen"
+  - src: "/projects/clickreport/dashboard.webp"
+    thumb: "/projects/clickreport/dashboard_thumb.webp"
+    width: 1685
+    height: 2495
+    eyebrow: "Dashboard"
+    alt: "Dashboard mit Berichtsfortschritt und offenen Aufgaben"
+  - src: "/projects/clickreport/backend.webp"
+    thumb: "/projects/clickreport/backend_thumb.webp"
+    width: 1685
+    height: 1982
+    eyebrow: "Admin-Backend"
+    alt: "Filament-Adminbereich mit Nutzungs- und Monitoring-Kennzahlen"
+  - src: "/projects/clickreport/team.webp"
+    thumb: "/projects/clickreport/team_thumb.webp"
+    width: 1685
+    height: 1756
+    eyebrow: "Team"
+    alt: "Benutzer- und Rollenverwaltung im Unternehmen"
+---
+
+## Überblick
+
+Click Report ist eine Web-Anwendung, mit der kleine und mittlere Unternehmen
+Nachhaltigkeitsberichte automatisiert erstellen können — ohne Vorwissen und ohne
+externe Beratung. Die Plattform führt durch einen geführten Fragebogen, generiert
+daraus mithilfe von KI die fertigen Berichtstexte und liefert am Ende ein
+professionell gesetztes PDF nach anerkanntem Standard (aktuell VSME für KMU).
+
+## Die Herausforderung
+
+Nachhaltigkeitsberichterstattung ist für KMU aufwendig, teuer und fachlich
+anspruchsvoll. Die Anforderungen unterscheiden sich je nach Standard, die Texte
+müssen in mehreren Sprachen vorliegen, und das Ergebnis soll trotzdem einheitlich
+und normkonform aussehen. Gefragt war eine Lösung, die diesen gesamten Prozess
+abbildet — von der Datenerhebung bis zum druckfertigen Dokument — und gleichzeitig
+so flexibel bleibt, dass sich weitere Standards ohne großen Aufwand ergänzen lassen.
+
+## Der Ansatz
+
+Ich habe die Anwendung als Laravel-SaaS mit Livewire-Frontend und einem
+Filament-Adminbackend aufgebaut. Kern ist eine modulare Standard-Architektur:
+Jeder Nachhaltigkeitsstandard ist ein in sich geschlossenes Modul, sodass neue
+Standards ergänzt werden können, ohne bestehenden Code anzufassen. Die eigentliche
+Textgenerierung läuft über das Laravel-AI-SDK: Antworten der Nutzer:innen werden
+anonymisiert an ein Sprachmodell übergeben, das daraus mehrsprachige Berichtstexte
+erstellt. Aus Blade-Vorlagen wird HTML gerendert und über Gotenberg in ein fertiges
+PDF überführt. Ein besonderer Fokus lag auf Datenschutz — personenbezogene Daten
+werden vor jeder KI-Anfrage automatisch pseudonymisiert.
+
+> Von der ersten Frage bis zum fertigen PDF — KI-gestützt, mehrsprachig und
+> normkonform, ganz ohne Beraterhonorar.

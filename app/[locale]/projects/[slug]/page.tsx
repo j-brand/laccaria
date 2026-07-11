@@ -8,6 +8,9 @@ import {routing} from '@/i18n/routing';
 import Container from '@/components/ui/Container';
 import {ArrowLeft, ArrowRight} from '@/components/ui/icons';
 import {mdxComponents} from '@/components/mdx-components';
+import BrowserFrame from '@/components/projects/BrowserFrame';
+import ResponsiveShots from '@/components/projects/ResponsiveShots';
+import ProjectGallery from '@/components/projects/ProjectGallery';
 import JsonLd from '@/components/seo/JsonLd';
 import {breadcrumbLd, projectLd} from '@/lib/structured-data';
 import {buildAlternates, buildOpenGraph} from '@/lib/seo';
@@ -111,15 +114,14 @@ export default async function ProjectDetailPage({
         {meta.tagline ?? meta.summary}
       </p>
 
-      {/* banner */}
-      <div
-        className="chamfer-xl lift relative mt-9 h-[280px] overflow-hidden"
-        style={{background: gradient}}
-      >
-        <span className="absolute bottom-6 left-6 font-display text-[clamp(2.4rem,7vw,4.4rem)] font-bold leading-none tracking-[-0.03em] text-white/15">
-          {meta.title}
-        </span>
-      </div>
+      {/* hero */}
+      <BrowserFrame
+        src={meta.hero}
+        alt={meta.title}
+        url={meta.url}
+        gradient={gradient}
+        title={meta.title}
+      />
 
       {/* meta row */}
       {metaRow.length > 0 && (
@@ -186,6 +188,24 @@ export default async function ProjectDetailPage({
           )}
         </aside>
       </div>
+
+      {/* responsive pair */}
+      <ResponsiveShots
+        desktop={meta.shots?.desktop}
+        desktopFull={meta.shots?.desktopFull}
+        mobile={meta.shots?.mobile}
+        mobileFull={meta.shots?.mobileFull}
+        heading={t('responsiveHeading')}
+        title={meta.title}
+        closeLabel={t('galleryClose')}
+      />
+
+      {/* detail gallery */}
+      <ProjectGallery
+        images={meta.gallery ?? []}
+        heading={t('galleryHeading')}
+        closeLabel={t('galleryClose')}
+      />
 
       {/* CTA */}
       <div
