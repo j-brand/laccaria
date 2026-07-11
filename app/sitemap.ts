@@ -12,7 +12,8 @@ const STATIC_ROUTES: {path: string; changeFrequency: MetadataRoute.Sitemap[numbe
   {path: '/projects', changeFrequency: 'weekly', priority: 0.8},
   {path: '/contact', changeFrequency: 'yearly', priority: 0.7},
   {path: '/imprint', changeFrequency: 'yearly', priority: 0.2},
-  {path: '/privacy', changeFrequency: 'yearly', priority: 0.2}
+  {path: '/privacy', changeFrequency: 'yearly', priority: 0.2},
+  {path: '/accessibility', changeFrequency: 'yearly', priority: 0.2}
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

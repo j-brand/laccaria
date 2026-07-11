@@ -153,8 +153,7 @@
     "contactHeading": "Kontakt",
     "emailLabel": "E-Mail",
     "email": "info@laccaria.de",
-    "responsibleHeading": "Redaktionell verantwortlich",
-    "responsibleNote": "Verantwortlich gemäß § 18 Abs. 2 MStV",
+    "responsibleNote": "Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV",
     "disputeHeading": "Verbraucherstreitbeilegung",
     "dispute": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
   },
@@ -470,12 +469,28 @@
       }
     ]
   },
+  "Accessibility": {
+    "title": "Erklärung zur Barrierefreiheit",
+    "description": "Erklärung zur Barrierefreiheit für die Website von Johannes Brand, freiberuflicher Webentwickler.",
+    "updated": "Stand: Juni 2025",
+    "intro": "Ich bin bemüht, mein Webangebot unter laccaria.de barrierefrei zugänglich zu machen.",
+    "conformanceHeading": "Konformitätsstatus",
+    "conformance": "Mein Angebot ist teilweise konform mit den Anforderungen der WCAG 2.1 Level AA. Ich arbeite kontinuierlich daran, die Barrierefreiheit zu verbessern.",
+    "limitationsHeading": "Bekannte Einschränkungen",
+    "limitations": "Einzelne Bereiche meines Angebots erfüllen die Anforderungen noch nicht vollständig. Ich überprüfe und verbessere diese schrittweise.",
+    "contactHeading": "Feedback und Kontakt",
+    "contactIntro": "Wenn Sie auf Barrieren stoßen, freue ich mich über Ihre Rückmeldung:",
+    "emailLabel": "E-Mail",
+    "email": "info@laccaria.de",
+    "responseNote": "Ich bemühe mich, Ihre Anfrage innerhalb von 4 Wochen zu beantworten."
+  },
   "Footer": {
-    "rights": "© 2026 Johannes Brand",
-    "tagline": "Mit Sorgfalt gebaut.",
     "imprint": "Impressum",
     "privacy": "Datenschutz",
-    "navLabel": "Rechtliches"
+    "navLabel": "Rechtliches",
+    "accessibility": "Barrierefreiheit",
+    "language": "Sprache",
+    "theme": "Design"
   },
   "LocaleSwitcher": {
     "label": "Sprache wechseln",

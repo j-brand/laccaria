@@ -5,9 +5,8 @@ import {useLocale, useTranslations} from 'next-intl';
 import type {CSSProperties} from 'react';
 import {usePathname, useRouter} from '@/i18n/navigation';
 
-// Chamfered 1px border via the cut-frame / cut-inner pattern; a plain inset
-// box-shadow would be clipped away at the bevelled corners by `chamfer-quad`.
-const chamfer = {'--c': '6px', '--bd': 'var(--line-strong)'} as CSSProperties;
+const track = {'--c': '6px'} as CSSProperties;
+const knob = {'--c': '5px'} as CSSProperties;
 
 export default function LocaleSwitcher() {
   const t = useTranslations('LocaleSwitcher');
@@ -16,7 +15,8 @@ export default function LocaleSwitcher() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const next = locale === 'en' ? 'de' : 'en';
+  const isEn = locale === 'en';
+  const next = isEn ? 'de' : 'en';
 
   function onSelect() {
     startTransition(() => {
@@ -31,11 +31,21 @@ export default function LocaleSwitcher() {
       onClick={onSelect}
       disabled={isPending}
       aria-label={t('label')}
-      style={chamfer}
-      className="focus-ring cut-frame chamfer-quad block"
+      aria-pressed={isEn}
+      style={{...track, background: 'var(--line-strong)'}}
+      className="focus-ring chamfer-quad relative h-8 w-14.5 transition-colors disabled:opacity-70"
     >
-      <span className="cut-inner chamfer-quad grid h-8.5 w-10 place-items-center font-mono text-xs font-semibold text-fg-muted transition-colors hover:text-fg">
-        {next.toUpperCase()}
+      <span
+        style={{
+          ...knob,
+          background: 'var(--card)',
+          transform: isEn ? 'translateX(26px)' : 'translateX(0)'
+        }}
+        className="chamfer-quad absolute left-1 top-1 grid size-6 place-items-center transition-transform duration-300"
+      >
+        <span className="font-mono text-[10px] font-semibold text-fg">
+          {locale.toUpperCase()}
+        </span>
       </span>
     </button>
   );

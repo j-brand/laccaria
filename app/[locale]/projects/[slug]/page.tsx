@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import type {CSSProperties} from 'react';
+import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {MDXRemote} from 'next-mdx-remote/rsc';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
@@ -244,9 +245,20 @@ export default async function ProjectDetailPage({
               >
                 <div className="cut-inner chamfer-md overflow-hidden">
                   <div
-                    className="h-[76px]"
+                    className="relative h-[130px] overflow-hidden"
                     style={{background: o.gradient ?? DEFAULT_GRADIENT}}
-                  />
+                  >
+                    {o.hero && (
+                      <Image
+                        src={o.hero}
+                        alt=""
+                        fill
+                        quality={90}
+                        sizes="(min-width: 640px) 240px, 100vw"
+                        className="object-cover object-top"
+                      />
+                    )}
+                  </div>
                   <div className="px-4 py-3.5">
                     {o.kind && (
                       <p className="mb-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-accent-text">

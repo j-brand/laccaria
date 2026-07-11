@@ -153,8 +153,7 @@
     "contactHeading": "Contact",
     "emailLabel": "Email",
     "email": "info@laccaria.de",
-    "responsibleHeading": "Responsible for content",
-    "responsibleNote": "Responsible pursuant to § 18 (2) MStV",
+    "responsibleNote": "Responsible for content pursuant to § 18 (2) MStV",
     "disputeHeading": "Consumer dispute resolution",
     "dispute": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
   },
@@ -470,12 +469,28 @@
       }
     ]
   },
+  "Accessibility": {
+    "title": "Accessibility Statement",
+    "description": "Accessibility statement for the website of Johannes Brand, freelance web developer.",
+    "updated": "Last updated: June 2025",
+    "intro": "I am committed to making my website at laccaria.de accessible.",
+    "conformanceHeading": "Conformance status",
+    "conformance": "My site is partially conformant with WCAG 2.1 Level AA. I am continuously working to improve its accessibility.",
+    "limitationsHeading": "Known limitations",
+    "limitations": "Some areas of my site do not yet fully meet the requirements. I review and improve them step by step.",
+    "contactHeading": "Feedback and contact",
+    "contactIntro": "If you encounter any barriers, I welcome your feedback:",
+    "emailLabel": "Email",
+    "email": "info@laccaria.de",
+    "responseNote": "I aim to respond to your request within 4 weeks."
+  },
   "Footer": {
-    "rights": "© 2026 Johannes Brand",
-    "tagline": "Built with intent.",
     "imprint": "Legal notice",
     "privacy": "Privacy",
-    "navLabel": "Legal"
+    "navLabel": "Legal",
+    "language": "Language",
+    "theme": "Theme",
+    "accessibility": "Accessibility"
   },
   "LocaleSwitcher": {
     "label": "Switch language",

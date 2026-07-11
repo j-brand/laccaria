@@ -11,12 +11,14 @@ export default async function Footer() {
   return (
     <footer className="border-t border-line">
       <Container className="flex flex-wrap items-center justify-between gap-3 py-7">
-        <span className="inline-flex items-center gap-2.5">
-          <Mark width={18} aria-hidden />
-          <span className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
-            {t('rights')}
+        <div className="flex flex-col gap-1 font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
+          <span>© 2026 Laccaria</span>
+          <span className="inline-flex items-center gap-1">
+            Made with
+            <Mark width={14} className="mx-0.5 inline-block" aria-hidden />
+            by Johannes Brand
           </span>
-        </span>
+        </div>
         <nav aria-label={t('navLabel')} className="flex items-center gap-5">
           <Link
             href="/imprint"
@@ -30,13 +32,26 @@ export default async function Footer() {
           >
             {t('privacy')}
           </Link>
-          <span className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
-            {t('tagline')}
-          </span>
+          <Link
+            href="/accessibility"
+            className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
+          >
+            {t('accessibility')}
+          </Link>
         </nav>
-        <div className="flex items-center gap-2">
-          <LocaleSwitcher />
-          <ThemeToggle />
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-2">
+            <span className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
+              {t('language')}
+            </span>
+            <LocaleSwitcher />
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
+              {t('theme')}
+            </span>
+            <ThemeToggle />
+          </span>
         </div>
       </Container>
     </footer>

@@ -14,7 +14,7 @@ export default async function About() {
 
   return (
     <Section id="about" number="01" eyebrow={t('eyebrow')}>
-      <div className="grid items-start gap-12 md:grid-cols-2">
+      <div className="grid items-start gap-12 md:grid-cols-[5fr_7fr]">
         {/* portrait */}
         <div className="cut-frame chamfer-lg lift">
           <div className="cut-inner chamfer-lg relative aspect-[4/5] w-full bg-sunken">
@@ -23,7 +23,7 @@ export default async function About() {
               alt={t('portraitAlt')}
               fill
               quality={90}
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 768px) 42vw, 100vw"
               className="object-cover"
               priority
             />
