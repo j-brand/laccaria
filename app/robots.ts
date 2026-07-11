@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {userAgent: '*', allow: '/'},
     sitemap: absoluteUrl('/sitemap.xml'),
-    host: SITE_URL
+    // The `host` directive expects a bare hostname (not a full URL).
+    host: new URL(SITE_URL).host
   };
 }

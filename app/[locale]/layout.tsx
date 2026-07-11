@@ -69,10 +69,7 @@ export async function generateMetadata(props: {
         'max-snippet': -1,
         'max-video-preview': -1
       }
-    },
-    verification: process.env.GOOGLE_SITE_VERIFICATION
-      ? {google: process.env.GOOGLE_SITE_VERIFICATION}
-      : undefined
+    }
   };
 }
 

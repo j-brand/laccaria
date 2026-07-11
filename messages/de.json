@@ -108,6 +108,8 @@
     "builtWithHeading": "Gebaut mit",
     "resultsHeading": "Ergebnisse",
     "responsiveHeading": "Responsiv",
+    "responsiveDesktop": "Desktop-Ansicht",
+    "responsiveMobile": "Mobilansicht",
     "galleryHeading": "Detailansichten",
     "galleryClose": "Ansicht schließen",
     "ctaEyebrow": "Gefällt Ihnen das?",
@@ -490,7 +492,9 @@
     "navLabel": "Rechtliches",
     "accessibility": "Barrierefreiheit",
     "language": "Sprache",
-    "theme": "Design"
+    "theme": "Design",
+    "madeWith": "Made with",
+    "byAuthor": "by Johannes Brand"
   },
   "LocaleSwitcher": {
     "label": "Sprache wechseln",

@@ -12,7 +12,6 @@ type Block =
   | {type: 'address'; lines: string[]};
 
 type PrivacySection = {heading: string; blocks: Block[]};
-type Source = {label: string; href: string};
 
 export async function generateMetadata(props: {
   params: Promise<{locale: string}>;

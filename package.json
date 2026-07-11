@@ -1,8 +1,7 @@
 {
   "name": "laccaria",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Personal homepage of Johannes Brand, web developer.",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3099",
@@ -11,9 +10,8 @@
     "lint": "eslint .",
     "webp": "node scripts/to-webp.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Johannes Brand",
+  "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
     "gray-matter": "^4.0.3",

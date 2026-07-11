@@ -9,11 +9,18 @@ import type {Project} from '@/lib/projects';
 type Props = {
   project: Project;
   viewProjectLabel: string;
+  /** Heading level for the card title, to keep the document outline correct
+   *  in each context (h2 under the `/projects` h1, h3 under the landing h2). */
+  titleAs?: 'h2' | 'h3';
 };
 
 const badgeChamfer = {'--c': '7px'} as CSSProperties;
 
-export default function ProjectCard({project, viewProjectLabel}: Props) {
+export default function ProjectCard({
+  project,
+  viewProjectLabel,
+  titleAs: Title = 'h3'
+}: Props) {
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -57,9 +64,9 @@ export default function ProjectCard({project, viewProjectLabel}: Props) {
               {project.kind}
             </p>
           )}
-          <h3 className="mb-2 font-display text-xl font-semibold text-fg">
+          <Title className="mb-2 font-display text-xl font-semibold text-fg">
             {project.title}
-          </h3>
+          </Title>
           <p className="mb-4 flex-1 text-sm leading-relaxed text-fg-muted">
             {project.summary}
           </p>

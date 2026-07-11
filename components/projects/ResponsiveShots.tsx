@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 import Image from 'next/image';
 import type {ProjectImage} from '@/lib/projects';
 import Lightbox from './Lightbox';
@@ -17,6 +17,8 @@ export default function ResponsiveShots({
   mobileFull,
   heading,
   title,
+  desktopLabel,
+  mobileLabel,
   closeLabel
 }: {
   desktop?: string;
@@ -25,9 +27,13 @@ export default function ResponsiveShots({
   mobileFull?: string;
   heading: string;
   title: string;
+  desktopLabel: string;
+  mobileLabel: string;
   closeLabel: string;
 }) {
   const [active, setActive] = useState<ProjectImage | null>(null);
+  // Stable so the Lightbox's keydown effect doesn't re-subscribe every render.
+  const close = useCallback(() => setActive(null), []);
 
   if (!desktop && !mobile) return null;
 
@@ -41,15 +47,18 @@ export default function ResponsiveShots({
           <button
             type="button"
             onClick={() =>
-              setActive({src: desktopFull ?? desktop, alt: `${title} — desktop`})
+              setActive({
+                src: desktopFull ?? desktop,
+                alt: `${title} — ${desktopLabel}`
+              })
             }
-            aria-label={`${title} — desktop`}
+            aria-label={`${title} — ${desktopLabel}`}
             className="focus-ring cut-frame chamfer-lg lift block aspect-[16/10] w-full cursor-zoom-in sm:w-[82%]"
           >
             <span className="cut-inner chamfer-lg relative block h-full w-full overflow-hidden bg-sunken">
               <Image
                 src={desktop}
-                alt={`${title} — desktop`}
+                alt={`${title} — ${desktopLabel}`}
                 fill
                 quality={90}
                 sizes="(min-width: 920px) 750px, 100vw"
@@ -64,17 +73,17 @@ export default function ResponsiveShots({
             onClick={() =>
               setActive({
                 src: mobileFull ?? mobile,
-                alt: `${title} — mobile`,
+                alt: `${title} — ${mobileLabel}`,
                 portrait: true
               })
             }
-            aria-label={`${title} — mobile`}
+            aria-label={`${title} — ${mobileLabel}`}
             className="focus-ring chamfer-md lift absolute bottom-0 right-0 block aspect-[9/19] w-[26%] max-w-[190px] cursor-zoom-in bg-[#E8EDE7] p-1"
           >
             <span className="chamfer-sm relative block h-full w-full overflow-hidden bg-card">
               <Image
                 src={mobile}
-                alt={`${title} — mobile`}
+                alt={`${title} — ${mobileLabel}`}
                 fill
                 quality={90}
                 sizes="190px"
@@ -85,11 +94,7 @@ export default function ResponsiveShots({
         )}
       </div>
 
-      <Lightbox
-        image={active}
-        closeLabel={closeLabel}
-        onClose={() => setActive(null)}
-      />
+      <Lightbox image={active} closeLabel={closeLabel} onClose={close} />
     </section>
   );
 }

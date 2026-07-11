@@ -47,6 +47,10 @@ export default function ContactForm() {
         ? 'form.errorRate'
         : 'form.error'
       : null;
+  // Only flag the individual fields as invalid for an actual field-validation
+  // failure — not for a rate-limit or mail-server error, which aren't the
+  // user's input being wrong.
+  const fieldsInvalid = !state.ok && state.error === 'validation';
 
   // Move focus to the confirmation when the form is replaced, so screen-reader
   // and keyboard users are told the submission succeeded.
@@ -100,8 +104,9 @@ export default function ContactForm() {
                 required
                 name="name"
                 maxLength={100}
+                autoComplete="name"
                 placeholder={t('form.namePlaceholder')}
-                aria-invalid={errorKey ? true : undefined}
+                aria-invalid={fieldsInvalid ? true : undefined}
                 aria-describedby={errorKey ? 'contact-error' : undefined}
                 className={inputClass}
               />
@@ -112,8 +117,9 @@ export default function ContactForm() {
                 type="email"
                 name="email"
                 maxLength={200}
+                autoComplete="email"
                 placeholder={t('form.emailPlaceholder')}
-                aria-invalid={errorKey ? true : undefined}
+                aria-invalid={fieldsInvalid ? true : undefined}
                 aria-describedby={errorKey ? 'contact-error' : undefined}
                 className={inputClass}
               />
@@ -125,7 +131,7 @@ export default function ContactForm() {
                 rows={4}
                 maxLength={5000}
                 placeholder={t('form.messagePlaceholder')}
-                aria-invalid={errorKey ? true : undefined}
+                aria-invalid={fieldsInvalid ? true : undefined}
                 aria-describedby={errorKey ? 'contact-error' : undefined}
                 className={`${inputClass} resize-y leading-relaxed`}
               />

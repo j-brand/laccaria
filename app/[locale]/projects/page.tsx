@@ -51,6 +51,7 @@ export default async function ProjectsPage({
               key={project.slug}
               project={project}
               viewProjectLabel={tf('viewProject')}
+              titleAs="h2"
             />
           ))}
         </div>

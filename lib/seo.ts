@@ -54,7 +54,7 @@ export function buildAlternates(
   return {canonical: pathFor(locale, path), languages};
 }
 
-/** OpenGraph block for a page. Social image comes from `opengraph-image.tsx`. */
+/** OpenGraph block for a page. Social image is the static {@link OG_IMAGE}. */
 export function buildOpenGraph({
   locale,
   title,

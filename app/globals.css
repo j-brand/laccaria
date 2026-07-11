@@ -63,14 +63,12 @@
   --chamfer-sm: 5px;
   --chamfer-md: 9px;
   --chamfer-lg: 14px;
-  --chamfer-xl: 22px;
 }
 
 /* ── Chamfer corner language ─────────────────────────────────────────────── */
 @utility chamfer-sm { clip-path: polygon(var(--chamfer-sm) 0, 100% 0, 100% calc(100% - var(--chamfer-sm)), calc(100% - var(--chamfer-sm)) 100%, 0 100%, 0 var(--chamfer-sm)); }
 @utility chamfer-md { clip-path: polygon(var(--chamfer-md) 0, 100% 0, 100% calc(100% - var(--chamfer-md)), calc(100% - var(--chamfer-md)) 100%, 0 100%, 0 var(--chamfer-md)); }
 @utility chamfer-lg { clip-path: polygon(var(--chamfer-lg) 0, 100% 0, 100% calc(100% - var(--chamfer-lg)), calc(100% - var(--chamfer-lg)) 100%, 0 100%, 0 var(--chamfer-lg)); }
-@utility chamfer-xl { clip-path: polygon(var(--chamfer-xl) 0, 100% 0, 100% calc(100% - var(--chamfer-xl)), calc(100% - var(--chamfer-xl)) 100%, 0 100%, 0 var(--chamfer-xl)); }
 @utility chamfer-tr { clip-path: polygon(0 0, calc(100% - var(--c, 8px)) 0, 100% var(--c, 8px), 100% 100%, 0 100%); }
 @utility chamfer-quad { clip-path: polygon(var(--c, 9px) 0, calc(100% - var(--c, 9px)) 0, 100% var(--c, 9px), 100% calc(100% - var(--c, 9px)), calc(100% - var(--c, 9px)) 100%, var(--c, 9px) 100%, 0 calc(100% - var(--c, 9px)), 0 var(--c, 9px)); }
 

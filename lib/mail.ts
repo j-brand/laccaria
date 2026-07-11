@@ -21,6 +21,15 @@ function requireEnv(name: string): string {
   return value;
 }
 
+/**
+ * Strip control chars (incl. CR/LF) so a visitor-supplied name can't inject
+ * extra SMTP headers via the `replyTo` display name or `subject`. Nodemailer
+ * already folds/encodes header values, so this is defence-in-depth.
+ */
+function headerSafe(value: string): string {
+  return value.replace(/[\x00-\x1f\x7f]/g, ' ').trim();
+}
+
 /** Lazily created so a missing config only fails on an actual send, not at import. */
 let cachedTransport: nodemailer.Transporter | null = null;
 
@@ -56,12 +65,13 @@ export async function sendContactMail({
 }: ContactMessage): Promise<void> {
   const to = requireEnv('CONTACT_TO');
   const from = requireEnv('CONTACT_FROM');
+  const safeName = headerSafe(name);
 
   await getTransport().sendMail({
     from,
     to,
-    replyTo: `${name} <${email}>`,
-    subject: `New contact from ${name}`,
+    replyTo: `${safeName} <${email}>`,
+    subject: `New contact from ${safeName}`,
     text: `Name: ${name}\nEmail: ${email}\n\n${message}\n`
   });
 }

@@ -112,6 +112,9 @@ export default function MobileMenu({
           <div
             ref={drawerRef}
             id={DRAWER_ID}
+            role="dialog"
+            aria-modal="true"
+            aria-label={navLabel}
             className="menu-drawer absolute inset-x-0 top-16 z-30 border-b border-line bg-bg backdrop-blur-md"
           >
             <nav

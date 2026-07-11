@@ -43,7 +43,8 @@ See `.env.example`. SEO metadata (canonical URLs, hreflang, sitemap, OG images)
 is built from a single origin:
 
 - `NEXT_PUBLIC_SITE_URL` — canonical origin, no trailing slash (default `https://laccaria.de`).
-- `GOOGLE_SITE_VERIFICATION` — Search Console token; renders the verification meta tag when set.
+
+Google Search Console verification is handled via a **DNS TXT record**, not an app-level meta tag.
 
 The base URL, brand and social profiles live in `lib/site.ts`; metadata helpers in
 `lib/seo.ts`; JSON-LD builders in `lib/structured-data.ts`. `app/sitemap.ts`,

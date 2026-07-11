@@ -198,6 +198,8 @@ export default async function ProjectDetailPage({
         mobileFull={meta.shots?.mobileFull}
         heading={t('responsiveHeading')}
         title={meta.title}
+        desktopLabel={t('responsiveDesktop')}
+        mobileLabel={t('responsiveMobile')}
         closeLabel={t('galleryClose')}
       />
 

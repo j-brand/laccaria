@@ -108,6 +108,8 @@
     "builtWithHeading": "Built with",
     "resultsHeading": "Results",
     "responsiveHeading": "Responsive",
+    "responsiveDesktop": "desktop view",
+    "responsiveMobile": "mobile view",
     "galleryHeading": "Detail gallery",
     "galleryClose": "Close image",
     "ctaEyebrow": "Like what you see?",
@@ -490,7 +492,9 @@
     "navLabel": "Legal",
     "language": "Language",
     "theme": "Theme",
-    "accessibility": "Accessibility"
+    "accessibility": "Accessibility",
+    "madeWith": "Made with",
+    "byAuthor": "by Johannes Brand"
   },
   "LocaleSwitcher": {
     "label": "Switch language",

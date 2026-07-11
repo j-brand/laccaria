@@ -1,5 +1,6 @@
 import type {MetadataRoute} from 'next';
 import {SITE_NAME, DEFAULT_LOCALE} from '@/lib/site';
+import {pathFor} from '@/lib/seo';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -7,7 +8,9 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: SITE_NAME,
     description:
       'Freelance web developer building fast, reliable websites and web apps.',
-    start_url: `/${DEFAULT_LOCALE}`,
+    // `pathFor` honours `localePrefix: as-needed`, so the default locale is the
+    // unprefixed `/` — avoids a launch-time redirect from `/de`.
+    start_url: pathFor(DEFAULT_LOCALE, ''),
     display: 'standalone',
     theme_color: '#234430',
     background_color: '#234430',

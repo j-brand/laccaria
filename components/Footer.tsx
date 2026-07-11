@@ -12,11 +12,11 @@ export default async function Footer() {
     <footer className="border-t border-line">
       <Container className="flex flex-wrap items-center justify-between gap-3 py-7">
         <div className="flex flex-col gap-1 font-mono text-[11px] tracking-[0.06em] text-fg-subtle">
-          <span>© 2026 Laccaria</span>
+          <span>© {new Date().getFullYear()} Laccaria</span>
           <span className="inline-flex items-center gap-1">
-            Made with
+            {t('madeWith')}
             <Mark width={14} className="mx-0.5 inline-block" aria-hidden />
-            by Johannes Brand
+            {t('byAuthor')}
           </span>
         </div>
         <nav aria-label={t('navLabel')} className="flex items-center gap-5">

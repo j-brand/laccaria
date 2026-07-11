@@ -78,6 +78,9 @@ export function projectLd(locale: string, project: Project): Ld {
     creator: {'@id': PERSON_ID},
     dateCreated: String(project.year),
     keywords: project.stack.join(', '),
+    ...(project.hero || project.cover
+      ? {image: absoluteUrl(project.hero ?? project.cover)}
+      : {}),
     ...(project.client
       ? {sourceOrganization: {'@type': 'Organization', name: project.client}}
       : {})
