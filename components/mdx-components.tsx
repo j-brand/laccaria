@@ -30,7 +30,7 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   a: (props) => (
-    <a className="text-primary underline underline-offset-2 hover:text-accent-text" {...props} />
+    <a className="text-primary-text underline underline-offset-2 hover:text-accent-text" {...props} />
   ),
   blockquote: (props) => (
     <blockquote

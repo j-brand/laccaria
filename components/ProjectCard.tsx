@@ -70,7 +70,7 @@ export default function ProjectCard({
           <p className="mb-4 flex-1 text-sm leading-relaxed text-fg-muted">
             {project.summary}
           </p>
-          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
+          <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-text">
             {viewProjectLabel}
             <span className="arrow transition-transform">
               <ArrowRight size={15} />

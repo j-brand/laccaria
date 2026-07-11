@@ -8,6 +8,7 @@
 
 import {headers} from 'next/headers';
 import {sendContactMail} from '@/lib/mail';
+import {logContact} from '@/lib/log';
 
 export type ContactState = {
   ok: boolean;
@@ -63,10 +64,12 @@ export async function submitContact(
     !message ||
     message.length > MAX_MESSAGE
   ) {
+    await logContact({status: 'validation', email: email || undefined});
     return {ok: false, error: 'validation'};
   }
 
   if (isRateLimited(await clientIp())) {
+    await logContact({status: 'rate', email});
     return {ok: false, error: 'rate'};
   }
 
@@ -74,8 +77,14 @@ export async function submitContact(
     await sendContactMail({name, email, message});
   } catch (err) {
     console.error('Contact mail failed to send:', err);
+    await logContact({
+      status: 'send',
+      email,
+      error: err instanceof Error ? err.message : String(err)
+    });
     return {ok: false, error: 'send'};
   }
 
+  await logContact({status: 'sent', email});
   return {ok: true};
 }

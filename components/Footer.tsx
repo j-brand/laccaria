@@ -19,25 +19,33 @@ export default async function Footer() {
             {t('byAuthor')}
           </span>
         </div>
-        <nav aria-label={t('navLabel')} className="flex items-center gap-5">
-          <Link
-            href="/imprint"
-            className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
-          >
-            {t('imprint')}
-          </Link>
-          <Link
-            href="/privacy"
-            className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
-          >
-            {t('privacy')}
-          </Link>
-          <Link
-            href="/accessibility"
-            className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
-          >
-            {t('accessibility')}
-          </Link>
+        <nav aria-label={t('navLabel')}>
+          <ul className="flex items-center gap-5">
+            <li>
+              <Link
+                href="/imprint"
+                className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
+              >
+                {t('imprint')}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy"
+                className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
+              >
+                {t('privacy')}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/accessibility"
+                className="font-mono text-[11px] tracking-[0.06em] text-fg-subtle hover:text-fg"
+              >
+                {t('accessibility')}
+              </Link>
+            </li>
+          </ul>
         </nav>
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2">

@@ -3,7 +3,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import ProjectCard from '@/components/ProjectCard';
 import JsonLd from '@/components/seo/JsonLd';
-import {breadcrumbLd} from '@/lib/structured-data';
+import {breadcrumbLd, projectListLd} from '@/lib/structured-data';
 import {buildAlternates, buildOpenGraph} from '@/lib/seo';
 import {getAllProjects} from '@/lib/projects';
 
@@ -41,7 +41,7 @@ export default async function ProjectsPage({
 
   return (
     <Section title={t('title')} titleAs="h1" subtitle={t('subtitle')} divider={false} className="pt-10">
-      <JsonLd data={breadcrumb} />
+      <JsonLd data={[breadcrumb, projectListLd(locale, projects)]} />
       {projects.length === 0 ? (
         <p className="text-fg-muted">{t('empty')}</p>
       ) : (

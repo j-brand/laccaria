@@ -32,7 +32,7 @@ export default async function Services() {
           <div key={key} className="cut-frame chamfer-md">
             <div className="cut-inner chamfer-md h-full p-6">
               <span
-                className="chamfer-quad mb-4 grid size-[42px] place-items-center text-primary"
+                className="chamfer-quad mb-4 grid size-[42px] place-items-center text-primary-text"
                 style={iconBox}
               >
                 <Icon size={21} />

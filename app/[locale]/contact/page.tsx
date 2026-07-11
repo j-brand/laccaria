@@ -3,6 +3,8 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import ContactForm from '@/components/ContactForm';
 import ContactLinks from '@/components/ContactLinks';
+import JsonLd from '@/components/seo/JsonLd';
+import {contactPageLd, personLd} from '@/lib/structured-data';
 import {buildAlternates, buildOpenGraph} from '@/lib/seo';
 
 const PATH = '/contact';
@@ -38,6 +40,9 @@ export default async function ContactPage({
       divider={false}
       className="pt-10 pb-20"
     >
+      {/* Person emitted alongside so the ContactPage `about` @id resolves
+          within this page's own markup (validators check per page). */}
+      <JsonLd data={[personLd(), contactPageLd(locale, t('title'))]} />
       <div className="grid items-start gap-6 md:grid-cols-2">
         <ContactForm />
         <ContactLinks />

@@ -20,6 +20,7 @@ Create a new project for the `/projects` section. Each project is **two MDX file
 title: "Acme Online-Shop"
 summary: "Ein blitzschneller Headless-Shop auf Next.js mit Stripe-Checkout."
 year: 2025
+updated: "2025-06-14"                  # last change (optional) — sitemap + JSON-LD date
 stack: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"]
 cover: "/projects/acme-shop/cover.webp"
 url: "https://acme.example"          # live site (optional)
@@ -55,8 +56,8 @@ Wie ich es gelöst habe ...
 
 4. Keep the frontmatter **keys identical** across both files; only translate the
    prose values (`title`, `summary`, `tagline`, `kind`, `role`, `timeline`, `client`,
-   the `results[].label`, and the body). `stack`, `year`, `cover`, `url`, `repo`,
-   `featured`, `gradient`, and `results[].metric` stay the same.
+   the `results[].label`, and the body). `stack`, `year`, `updated`, `cover`,
+   `url`, `repo`, `featured`, `gradient`, and `results[].metric` stay the same.
 5. Place images under `public/projects/<slug>/` and process them to WebP (see
    **Images** below). Point `cover` and `hero` at the same 16:9 hero WebP — the card
    banner (`ProjectCard`) and the detail `BrowserFrame` both read `hero`, and `cover`

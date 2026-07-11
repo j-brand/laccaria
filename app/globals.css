@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Swiper's stylesheets are imported here (not in ProjectSlider.tsx) and pushed
+   into a cascade layer: layered rules always lose to the unlayered overrides
+   further down, regardless of bundle injection order. */
+@import "swiper/css" layer(vendor);
+@import "swiper/css/navigation" layer(vendor);
+@import "swiper/css/pagination" layer(vendor);
+
 /* Dark mode is driven by a `.dark` class on <html> (set by the no-flash
    script in layout.tsx), not by prefers-color-scheme. */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -21,8 +28,15 @@
   /* Gold is a fill colour; as text on the light bg it fails AA, so text uses
      a darker amber. On dark, the gold already clears AA (~10:1). */
   --accent-text: #8A6D10;
+  /* Same fill-vs-text split for green/red: the dark-theme fills sit around
+     3:1 on dark surfaces, so text needs lighter tints to clear AA (4.5:1). */
+  --primary-text: var(--primary);
+  --secondary-text: var(--secondary);
   --line: #E5E0D6;
   --line-strong: #D2CCC0;
+  /* Border for form controls: must clear 3:1 against the control surface
+     (--card) and page bg (WCAG 1.4.11 non-text contrast). ~3.7:1 on white. */
+  --line-control: #8C857A;
 }
 
 .dark {
@@ -37,8 +51,12 @@
   --secondary: #C25366;
   --accent: #E8C24E;
   --accent-text: var(--accent);
+  --primary-text: #74A98B;
+  --secondary-text: #D3798A;
   --line: #24332A;
   --line-strong: #324A3A;
+  /* ~3.7:1 against the dark --card, ~4:1 against the dark bg. */
+  --line-control: #5E7A66;
 }
 
 @theme inline {
@@ -57,8 +75,11 @@
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
+  --color-line-control: var(--line-control);
 
   --chamfer-sm: 5px;
   --chamfer-md: 9px;
@@ -171,9 +192,60 @@ body {
 .jb-back:hover { gap: 12px; }
 .jb-back:hover .ic { transform: translateX(-3px); }
 
-/* ── Swiper — brand the nav arrows + pagination bullets ──────────────────── */
-.swiper { --swiper-theme-color: var(--primary); }
-.swiper-button-prev, .swiper-button-next { color: var(--primary); }
-.swiper-button-prev::after, .swiper-button-next::after { font-size: 22px; font-weight: 700; }
-.swiper-pagination-bullet { background: var(--fg-subtle); opacity: .5; }
-.swiper-pagination-bullet-active { background: var(--primary); opacity: 1; }
+/* ── Swiper — look-book chamfered arrows + tick bullets ───────────────────
+   Arrows: four-cut 40px buttons on a dark translucent scrim with a white
+   chevron (masked ::after replaces Swiper's icon-font glyph).
+   Bullets: 9px four-cut ticks; the active one stretches to 24px in gold. */
+.swiper { --swiper-navigation-sides-offset: 12px; }
+
+.swiper-button-prev,
+.swiper-button-next {
+  --c: 8px;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+  background: color-mix(in oklab, #0B130E 45%, transparent);
+  color: #fff;
+  transition: transform .2s ease;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: scale(1.05);
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+}
+.swiper-button-next::after {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+}
+/* Chamfer clips the global focus outline; use an inset ring instead. */
+.swiper-button-prev:focus-visible,
+.swiper-button-next:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.swiper-pagination-bullet {
+  --c: 2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 0;
+  clip-path: polygon(var(--c) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+  background: var(--line-strong);
+  opacity: 1;
+  transition: width .3s ease, background-color .3s ease;
+}
+.swiper-pagination-bullet-active {
+  width: 24px;
+  background: var(--accent);
+}
+.swiper-pagination-bullet:focus-visible {
+  outline: none;
+  background: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--primary);
+}

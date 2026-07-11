@@ -26,6 +26,12 @@ export type ProjectFrontmatter = {
   title: string;
   summary: string;
   year: number;
+  /**
+   * ISO date (`YYYY-MM-DD`) of the last meaningful change to this case study.
+   * Feeds the sitemap `lastModified` and the JSON-LD `dateModified`. Optional —
+   * falls back to Jan 1 of {@link year} when omitted (see `projectLastModified`).
+   */
+  updated?: string;
   stack: string[];
   cover: string;
   url?: string;
@@ -104,4 +110,13 @@ export function getAllProjects(locale: string): Project[] {
 /** Projects flagged `featured: true` (for the landing-page slider). */
 export function getFeaturedProjects(locale: string): Project[] {
   return getAllProjects(locale).filter((project) => project.featured);
+}
+
+/**
+ * Best-known last-modified date for a project: the explicit `updated`
+ * frontmatter date when set, otherwise Jan 1 of its `year`. Content-derived
+ * and stable across rebuilds (unlike a build-time `new Date()`).
+ */
+export function projectLastModified(project: Project): Date {
+  return new Date(project.updated ?? `${project.year}-01-01T00:00:00Z`);
 }

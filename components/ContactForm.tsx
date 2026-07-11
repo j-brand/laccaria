@@ -6,7 +6,9 @@ import {useTranslations} from 'next-intl';
 import {Send, Check} from '@/components/ui/icons';
 import {submitContact, type ContactState} from '@/app/[locale]/contact/actions';
 
-const frameBd = {'--bd': 'var(--line-strong)'} as CSSProperties;
+// Form-control borders need 3:1 against the input surface (WCAG 1.4.11);
+// --line-strong is too faint for that, hence the dedicated token.
+const frameBd = {'--bd': 'var(--line-control)'} as CSSProperties;
 const chamferPrimary = {'--c': '10px'} as CSSProperties;
 
 const initialState: ContactState = {ok: false};
@@ -86,7 +88,7 @@ export default function ContactForm() {
               className="focus-ring cut-frame chamfer-sm inline-block"
               style={frameBd}
             >
-              <span className="cut-inner chamfer-sm block bg-card px-4 py-2.5 text-sm font-semibold text-primary">
+              <span className="cut-inner chamfer-sm block bg-card px-4 py-2.5 text-sm font-semibold text-primary-text">
                 {t('sent.again')}
               </span>
             </button>
@@ -137,17 +139,15 @@ export default function ContactForm() {
               />
             </Field>
 
-            {/* Honeypot — hidden from users, tempting to bots. Kept out of the
-                tab order and off autofill; a filled value is silently dropped. */}
-            <div className="sr-only" aria-hidden="true">
+            {/* Honeypot — display:none keeps it out of the accessibility tree
+                and out of a11y audits (which would otherwise demand
+                autocomplete="organization" — inviting real autofill into the
+                trap). HTML-parsing bots still see and fill it; a filled value
+                is silently dropped. */}
+            <div hidden>
               <label>
                 Company
-                <input
-                  type="text"
-                  name="company"
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
+                <input type="text" name="company" autoComplete="off" />
               </label>
             </div>
 
@@ -155,7 +155,7 @@ export default function ContactForm() {
               <p
                 id="contact-error"
                 role="alert"
-                className="text-sm font-medium text-secondary"
+                className="text-sm font-medium text-secondary-text"
               >
                 {t(errorKey)}
               </p>

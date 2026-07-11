@@ -1,3 +1,5 @@
+import {existsSync} from 'node:fs';
+import {join} from 'node:path';
 import type {Metadata} from 'next';
 import type {CSSProperties} from 'react';
 import Image from 'next/image';
@@ -13,7 +15,7 @@ import BrowserFrame from '@/components/projects/BrowserFrame';
 import ResponsiveShots from '@/components/projects/ResponsiveShots';
 import ProjectGallery from '@/components/projects/ProjectGallery';
 import JsonLd from '@/components/seo/JsonLd';
-import {breadcrumbLd, projectLd} from '@/lib/structured-data';
+import {breadcrumbLd, personLd, projectLd} from '@/lib/structured-data';
 import {buildAlternates, buildOpenGraph} from '@/lib/seo';
 import {
   DEFAULT_GRADIENT,
@@ -36,17 +38,27 @@ export async function generateMetadata(props: {
   if (!project) return {};
   const {title, summary} = project.meta;
   const path = `/projects/${slug}`;
+  const openGraph = buildOpenGraph({
+    locale,
+    title,
+    description: summary,
+    path,
+    type: 'article'
+  });
+  // Use the pre-generated per-project card (see `scripts/generate-og.mjs`) as
+  // the OpenGraph + derived Twitter image; fall back to the site-wide default
+  // (already set by buildOpenGraph) if it hasn't been generated yet.
+  const ogRel = `/projects/${slug}/og.${locale}.png`;
+  if (existsSync(join(process.cwd(), 'public', ogRel))) {
+    openGraph.images = [
+      {url: ogRel, width: 1200, height: 630, alt: `${title} — Johannes Brand`}
+    ];
+  }
   return {
     title,
     description: summary,
     alternates: buildAlternates(locale, path),
-    openGraph: buildOpenGraph({
-      locale,
-      title,
-      description: summary,
-      path,
-      type: 'article'
-    })
+    openGraph
   };
 }
 
@@ -86,7 +98,9 @@ export default async function ProjectDetailPage({
 
   return (
     <Container narrow>
-      <JsonLd data={[breadcrumb, creativeWork]} />
+      {/* Person emitted alongside so the CreativeWork author/creator @ids
+          resolve within this page's own markup (validators check per page). */}
+      <JsonLd data={[personLd(), breadcrumb, creativeWork]} />
       {/* back */}
       <Link
         href="/projects"

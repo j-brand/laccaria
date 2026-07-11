@@ -1,4 +1,8 @@
 {
+  "Meta": {
+    "homeTitle": "Johannes Brand — Full-Stack Web Developer in Leipzig, Germany",
+    "homeDescription": "Web developer based in Leipzig, Germany — I design, build and ship fast, reliable websites and web apps, from the database to the last pixel."
+  },
   "Nav": {
     "ariaLabel": "Main navigation",
     "role": "web developer",
@@ -30,7 +34,7 @@
     "eyebrow": "About",
     "portraitAlt": "Portrait of Johannes",
     "title": "Web development is my craft.",
-    "p1": "I've been working on the web for over a decade — after several years at an agency, today I work independently for start-ups, agencies and small businesses. What drives me is the invisible things: that a site loads fast, is usable for everyone and stays maintainable five years from now.",
+    "p1": "I've been working on the web for over a decade — after several years at an agency, today I work as an independent web developer in Leipzig for start-ups, agencies and small businesses. What drives me is the invisible things: that a site loads fast, is usable for everyone and stays maintainable five years from now.",
     "p2": "And because good software doesn't end at launch, I like to stay involved — with my own projects just as much as with existing ones that someone else built before me.",
     "factLocationKey": "Based in",
     "factLocationValue": "Leipzig, Germany",
@@ -135,7 +139,7 @@
     },
     "sent": {
       "title": "Message sent — thank you!",
-      "body": "Thanks — your message is on its way. I'll get back to you within one business day.",
+      "body": "Thanks — your message is on its way. I'll get back to you within three business days.",
       "again": "Send another"
     },
     "orReach": "Or reach me directly",

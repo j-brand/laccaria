@@ -37,7 +37,7 @@ export default async function Hero() {
                       '0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent)'
                   }}
                 />
-                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-primary">
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-primary-text">
                   {t('status')}
                 </span>
               </div>
@@ -97,13 +97,13 @@ function HeroCodeWindow() {
             </span>
           </div>
           <pre className="m-0 overflow-x-auto px-5 py-5 font-mono text-[13px] leading-[1.7] text-fg-muted">
-            <span className="text-secondary">const</span>{' '}
+            <span className="text-secondary-text">const</span>{' '}
             <span className="text-fg">dev</span> ={' {\n'}
             {'  name: '}
-            <span className="text-primary">&apos;Johannes Brand&apos;</span>
+            <span className="text-primary-text">&apos;Johannes Brand&apos;</span>
             {',\n'}
             {'  stack: [\n    '}
-            <span className="text-secondary">...</span>
+            <span className="text-secondary-text">...</span>
             <span className="text-fg">frontend</span>,{' '}
             <span className="text-fg">ts</span>,{'\n    '}
             <span className="text-fg">laravel</span>,{' '}
@@ -116,7 +116,7 @@ function HeroCodeWindow() {
             <span className="text-accent-text">false</span>
             {',\n'}
             {'};\n\n'}
-            <span className="text-secondary">export default</span> dev;
+            <span className="text-secondary-text">export default</span> dev;
           </pre>
         </div>
       </div>

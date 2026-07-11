@@ -13,6 +13,9 @@ type Ld = Record<string, unknown>;
 /** Stable `@id` for the one Person that represents the whole site. */
 const PERSON_ID = `${SITE_URL}/#person`;
 
+/** Stable `@id` for the WebSite node (see {@link websiteLd}). */
+const WEBSITE_ID = `${SITE_URL}/#website`;
+
 /** The site owner as a schema.org Person. `knowsAbout` describes expertise. */
 export function personLd(knowsAbout: string[] = []): Ld {
   return {
@@ -23,12 +26,28 @@ export function personLd(knowsAbout: string[] = []): Ld {
     jobTitle: AUTHOR.jobTitle,
     email: `mailto:${AUTHOR.email}`,
     url: SITE_URL,
+    image: absoluteUrl('/me.webp'),
     sameAs: [...SOCIAL],
     ...(knowsAbout.length > 0 ? {knowsAbout} : {}),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Leipzig',
       addressCountry: 'DE'
+    },
+    // Local-SEO signals: where the work happens, and the occupation tied to
+    // the city (schema.org's pattern for "web developer in Leipzig").
+    workLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Leipzig',
+        addressCountry: 'DE'
+      }
+    },
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: AUTHOR.jobTitle,
+      occupationLocation: {'@type': 'City', name: 'Leipzig'}
     }
   };
 }
@@ -38,12 +57,58 @@ export function websiteLd(locale: string): Ld {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
+    '@id': WEBSITE_ID,
     name: SITE_NAME,
     url: absoluteUrl(pathFor(locale)),
     inLanguage: locale,
     author: {'@id': PERSON_ID},
     publisher: {'@id': PERSON_ID}
+  };
+}
+
+/**
+ * The landing page as a ProfilePage about the Person — Google's rich-result
+ * type for personal profile/homepage documents. Emit alongside
+ * {@link personLd} + {@link websiteLd} so `mainEntity` resolves by `@id`.
+ */
+export function profilePageLd(locale: string): Ld {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: absoluteUrl(pathFor(locale)),
+    inLanguage: locale,
+    isPartOf: {'@id': WEBSITE_ID},
+    mainEntity: {'@id': PERSON_ID}
+  };
+}
+
+/**
+ * The project index as an ordered list of works, so search engines see the
+ * portfolio as a collection rather than unrelated pages.
+ */
+export function projectListLd(locale: string, projects: Project[]): Ld {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: projects.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      url: absoluteUrl(pathFor(locale, `/projects/${p.slug}`))
+    }))
+  };
+}
+
+/** The contact page, typed as such and pointing back at the Person. */
+export function contactPageLd(locale: string, name: string): Ld {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name,
+    url: absoluteUrl(pathFor(locale, '/contact')),
+    inLanguage: locale,
+    isPartOf: {'@id': WEBSITE_ID},
+    about: {'@id': PERSON_ID}
   };
 }
 
@@ -77,6 +142,7 @@ export function projectLd(locale: string, project: Project): Ld {
     author: {'@id': PERSON_ID},
     creator: {'@id': PERSON_ID},
     dateCreated: String(project.year),
+    ...(project.updated ? {dateModified: project.updated} : {}),
     keywords: project.stack.join(', '),
     ...(project.hero || project.cover
       ? {image: absoluteUrl(project.hero ?? project.cover)}

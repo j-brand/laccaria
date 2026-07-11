@@ -5,9 +5,8 @@ import {Navigation, Pagination, A11y, Keyboard} from 'swiper/modules';
 import type {A11yOptions} from 'swiper/types';
 import ProjectCard from '@/components/ProjectCard';
 import type {Project} from '@/lib/projects';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// Swiper CSS is imported in app/globals.css (layered) so the brand overrides
+// there reliably win the cascade.
 
 type Props = {
   projects: Project[];
@@ -34,10 +33,10 @@ export default function ProjectSlider({
         640: {slidesPerView: 2},
         1024: {slidesPerView: 3}
       }}
-      className="!pb-12 !pt-2"
+      className="pb-12! pt-2!"
     >
       {projects.map((project) => (
-        <SwiperSlide key={project.slug} className="h-auto self-stretch !flex">
+        <SwiperSlide key={project.slug} className="h-auto self-stretch flex!">
           <ProjectCard project={project} viewProjectLabel={viewProjectLabel} />
         </SwiperSlide>
       ))}

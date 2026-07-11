@@ -1,4 +1,8 @@
 {
+  "Meta": {
+    "homeTitle": "Johannes Brand — Full-Stack Webentwickler in Leipzig",
+    "homeDescription": "Webentwickler aus Leipzig — ich gestalte, entwickle und liefere schnelle, zuverlässige Websites und Web-Apps, von der Datenbank bis zum letzten Pixel."
+  },
   "Nav": {
     "ariaLabel": "Hauptnavigation",
     "role": "Webentwickler",
@@ -30,7 +34,7 @@
     "eyebrow": "Über mich",
     "portraitAlt": "Porträt von Johannes",
     "title": "Webentwicklung ist mein Handwerk.",
-    "p1": "Seit über einem Jahrzehnt bin ich im Web unterwegs — nach mehreren Jahren in einer Agentur heute selbstständig, für Start-ups, Agenturen und kleine Unternehmen. Was mich antreibt, sind die unsichtbaren Dinge: dass eine Seite schnell lädt, für alle bedienbar ist und auch in fünf Jahren noch wartbar bleibt.",
+    "p1": "Seit über einem Jahrzehnt bin ich im Web unterwegs — nach mehreren Jahren in einer Agentur heute als selbstständiger Webentwickler in Leipzig, für Start-ups, Agenturen und kleine Unternehmen. Was mich antreibt, sind die unsichtbaren Dinge: dass eine Seite schnell lädt, für alle bedienbar ist und auch in fünf Jahren noch wartbar bleibt.",
     "p2": "Und weil gute Software mit dem Launch nicht endet, bleibe ich gern dran — bei eigenen Projekten genauso wie bei bestehenden, die vorher jemand anderes gebaut hat.",
     "factLocationKey": "Standort",
     "factLocationValue": "Leipzig, Deutschland",
@@ -135,7 +139,7 @@
     },
     "sent": {
       "title": "Nachricht gesendet — danke!",
-      "body": "Danke — Ihre Nachricht ist unterwegs. Ich melde mich innerhalb eines Werktags.",
+      "body": "Danke — Ihre Nachricht ist unterwegs. Ich melde mich innerhalb von drei Werktagen.",
       "again": "Weitere senden"
     },
     "orReach": "Oder direkt erreichen",

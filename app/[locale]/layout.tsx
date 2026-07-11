@@ -40,9 +40,11 @@ export async function generateMetadata(props: {
   params: Promise<{locale: string}>;
 }): Promise<Metadata> {
   const {locale} = await props.params;
-  const t = await getTranslations({locale, namespace: 'Hero'});
-  const title = `Johannes Brand — ${t('eyebrow')}`;
-  const description = t('sub');
+  // Dedicated SEO strings (Meta namespace) — decoupled from the visible hero
+  // copy so the title/description can carry local keywords ("… in Leipzig").
+  const t = await getTranslations({locale, namespace: 'Meta'});
+  const title = t('homeTitle');
+  const description = t('homeDescription');
   return {
     metadataBase: new URL(SITE_URL),
     title: {

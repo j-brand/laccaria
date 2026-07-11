@@ -55,7 +55,7 @@ export default async function About() {
                   </span>
                   <span
                     className={`text-sm font-semibold ${
-                      f.accent ? 'text-primary' : 'text-fg'
+                      f.accent ? 'text-primary-text' : 'text-fg'
                     }`}
                   >
                     {f.v}

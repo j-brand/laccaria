@@ -48,7 +48,16 @@ Google Search Console verification is handled via a **DNS TXT record**, not an a
 
 The base URL, brand and social profiles live in `lib/site.ts`; metadata helpers in
 `lib/seo.ts`; JSON-LD builders in `lib/structured-data.ts`. `app/sitemap.ts`,
-`app/robots.ts`, `app/manifest.ts` and `app/opengraph-image.tsx` are Next file conventions.
+`app/robots.ts` and `app/manifest.ts` are Next file conventions. The site-wide
+social card is the static `public/laccaria-og.png`.
+
+**Per-project OG cards** are pre-generated static PNGs, not a runtime route:
+`npm run og` (also wired as `prebuild`) renders `scripts/generate-og.mjs` →
+`public/projects/<slug>/og.<locale>.png` (title + stack + framed hero, from the
+MDX frontmatter). The project detail page references them and falls back to the
+site-wide card when a file is missing. Fonts for the cards live in `assets/fonts/`
+(static `.woff` — Satori can't use variable fonts). Re-run `npm run og` after
+changing a project's title/kind/summary/stack/gradient/hero.
 
 ## Folder structure
 

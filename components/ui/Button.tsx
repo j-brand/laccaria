@@ -43,7 +43,7 @@ export default function Button({
       >
         <span
           style={chamfer}
-          className="cut-inner chamfer-quad inline-flex items-center gap-2 px-[1.1rem] py-[0.7rem] text-primary"
+          className="cut-inner chamfer-quad inline-flex items-center gap-2 px-[1.1rem] py-[0.7rem] text-primary-text"
         >
           {inner}
         </span>

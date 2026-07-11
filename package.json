@@ -5,9 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3099",
+    "prebuild": "node scripts/generate-og.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "og": "node scripts/generate-og.mjs",
     "webp": "node scripts/to-webp.mjs"
   },
   "author": "Johannes Brand",

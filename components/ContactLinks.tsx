@@ -44,7 +44,7 @@ export default async function ContactLinks() {
         >
           <div className="cut-inner chamfer-md flex items-center gap-3.5 px-4 py-4">
             <span
-              className="chamfer-quad grid size-10 shrink-0 place-items-center text-primary"
+              className="chamfer-quad grid size-10 shrink-0 place-items-center text-primary-text"
               style={iconBox}
             >
               <Icon size={19} />

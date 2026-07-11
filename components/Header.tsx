@@ -32,19 +32,19 @@ export default async function Header() {
           </span>
         </Link>
 
-        <nav
-          aria-label={t('ariaLabel')}
-          className="hidden items-center gap-1 md:flex"
-        >
-          {NAV.map(({href, key}) => (
-            <Link
-              key={key}
-              href={href}
-              className="px-3 py-2 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
-            >
-              {t(key)}
-            </Link>
-          ))}
+        <nav aria-label={t('ariaLabel')} className="hidden md:block">
+          <ul className="flex items-center gap-1">
+            {NAV.map(({href, key}) => (
+              <li key={key}>
+                <Link
+                  href={href}
+                  className="block px-3 py-2 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
+                >
+                  {t(key)}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">

@@ -6,7 +6,7 @@ import Stack from '@/components/sections/Stack';
 import FeaturedProjects from '@/components/sections/FeaturedProjects';
 import ContactCTA from '@/components/sections/ContactCTA';
 import JsonLd from '@/components/seo/JsonLd';
-import {personLd, websiteLd} from '@/lib/structured-data';
+import {personLd, profilePageLd, websiteLd} from '@/lib/structured-data';
 
 const SERVICE_KEYS = [
   'frontend',
@@ -29,7 +29,9 @@ export default async function HomePage({
 
   return (
     <>
-      <JsonLd data={[personLd(knowsAbout), websiteLd(locale)]} />
+      <JsonLd
+        data={[personLd(knowsAbout), websiteLd(locale), profilePageLd(locale)]}
+      />
       <Hero />
       <About />
       <Services />

@@ -1,3 +1,5 @@
+.env
+
 # Dependencies
 node_modules/
 
@@ -14,6 +16,9 @@ build/
 
 # Debug
 npm-debug.log*
+
+# Runtime logs (contact form, etc.)
+logs/
 
 # Local env files
 .env*.local
