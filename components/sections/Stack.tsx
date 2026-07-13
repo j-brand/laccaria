@@ -6,11 +6,11 @@ import Section from "@/components/ui/Section";
 const GROUPS = [
   {
     label: "group1",
-    items: ["TypeScript", "React", "Next.js", "Vue.js", "Tailwind CSS", "JavaScript", "SCSS"],
+    items: ["TypeScript", "React", "Vue.js", "Tailwind CSS", "JavaScript", "SCSS"],
   },
   {
     label: "group2",
-    items: ["PHP", "Laravel", "Livewire", "Filament", "WordPress", "MySQL & PostgreSQL"],
+    items: ["PHP", "Laravel", "Livewire", "Filament", "Next.js", "WordPress", "MySQL & PostgreSQL"],
   },
   {
     label: "group3",
