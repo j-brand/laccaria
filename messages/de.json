@@ -48,27 +48,23 @@
   "Services": {
     "eyebrow": "Was ich kann",
     "title": "Leistungen",
-    "subtitle": "Fünf Dinge, die ich gut kann. Wählen Sie eines — oder übergeben Sie mir den ganzen Stack.",
+    "subtitle": "Von der ersten Idee bis zur laufenden Betreuung – das sind die Situationen, in denen ich am häufigsten helfe.",
     "items": {
-      "frontend": {
-        "title": "Frontend-Entwicklung",
-        "description": "Pixelgenaue, barrierefreie Interfaces in Vue, modernem JavaScript und Tailwind CSS — schnell auf jedem Gerät."
+      "newsite": {
+        "title": "Neue Website oder Relaunch",
+        "description": "Eine Seite, die zu Ihnen passt und Sie gut aussehen lässt: klar aufgebaut, schnell und auf dem Handy genauso bedienbar wie am Rechner. Von der ersten Skizze bis zum fertigen Launch."
       },
-      "backend": {
-        "title": "Backend & APIs",
-        "description": "Solide REST-APIs, Auth, Datenbanken und Integrationen auf Basis von Laravel, PHP und MySQL."
+      "takeover": {
+        "title": "Bestehende Website übernehmen & pflegen",
+        "description": "Ihre Seite läuft, aber es kümmert sich niemand mehr richtig darum? Ich übernehme bestehende Projekte, halte sie sicher und aktuell und bin erreichbar, wenn mal etwas klemmt – ganz gleich, wer sie ursprünglich gebaut hat."
       },
-      "fullstack": {
-        "title": "Full-Stack Web-Apps",
-        "description": "Produkte von A bis Z — vom Datenmodell bis zum Deployment — mit Laravel, Livewire und einem soliden Stack."
+      "visibility": {
+        "title": "Schneller, sichtbarer, für alle nutzbar",
+        "description": "Ich mache Ihre Seite spürbar schneller und sorge dafür, dass man Sie bei Google findet. Und ich stelle sicher, dass wirklich alle sie bedienen können – seit 2025 für viele Websites ohnehin Pflicht."
       },
-      "wordpress": {
-        "title": "WordPress & CMS",
-        "description": "Individuelle Themes, Blöcke und Headless-Setups, die Redaktionen lieben und unter Last schnell bleiben."
-      },
-      "performance": {
-        "title": "Performance & SEO",
-        "description": "Core Web Vitals, sauberes Markup und technisches SEO — damit man Sie findet und die Seite flott bleibt."
+      "consulting": {
+        "title": "Beratung & Konzept",
+        "description": "Sie wissen, dass etwas passieren soll, aber noch nicht genau was? Dann sortieren wir das gemeinsam – verständlich erklärt und mit einem klaren Plan für den nächsten Schritt."
       }
     }
   },
@@ -124,7 +120,7 @@
   "Contact": {
     "eyebrow": "Sprechen wir",
     "title": "Projekt starten",
-    "subtitle": "Etwas im Kopf? Schreiben Sie mir ein paar Zeilen dazu — ich antworte innerhalb eines Tages.",
+    "subtitle": "Etwas im Kopf? Schreiben Sie mir ein paar Zeilen dazu — ich antworte innerhalb von drei Werktagen.",
     "form": {
       "name": "Ihr Name",
       "namePlaceholder": "Erika Mustermann",

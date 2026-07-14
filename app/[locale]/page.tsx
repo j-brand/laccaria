@@ -9,11 +9,10 @@ import JsonLd from '@/components/seo/JsonLd';
 import {personLd, profilePageLd, websiteLd} from '@/lib/structured-data';
 
 const SERVICE_KEYS = [
-  'frontend',
-  'backend',
-  'fullstack',
-  'wordpress',
-  'performance'
+  'newsite',
+  'takeover',
+  'visibility',
+  'consulting'
 ] as const;
 
 export default async function HomePage({

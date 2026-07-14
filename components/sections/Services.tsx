@@ -1,14 +1,13 @@
 import {getTranslations} from 'next-intl/server';
 import type {CSSProperties} from 'react';
 import Section from '@/components/ui/Section';
-import {Code, Server, Layers, Pen, Chart} from '@/components/ui/icons';
+import {Server, Layers, Pen, Chart} from '@/components/ui/icons';
 
 const ITEMS = [
-  {key: 'frontend', Icon: Code},
-  {key: 'backend', Icon: Server},
-  {key: 'fullstack', Icon: Layers},
-  {key: 'wordpress', Icon: Pen},
-  {key: 'performance', Icon: Chart}
+  {key: 'newsite', Icon: Layers},
+  {key: 'takeover', Icon: Server},
+  {key: 'visibility', Icon: Chart},
+  {key: 'consulting', Icon: Pen}
 ] as const;
 
 const iconBox: CSSProperties = {
@@ -27,7 +26,7 @@ export default async function Services() {
       title={t('title')}
       subtitle={t('subtitle')}
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {ITEMS.map(({key, Icon}) => (
           <div key={key} className="cut-frame chamfer-md">
             <div className="cut-inner chamfer-md h-full p-6">

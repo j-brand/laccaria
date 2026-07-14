@@ -87,9 +87,13 @@
 }
 
 /* ── Chamfer corner language ─────────────────────────────────────────────── */
-@utility chamfer-sm { clip-path: polygon(var(--chamfer-sm) 0, 100% 0, 100% calc(100% - var(--chamfer-sm)), calc(100% - var(--chamfer-sm)) 100%, 0 100%, 0 var(--chamfer-sm)); }
-@utility chamfer-md { clip-path: polygon(var(--chamfer-md) 0, 100% 0, 100% calc(100% - var(--chamfer-md)), calc(100% - var(--chamfer-md)) 100%, 0 100%, 0 var(--chamfer-md)); }
-@utility chamfer-lg { clip-path: polygon(var(--chamfer-lg) 0, 100% 0, 100% calc(100% - var(--chamfer-lg)), calc(100% - var(--chamfer-lg)) 100%, 0 100%, 0 var(--chamfer-lg)); }
+/* --chamfer-adj (default 0) shrinks the cut on the inner surface layer of a
+   cut-frame so the diagonal border reads the same width as the straight edges.
+   See .cut-inner for the derivation; nothing else sets it, so the cut is
+   unchanged everywhere else. */
+@utility chamfer-sm { clip-path: polygon(calc(var(--chamfer-sm) - var(--chamfer-adj, 0px)) 0, 100% 0, 100% calc(100% - var(--chamfer-sm) + var(--chamfer-adj, 0px)), calc(100% - var(--chamfer-sm) + var(--chamfer-adj, 0px)) 100%, 0 100%, 0 calc(var(--chamfer-sm) - var(--chamfer-adj, 0px))); }
+@utility chamfer-md { clip-path: polygon(calc(var(--chamfer-md) - var(--chamfer-adj, 0px)) 0, 100% 0, 100% calc(100% - var(--chamfer-md) + var(--chamfer-adj, 0px)), calc(100% - var(--chamfer-md) + var(--chamfer-adj, 0px)) 100%, 0 100%, 0 calc(var(--chamfer-md) - var(--chamfer-adj, 0px))); }
+@utility chamfer-lg { clip-path: polygon(calc(var(--chamfer-lg) - var(--chamfer-adj, 0px)) 0, 100% 0, 100% calc(100% - var(--chamfer-lg) + var(--chamfer-adj, 0px)), calc(100% - var(--chamfer-lg) + var(--chamfer-adj, 0px)) 100%, 0 100%, 0 calc(var(--chamfer-lg) - var(--chamfer-adj, 0px))); }
 @utility chamfer-tr { clip-path: polygon(0 0, calc(100% - var(--c, 8px)) 0, 100% var(--c, 8px), 100% 100%, 0 100%); }
 @utility chamfer-quad { clip-path: polygon(var(--c, 9px) 0, calc(100% - var(--c, 9px)) 0, 100% var(--c, 9px), 100% calc(100% - var(--c, 9px)), calc(100% - var(--c, 9px)) 100%, var(--c, 9px) 100%, 0 calc(100% - var(--c, 9px)), 0 var(--c, 9px)); }
 
@@ -126,6 +130,54 @@ body {
 .focus-ring:focus-visible {
   outline: none;
   box-shadow: inset 0 0 0 2px var(--primary);
+}
+
+/* An inset box-shadow is a rectangle, so on a chamfered element the clip-path
+   slices its corners off and the ring looks cut. For the cut-frame border stack
+   we instead thicken the frame to 2px and paint it primary, so the focus ring
+   traces the chamfer itself (the inner surface's --chamfer-adj keeps it even).
+   Scope: the frame IS the control (button/link), or it directly wraps a form
+   field — never a content card that merely contains a focusable descendant.
+   The -1px margin absorbs the extra 1px per side so focusing doesn't shift
+   surrounding layout. */
+.cut-frame:focus-visible,
+.cut-frame:has(> input:focus-visible),
+.cut-frame:has(> textarea:focus-visible),
+.cut-frame:has(> select:focus-visible) {
+  --cut-b: 2px;
+  margin: -1px;
+  background: var(--primary);
+  outline: none;
+}
+/* Drop the square box-shadow the control would otherwise stack over the frame. */
+.cut-frame.focus-ring:focus-visible,
+.cut-inner.focus-ring:focus-visible {
+  box-shadow: none;
+}
+
+/* Solid chamfered toggles (theme, locale) are themselves clip-path'd, so a
+   box-shadow ring loses its corners and there's no frame to thicken. Wrap them
+   in .chamfer-ring — an unclipped host that paints a solid chamfer octagon
+   *behind* the control on keyboard focus; the opaque button covers the centre
+   and 2px peeks out all round as the ring (same trick as the cut-frame border,
+   so no hollow-polygon seam to crack a corner). The button is lifted above the
+   ring via z-index; the outer cut is enlarged by (2 − √2)·2px ≈ 1.17px so the
+   ring stays an even width around the diagonals. */
+.chamfer-ring { position: relative; display: inline-flex; }
+.chamfer-ring :focus-visible { outline: none; }
+.chamfer-ring > * { position: relative; z-index: 1; }
+.chamfer-ring:has(:focus-visible)::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--primary);
+  --_co: calc(var(--c, 6px) + 1.17px);
+  clip-path: polygon(
+    var(--_co) 0, calc(100% - var(--_co)) 0, 100% var(--_co), 100% calc(100% - var(--_co)),
+    calc(100% - var(--_co)) 100%, var(--_co) 100%, 0 calc(100% - var(--_co)), 0 var(--_co)
+  );
 }
 
 /* Skip-to-content link: off-screen until focused (WCAG 2.4.1). Anchored to the
@@ -172,8 +224,13 @@ body {
 
 /* 1px-border "cut" card: outer frame provides the border, inner the surface.
    Apply a chamfer-* utility to BOTH the .cut-frame and .cut-inner elements. */
-.cut-frame { padding: 1px; background: var(--bd, var(--line)); }
-.cut-inner { background: var(--sf, var(--card)); }
+.cut-frame { padding: var(--cut-b, 1px); background: var(--bd, var(--line)); --chamfer-adj: 0px; }
+/* A chamfered corner is a 45° edge, so a straight 1px frame reads as √2px of
+   border along the diagonal. Shrink the inner cut by (2 − √2) × border width so
+   the visible stroke is a uniform 1px on straight and chamfered edges alike.
+   --cut-b inherits from the frame's padding, so custom border widths track too;
+   .cut-frame resets --chamfer-adj to keep nested frames sharp. */
+.cut-inner { background: var(--sf, var(--card)); --chamfer-adj: calc(var(--cut-b, 1px) * 0.5857864); }
 
 /* ── Brand mark (swaps per theme via CSS, like the mockups) ──────────────── */
 .jb-mark {

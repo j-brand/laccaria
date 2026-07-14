@@ -48,27 +48,23 @@
   "Services": {
     "eyebrow": "What I can do",
     "title": "Services",
-    "subtitle": "Five things I do well. Pick one, or hand me the whole stack.",
+    "subtitle": "From the first idea to ongoing support — these are the situations where I help most often.",
     "items": {
-      "frontend": {
-        "title": "Frontend development",
-        "description": "Pixel-accurate, accessible interfaces in Vue, modern JavaScript and Tailwind CSS — fast on every device."
+      "newsite": {
+        "title": "New website or relaunch",
+        "description": "A site that fits you and makes you look good: clearly structured, fast, and just as easy to use on a phone as on a desktop. From the first sketch to the finished launch."
       },
-      "backend": {
-        "title": "Backend & APIs",
-        "description": "Solid REST APIs, auth, databases and integrations built on Laravel, PHP and MySQL."
+      "takeover": {
+        "title": "Take over & maintain an existing website",
+        "description": "Your site is up, but nobody's really looking after it anymore? I take over existing projects, keep them secure and up to date, and I'm reachable when something gets stuck — no matter who originally built it."
       },
-      "fullstack": {
-        "title": "Full-stack web apps",
-        "description": "End-to-end products — from data model to deployment — with Laravel, Livewire and a sensible, boring stack."
+      "visibility": {
+        "title": "Faster, more visible, usable by everyone",
+        "description": "I make your site noticeably faster and make sure people find you on Google. And I ensure that everyone can really use it — required by law for many websites since 2025 anyway."
       },
-      "wordpress": {
-        "title": "WordPress & CMS",
-        "description": "Custom themes, blocks and headless setups that editors love and that stay fast under load."
-      },
-      "performance": {
-        "title": "Performance & SEO",
-        "description": "Core Web Vitals, clean markup and technical SEO that gets you found and keeps you quick."
+      "consulting": {
+        "title": "Consulting & concept",
+        "description": "You know something needs to happen, but not exactly what? Then we'll sort it out together — explained in plain terms and with a clear plan for the next step."
       }
     }
   },
@@ -124,7 +120,7 @@
   "Contact": {
     "eyebrow": "Let's talk",
     "title": "Start a project",
-    "subtitle": "Have something in mind? Send a few lines about it and I'll reply within a day.",
+    "subtitle": "Have something in mind? Send a few lines about it and I'll reply within three working days.",
     "form": {
       "name": "Your name",
       "namePlaceholder": "Jane Doe",
