@@ -45,6 +45,40 @@ const securityHeaders = [
   {key: 'X-DNS-Prefetch-Control', value: 'off'}
 ];
 
+/**
+ * Canonical host, derived from the same origin as `lib/site.ts`. Used to fold
+ * the `www.` variant onto the apex domain (see `redirects` below).
+ */
+const CANONICAL_ORIGIN = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laccaria.de'
+).replace(/\/$/, '');
+const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).host;
+
+/**
+ * `www.laccaria.de` → `laccaria.de`, permanently.
+ *
+ * The host would otherwise serve the whole site under a second name with status
+ * 200 — only the canonical link tag tells search engines they are the same site.
+ * Normally this belongs in the web server, but the Plesk shared hosting locks
+ * both the "preferred domain" setting and the custom nginx directives, and nginx
+ * proxies the original `Host` header through to Next, so we can answer here.
+ * Skipped when the canonical origin is itself a `www.` host (no redirect loop)
+ * and in dev, where the host never matches.
+ *
+ * Note: `permanent: true` emits a 308, not a 301 — Google treats the two the
+ * same, and unlike 301 it forbids clients from rewriting POST to GET.
+ */
+const wwwRedirect = CANONICAL_HOST.startsWith('www.')
+  ? []
+  : [
+      {
+        source: '/:path*',
+        has: [{type: 'host' as const, value: `www.${CANONICAL_HOST}`}],
+        destination: `${CANONICAL_ORIGIN}/:path*`,
+        permanent: true
+      }
+    ];
+
 const nextConfig: NextConfig = {
   // Drop the `X-Powered-By: Next.js` fingerprint.
   poweredByHeader: false,
@@ -62,6 +96,9 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [{source: '/:path*', headers: securityHeaders}];
+  },
+  async redirects() {
+    return wwwRedirect;
   }
 };
 
